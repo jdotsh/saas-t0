@@ -81,16 +81,19 @@ export default function HeroSection() {
             sourcing everything. Follow along as we figure this out together.
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/login" className={cn(buttonVariants({ size: 'xl' }), 'rounded-full border-2 border-primary dark:border-white text-bold text-white')}>
-              Get Started
-            </Link>
             <Link
               href={siteConfig.links.github}
               target="_blank"
               rel="noreferrer"
               className={cn(buttonVariants({ variant: 'outline', size: 'xl' }), 'rounded-full border-2 border-primary dark:border-white text-semibold')}
             >
-              GitHub <GitHubLogoIcon className="ml-2" />
+              <GitHubLogoIcon className="mr-2" /> View on GitHub
+            </Link>
+            <Link
+              href="/docs"
+              className={cn(buttonVariants({ size: 'xl' }), 'rounded-full border-2 border-primary dark:border-white text-bold text-white')}
+            >
+              Get Started <ArrowRightIcon className="ml-2" />
             </Link>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2 w-full">

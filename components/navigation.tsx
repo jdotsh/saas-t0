@@ -69,15 +69,18 @@ export default function CircularNavigation({
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-3">
+          {/* Dark Mode Toggle */}
           <ModeToggle />
+
+          {/* Single CTA Button */}
           <Link
-            href={user ? '/dashboard' : '/signin'}
+            href={user ? '/dashboard' : '/docs'}
             className={cn(
-              buttonVariants({ variant: 'outline', size: 'sm' }),
-              'rounded-full px-5 text-sm'
+              buttonVariants({ variant: 'default', size: 'sm' }),
+              'rounded-full px-5 text-sm font-semibold'
             )}
           >
-            {user ? 'Dashboard' : 'Login'}
+            {user ? 'Dashboard' : 'Get Started'}
           </Link>
         </div>
 
