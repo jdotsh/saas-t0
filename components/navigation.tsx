@@ -8,7 +8,7 @@ import { MobileNav } from '@/components/mobile-nav';
 import { Icons } from '@/components/icons';
 import { buttonVariants } from '@/components/ui/button';
 import { ModeToggle } from '@/components/mode-toggle';
-import { SunIcon } from '@heroicons/react/24/solid'
+import { SunIcon } from '@heroicons/react/24/solid';
 
 interface CircularNavProps {
   items?: MainNavItem[];
@@ -24,55 +24,91 @@ export default function CircularNavigation({
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
 
   return (
-    <nav className="flex flex-wrap items-center justify-between w-full md:w-fit p-2 md:p-1 gap-4 md:gap-20 md:bg-zinc-50 md:dark:bg-zinc-900 md:rounded-full md:px-8 md:border-2 md:border-muted/30 md:dark:border-muted/80 md:shadow-md mx-auto mt-4 backdrop-blur-sm md:backdrop-blur-none">
-      <div className="flex items-center space-x-2">
-        <div className="bg-slate-50 dark:bg-slate-900 p-1 rounded-full">
-          <SunIcon className="size-8 transition-transform duration-300 ease-in-out hover:scale-110" />
-        </div>
-        <span className="text-lg md:text-xl font-extrabold tracking-tightest">HIKARI</span>
-      </div>
-      {items?.length ? (
-        <div className="hidden md:flex space-x-6">
-          {items?.map((item, index) => (
-            <Link
-              key={index}
-              href={item.disabled ? '#' : item.href}
-              className={cn(
-                'text-primary transition-colors hover:text-foreground/80',
-                item.disabled && 'cursor-not-allowed opacity-80'
-              )}
-            >
-              {item.title}
-            </Link>
-          ))}
-        </div>
-      ) : null}
-      <div className="flex items-center space-x-2">
-        <div className="hidden md:block">
-          <ModeToggle />
-        </div>
-        <Link
-          href={user ? '/dashboard' : '/signin'}
-          className={cn(
-            buttonVariants({ variant: 'outline', size: 'sm' }),
-            'rounded-full p-2 md:p-5 text-xs md:text-sm hidden md:inline-flex'
-          )}
-        >
-          {user ? 'Dashboard' : 'Login'}
+    <>
+      <nav
+        className={cn(
+          'flex items-center justify-between w-full p-4 mx-auto mt-4',
+          // Mobile: Solid background with blur
+          'bg-background/95 backdrop-blur-md border-b border-border',
+          // Desktop: Rounded pill style
+          'md:w-fit md:p-1 md:gap-20 md:bg-zinc-50 md:dark:bg-zinc-900',
+          'md:rounded-full md:px-8 md:border-2 md:border-muted/30',
+          'md:dark:border-muted/80 md:shadow-lg md:backdrop-blur-none',
+          // Ensure visibility on all screens
+          'shadow-sm md:shadow-md'
+        )}
+      >
+        <Link href="/" className="flex items-center space-x-2 z-10">
+          <div className="bg-primary/10 dark:bg-primary/20 p-1.5 rounded-full">
+            <SunIcon className="size-6 md:size-8 text-primary transition-transform duration-300 ease-in-out hover:scale-110" />
+          </div>
+          <span className="text-base md:text-xl font-extrabold tracking-tight">
+            NEXUS
+          </span>
         </Link>
-        <button
-          className="md:hidden"
-          onClick={() => setShowMobileMenu(!showMobileMenu)}
-        >
-          {showMobileMenu ? <Icons.close /> : <Icons.Menu />}
-          <span className="sr-only">Menu</span>
-        </button>
-      </div>
-      {showMobileMenu && items && (
-        <div className="absolute top-full left-0 right-0 w-full md:hidden mt-2">
-          <MobileNav items={items}>{children}</MobileNav>
+
+        {/* Desktop Navigation */}
+        {items?.length ? (
+          <div className="hidden md:flex space-x-6">
+            {items?.map((item, index) => (
+              <Link
+                key={index}
+                href={item.disabled ? '#' : item.href}
+                className={cn(
+                  'text-sm font-medium transition-colors hover:text-primary',
+                  'text-foreground/70 hover:text-foreground',
+                  item.disabled && 'cursor-not-allowed opacity-50'
+                )}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+        ) : null}
+
+        {/* Desktop Actions */}
+        <div className="hidden md:flex items-center space-x-3">
+          <ModeToggle />
+          <Link
+            href={user ? '/dashboard' : '/signin'}
+            className={cn(
+              buttonVariants({ variant: 'outline', size: 'sm' }),
+              'rounded-full px-5 text-sm'
+            )}
+          >
+            {user ? 'Dashboard' : 'Login'}
+          </Link>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className={cn(
+            'md:hidden flex items-center justify-center',
+            'p-2 rounded-md transition-colors z-10',
+            'hover:bg-accent active:bg-accent/80'
+          )}
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+          aria-label="Toggle mobile menu"
+          aria-expanded={showMobileMenu}
+        >
+          {showMobileMenu ? (
+            <Icons.close className="h-6 w-6" />
+          ) : (
+            <Icons.Menu className="h-6 w-6" />
+          )}
+        </button>
+      </nav>
+
+      {/* Mobile Navigation Panel */}
+      {showMobileMenu && items && (
+        <MobileNav
+          items={items}
+          user={user}
+          onClose={() => setShowMobileMenu(false)}
+        >
+          {children}
+        </MobileNav>
       )}
-    </nav>
+    </>
   );
 }
