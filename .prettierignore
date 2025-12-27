@@ -11,3 +11,7 @@ compiled/
 pnpm-lock.yaml
 
 types_db.ts
+
+# MDX files (sensitive to HTML/Markdown formatting)
+*.mdx
+content/**/*.mdx
