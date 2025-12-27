@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import { AnimatePresence } from 'framer-motion';
 import { MainNavItem } from 'types';
 import { cn } from '@/lib/utils';
 import { MobileNav } from '@/components/mobile-nav';
@@ -99,16 +100,18 @@ export default function CircularNavigation({
         </button>
       </nav>
 
-      {/* Mobile Navigation Panel */}
-      {showMobileMenu && items && (
-        <MobileNav
-          items={items}
-          user={user}
-          onClose={() => setShowMobileMenu(false)}
-        >
-          {children}
-        </MobileNav>
-      )}
+      {/* Mobile Navigation Panel with exit animations */}
+      <AnimatePresence mode="wait">
+        {showMobileMenu && items && (
+          <MobileNav
+            items={items}
+            user={user}
+            onClose={() => setShowMobileMenu(false)}
+          >
+            {children}
+          </MobileNav>
+        )}
+      </AnimatePresence>
     </>
   );
 }

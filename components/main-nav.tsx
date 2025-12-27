@@ -3,6 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
+import { AnimatePresence } from 'framer-motion';
 
 import { MainNavItem } from 'types';
 import { siteConfig } from '@/config/site';
@@ -55,11 +56,13 @@ export function MainNav({ items, children }: MainNavProps) {
         {showMobileMenu ? <Icons.close /> : <Icons.logo />}
         <span className="font-bold">Menu</span>
       </button>
-      {showMobileMenu && items && (
-        <MobileNav items={items} onClose={() => setShowMobileMenu(false)}>
-          {children}
-        </MobileNav>
-      )}
+      <AnimatePresence mode="wait">
+        {showMobileMenu && items && (
+          <MobileNav items={items} onClose={() => setShowMobileMenu(false)}>
+            {children}
+          </MobileNav>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
