@@ -72,7 +72,31 @@ export default function CircularNavigation({
           {/* Dark Mode Toggle */}
           <ModeToggle />
 
-          {/* Dashboard for logged in users */}
+          {/* For logged-out users: Login + Get Started */}
+          {!user && (
+            <>
+              <Link
+                href="/signin"
+                className={cn(
+                  buttonVariants({ variant: 'ghost', size: 'sm' }),
+                  'rounded-full px-5 text-sm font-medium'
+                )}
+              >
+                Login
+              </Link>
+              <Link
+                href="/signup"
+                className={cn(
+                  buttonVariants({ variant: 'default', size: 'sm' }),
+                  'rounded-full px-5 text-sm font-semibold'
+                )}
+              >
+                Get Started
+              </Link>
+            </>
+          )}
+
+          {/* For logged-in users: Dashboard */}
           {user && (
             <Link
               href="/dashboard"

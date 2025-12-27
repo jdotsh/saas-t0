@@ -85,15 +85,9 @@ export default function HeroSection() {
               href={siteConfig.links.github}
               target="_blank"
               rel="noreferrer"
-              className={cn(buttonVariants({ variant: 'outline', size: 'xl' }), 'rounded-full border-2 border-primary dark:border-white text-semibold')}
+              className={cn(buttonVariants({ size: 'xl' }), 'rounded-full border-2 border-primary dark:border-white text-bold')}
             >
               <GitHubLogoIcon className="mr-2" /> View on GitHub
-            </Link>
-            <Link
-              href="/signup"
-              className={cn(buttonVariants({ size: 'xl' }), 'rounded-full border-2 border-primary dark:border-white text-bold text-white shadow-lg hover:shadow-xl transition-shadow')}
-            >
-              Get Started <ArrowRightIcon className="ml-2" />
             </Link>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2 w-full">
