@@ -72,16 +72,18 @@ export default function CircularNavigation({
           {/* Dark Mode Toggle */}
           <ModeToggle />
 
-          {/* Single CTA Button */}
-          <Link
-            href={user ? '/dashboard' : '/docs'}
-            className={cn(
-              buttonVariants({ variant: 'default', size: 'sm' }),
-              'rounded-full px-5 text-sm font-semibold'
-            )}
-          >
-            {user ? 'Dashboard' : 'Get Started'}
-          </Link>
+          {/* Dashboard for logged in users */}
+          {user && (
+            <Link
+              href="/dashboard"
+              className={cn(
+                buttonVariants({ variant: 'default', size: 'sm' }),
+                'rounded-full px-5 text-sm font-semibold'
+              )}
+            >
+              Dashboard
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Button */}

@@ -90,8 +90,8 @@ export default function HeroSection() {
               <GitHubLogoIcon className="mr-2" /> View on GitHub
             </Link>
             <Link
-              href="/docs"
-              className={cn(buttonVariants({ size: 'xl' }), 'rounded-full border-2 border-primary dark:border-white text-bold text-white')}
+              href="/signup"
+              className={cn(buttonVariants({ size: 'xl' }), 'rounded-full border-2 border-primary dark:border-white text-bold text-white shadow-lg hover:shadow-xl transition-shadow')}
             >
               Get Started <ArrowRightIcon className="ml-2" />
             </Link>
