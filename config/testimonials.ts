@@ -18,56 +18,56 @@ export const testimonials = [
     title: 'Founder of microlaunch.net',
     avatarFallback: 'SA',
     avatarImg: '/images/said.jpg',
-    text: "So cool, looks really clean. Any plan to open source it? ☺️ Wanna play with it!"
+    text: 'So cool, looks really clean. Any plan to open source it? ☺️ Wanna play with it!'
   },
   {
     name: 'magicuidesign',
     title: 'UI Design Company',
     avatarFallback: 'MU',
     avatarImg: '/images/magicui.jpg',
-    text: "Clean 🤌"
+    text: 'Clean 🤌'
   },
   {
     name: 'YasmeenRoumie',
     title: 'Developer',
     avatarFallback: 'YR',
     avatarImg: '/images/yasmeen.jpg',
-    text: "Ooh would love to try this out"
+    text: 'Ooh would love to try this out'
   },
   {
     name: 'shadcn',
     title: 'Developer',
     avatarFallback: 'SC',
     avatarImg: '/images/shadcn.jpg',
-    text: "👀"
+    text: '👀'
   },
   {
     name: 'bzagrodzki',
     title: 'Developer',
     avatarFallback: 'BZ',
     avatarImg: '/images/bzrag.jpg',
-    text: "Nice one! But I would prefer some more \"sans\" font 😉"
+    text: 'Nice one! But I would prefer some more "sans" font 😉'
   },
   {
     name: 'MPlegas',
     title: 'Developer',
     avatarFallback: 'MP',
     avatarImg: '/images/MPlegas.jpg',
-    text: "Exceptional!"
+    text: 'Exceptional!'
   },
   {
     name: 'kvncyf_',
     title: 'Developer',
     avatarFallback: 'KC',
     avatarImg: '/images/kvn.jpg',
-    text: "Nice move."
+    text: 'Nice move.'
   },
   {
     name: '0xRaduan',
     title: 'Developer',
     avatarFallback: 'RA',
     avatarImg: '/images/0xraduan.jpg',
-    text: "This looks fire"
+    text: 'This looks fire'
   },
   {
     name: 'Luax0',

@@ -12,7 +12,7 @@ export default async function DashboardPage() {
   const [user, userDetails] = await Promise.all([
     getUser(supabase),
     getUserDetails(supabase)
-    ]);
+  ]);
 
   if (!user) {
     return redirect('/signin');

@@ -126,8 +126,8 @@ module.exports = {
         },
         gradient: {
           to: {
-            backgroundPosition: "var(--bg-size) 0",
-          },
+            backgroundPosition: 'var(--bg-size) 0'
+          }
         },
         shimmer: {
           '0%, 90%, 100%': {
@@ -153,7 +153,7 @@ module.exports = {
         shimmer: 'shimmer 8s infinite',
         marquee: 'marquee var(--duration) linear infinite',
         'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
-        gradient: "gradient 8s linear infinite",
+        gradient: 'gradient 8s linear infinite'
       }
     }
   },

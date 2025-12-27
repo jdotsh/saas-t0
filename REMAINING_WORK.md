@@ -1,6 +1,7 @@
 # Nexus - Remaining Implementation Tasks
 
 ## ✅ COMPLETED (1.5 hours)
+
 1. Security fix (avatar endpoint with rate limiting)
 2. Rate limiting system (lib/rate-limit.ts + 2 endpoints)
 3. Professional utility functions (7 helpers in lib/utils.ts)
@@ -17,7 +18,9 @@
 ### PRIORITY 1: Quick Wins (2 hours)
 
 #### 1. Add Vercel Analytics (15 min)
+
 **File**: `app/layout.tsx`
+
 ```typescript
 // Add import
 import { Analytics } from '@vercel/analytics/react';
@@ -28,12 +31,15 @@ import { Analytics } from '@vercel/analytics/react';
   <Analytics />  {/* ← Add this */}
 </body>
 ```
+
 **Test**: Check browser console for analytics events
 
 #### 2. Loading Skeletons (1 hour)
+
 Create 3 files using existing Skeleton component:
 
 **File**: `app/(dashboard)/dashboard/loading.tsx`
+
 ```typescript
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -52,6 +58,7 @@ export default function DashboardLoading() {
 ```
 
 **Files to create**:
+
 - `app/(dashboard)/dashboard/loading.tsx`
 - `app/(dashboard)/settings/loading.tsx`
 - `app/(dashboard)/pricing/loading.tsx`
@@ -59,7 +66,9 @@ export default function DashboardLoading() {
 **Test**: Navigate between pages, see skeletons
 
 #### 3. Empty State Component (30 min)
+
 **File**: `components/empty-state.tsx`
+
 ```typescript
 import { LucideIcon } from 'lucide-react';
 
@@ -87,10 +96,12 @@ export function EmptyState({ icon: Icon, title, description, action }: EmptyStat
 ### PRIORITY 2: Visual Impact (2 hours)
 
 #### 4. Number Ticker Animation (30 min)
+
 **File**: `components/magicui/number-ticker.tsx`
 Copy from `/Users/home/Projects/next-money-main/components/magicui/number-ticker.tsx`
 
 **Usage example**:
+
 ```typescript
 <NumberTicker value={1000} />  // Animates from 0 to 1000
 ```
@@ -98,9 +109,11 @@ Copy from `/Users/home/Projects/next-money-main/components/magicui/number-ticker
 **Test**: Use on dashboard stats
 
 #### 5. Charts Dashboard (1.5 hours)
+
 **Install**: `pnpm add recharts`
 
 **File**: `app/(dashboard)/analytics/page.tsx`
+
 ```typescript
 import { LineChart, BarChart, AreaChart, PieChart } from 'recharts';
 
@@ -147,6 +160,7 @@ export default function AnalyticsPage() {
 ### PRIORITY 3: Testing & Cleanup (1.5 hours)
 
 #### 6. Local Testing (1 hour)
+
 ```bash
 cd /Users/home/Projects/nexus-saas-hikari
 
@@ -171,6 +185,7 @@ for i in {1..15}; do curl http://localhost:3000/api/teams; done
 ```
 
 **Manual Testing Checklist**:
+
 - [ ] Navigate to /dashboard → See loading skeleton first
 - [ ] Navigate to /analytics → See 4 charts
 - [ ] Resize window → Responsive hooks work
@@ -178,6 +193,7 @@ for i in {1..15}; do curl http://localhost:3000/api/teams; done
 - [ ] Test rate limiting → 429 after 10 requests
 
 #### 7. Clean Repository (30 min)
+
 ```bash
 # Remove unnecessary files
 rm -rf .next/ node_modules/ (will be in .gitignore)
@@ -195,6 +211,7 @@ cat .gitignore
 ### PRIORITY 4: Git Commits (30 min)
 
 #### Structured Commit History
+
 ```bash
 cd /Users/home/Projects/nexus-saas-hikari
 
@@ -273,14 +290,14 @@ git push -u origin main
 
 ## FINAL SCORE PROJECTION
 
-| Category | Before | After | +/- |
-|----------|--------|-------|-----|
-| **Productization** | 18/25 | 22/25 | +4 |
-| **Template Readiness** | 24/25 | 25/25 | +1 |
-| **Engineering** | 18/20 | 19/20 | +1 |
-| **Security** | 13/15 | 15/15 | +2 |
-| **Extensibility** | 5/15 | 9/15 | +4 |
-| **TOTAL** | 78/100 | **90/100** | **+12** |
+| Category               | Before | After      | +/-     |
+| ---------------------- | ------ | ---------- | ------- |
+| **Productization**     | 18/25  | 22/25      | +4      |
+| **Template Readiness** | 24/25  | 25/25      | +1      |
+| **Engineering**        | 18/20  | 19/20      | +1      |
+| **Security**           | 13/15  | 15/15      | +2      |
+| **Extensibility**      | 5/15   | 9/15       | +4      |
+| **TOTAL**              | 78/100 | **90/100** | **+12** |
 
 ---
 

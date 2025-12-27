@@ -1,6 +1,6 @@
-import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
-import { getUser } from "@/utils/supabase/queries";
-import { createClient } from "@/utils/supabase/server";
+import { type CreateNextContextOptions } from '@trpc/server/adapters/next';
+import { getUser } from '@/utils/supabase/queries';
+import { createClient } from '@/utils/supabase/server';
 
 export async function createContext({ req, res }: CreateNextContextOptions) {
   const supabase = createClient();
@@ -8,7 +8,7 @@ export async function createContext({ req, res }: CreateNextContextOptions) {
 
   return {
     user,
-    supabase,
+    supabase
   };
 }
 

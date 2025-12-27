@@ -44,5 +44,5 @@ export const features = [
     description: 'Markdown and other content with ease using Fumadocs.',
     fillRule: 'evenodd',
     link: './'
-  },
+  }
 ];

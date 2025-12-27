@@ -1,6 +1,12 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription
+} from '@/components/ui/card';
 import {
   Settings,
   LogOut,
@@ -13,7 +19,7 @@ import {
   CheckCircle,
   CreditCard,
   Shield,
-  type LucideIcon,
+  type LucideIcon
 } from 'lucide-react';
 import { EmptyState } from '@/components/empty-state';
 
@@ -30,7 +36,7 @@ enum ActivityType {
   INVITE_TEAM_MEMBER = 'INVITE_TEAM_MEMBER',
   ACCEPT_INVITATION = 'ACCEPT_INVITATION',
   UPDATE_BILLING = 'UPDATE_BILLING',
-  SECURITY_ALERT = 'SECURITY_ALERT',
+  SECURITY_ALERT = 'SECURITY_ALERT'
 }
 
 // Icon mapping for each activity type
@@ -46,23 +52,35 @@ const iconMap: Record<ActivityType, LucideIcon> = {
   [ActivityType.INVITE_TEAM_MEMBER]: Mail,
   [ActivityType.ACCEPT_INVITATION]: CheckCircle,
   [ActivityType.UPDATE_BILLING]: CreditCard,
-  [ActivityType.SECURITY_ALERT]: Shield,
+  [ActivityType.SECURITY_ALERT]: Shield
 };
 
 // Color mapping for different activity types
 const colorMap: Record<ActivityType, string> = {
-  [ActivityType.SIGN_UP]: 'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300',
-  [ActivityType.SIGN_IN]: 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300',
-  [ActivityType.SIGN_OUT]: 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300',
-  [ActivityType.UPDATE_PASSWORD]: 'bg-orange-100 text-orange-600 dark:bg-orange-900 dark:text-orange-300',
-  [ActivityType.DELETE_ACCOUNT]: 'bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300',
-  [ActivityType.UPDATE_ACCOUNT]: 'bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-300',
-  [ActivityType.CREATE_TEAM]: 'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300',
-  [ActivityType.REMOVE_TEAM_MEMBER]: 'bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300',
-  [ActivityType.INVITE_TEAM_MEMBER]: 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300',
-  [ActivityType.ACCEPT_INVITATION]: 'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300',
-  [ActivityType.UPDATE_BILLING]: 'bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-300',
-  [ActivityType.SECURITY_ALERT]: 'bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300',
+  [ActivityType.SIGN_UP]:
+    'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300',
+  [ActivityType.SIGN_IN]:
+    'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300',
+  [ActivityType.SIGN_OUT]:
+    'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300',
+  [ActivityType.UPDATE_PASSWORD]:
+    'bg-orange-100 text-orange-600 dark:bg-orange-900 dark:text-orange-300',
+  [ActivityType.DELETE_ACCOUNT]:
+    'bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300',
+  [ActivityType.UPDATE_ACCOUNT]:
+    'bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-300',
+  [ActivityType.CREATE_TEAM]:
+    'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300',
+  [ActivityType.REMOVE_TEAM_MEMBER]:
+    'bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300',
+  [ActivityType.INVITE_TEAM_MEMBER]:
+    'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300',
+  [ActivityType.ACCEPT_INVITATION]:
+    'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300',
+  [ActivityType.UPDATE_BILLING]:
+    'bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-300',
+  [ActivityType.SECURITY_ALERT]:
+    'bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300'
 };
 
 // Relative time formatter
@@ -94,7 +112,7 @@ function formatAction(action: ActivityType): string {
     [ActivityType.INVITE_TEAM_MEMBER]: 'You invited a team member',
     [ActivityType.ACCEPT_INVITATION]: 'You accepted an invitation',
     [ActivityType.UPDATE_BILLING]: 'You updated billing information',
-    [ActivityType.SECURITY_ALERT]: 'Security alert detected',
+    [ActivityType.SECURITY_ALERT]: 'Security alert detected'
   };
   return actionMap[action] || 'Unknown action occurred';
 }
@@ -107,32 +125,32 @@ const getMockActivityLogs = () => {
       id: 1,
       action: ActivityType.SIGN_IN,
       ipAddress: '192.168.1.1',
-      timestamp: new Date(now.getTime() - 5 * 60 * 1000), // 5 minutes ago
+      timestamp: new Date(now.getTime() - 5 * 60 * 1000) // 5 minutes ago
     },
     {
       id: 2,
       action: ActivityType.UPDATE_ACCOUNT,
       ipAddress: '192.168.1.1',
-      timestamp: new Date(now.getTime() - 2 * 60 * 60 * 1000), // 2 hours ago
+      timestamp: new Date(now.getTime() - 2 * 60 * 60 * 1000) // 2 hours ago
     },
     {
       id: 3,
       action: ActivityType.UPDATE_PASSWORD,
       ipAddress: '192.168.1.1',
-      timestamp: new Date(now.getTime() - 24 * 60 * 60 * 1000), // 1 day ago
+      timestamp: new Date(now.getTime() - 24 * 60 * 60 * 1000) // 1 day ago
     },
     {
       id: 4,
       action: ActivityType.INVITE_TEAM_MEMBER,
       ipAddress: '192.168.1.1',
-      timestamp: new Date(now.getTime() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
+      timestamp: new Date(now.getTime() - 3 * 24 * 60 * 60 * 1000) // 3 days ago
     },
     {
       id: 5,
       action: ActivityType.SIGN_UP,
       ipAddress: '192.168.1.1',
-      timestamp: new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000), // 7 days ago
-    },
+      timestamp: new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000) // 7 days ago
+    }
   ];
 };
 
@@ -154,7 +172,8 @@ export default function ActivityPage() {
           <CardHeader>
             <CardTitle>Recent Activity</CardTitle>
             <CardDescription>
-              Monitor your account activity and security events. Activity logs are retained for 90 days.
+              Monitor your account activity and security events. Activity logs
+              are retained for 90 days.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -162,25 +181,32 @@ export default function ActivityPage() {
               <ul className="space-y-4">
                 {logs.map((log) => {
                   const Icon = iconMap[log.action as ActivityType] || Settings;
-                  const colorClass = colorMap[log.action as ActivityType] || 'bg-gray-100 text-gray-600';
-                  const formattedAction = formatAction(log.action as ActivityType);
+                  const colorClass =
+                    colorMap[log.action as ActivityType] ||
+                    'bg-gray-100 text-gray-600';
+                  const formattedAction = formatAction(
+                    log.action as ActivityType
+                  );
 
                   return (
-                    <li key={log.id} className="flex items-start space-x-4 p-3 rounded-lg hover:bg-muted/50 transition-colors">
+                    <li
+                      key={log.id}
+                      className="flex items-start space-x-4 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+                    >
                       <div className={`rounded-full p-2 ${colorClass}`}>
                         <Icon className="w-5 h-5" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium">
-                          {formattedAction}
-                        </p>
+                        <p className="text-sm font-medium">{formattedAction}</p>
                         <div className="flex items-center gap-2 mt-1">
                           <p className="text-xs text-muted-foreground">
                             {getRelativeTime(new Date(log.timestamp))}
                           </p>
                           {log.ipAddress && (
                             <>
-                              <span className="text-xs text-muted-foreground">•</span>
+                              <span className="text-xs text-muted-foreground">
+                                •
+                              </span>
                               <p className="text-xs text-muted-foreground font-mono">
                                 {log.ipAddress}
                               </p>
@@ -210,7 +236,9 @@ export default function ActivityPage() {
               <div>
                 <p className="text-sm font-medium">Security Notice</p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  Activity logs help you monitor your account security. If you see suspicious activity, change your password immediately and contact support.
+                  Activity logs help you monitor your account security. If you
+                  see suspicious activity, change your password immediately and
+                  contact support.
                 </p>
               </div>
             </div>

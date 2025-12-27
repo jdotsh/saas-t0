@@ -14,7 +14,7 @@ export default function EmailSignIn() {
   const allowPassword = true;
   const redirectMethod = 'client';
   const disableButton = false;
-  
+
   const router = redirectMethod === 'client' ? useRouter() : null;
   const [isSubmitting, setIsSubmitting] = useState(false);
 

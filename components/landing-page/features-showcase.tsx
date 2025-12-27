@@ -72,9 +72,7 @@ function FeatureModule({
             </h2>
 
             {/* Description */}
-            <p className="mb-8 text-lg text-muted-foreground">
-              {description}
-            </p>
+            <p className="mb-8 text-lg text-muted-foreground">{description}</p>
 
             {/* Details Checklist */}
             <ul className="space-y-4">

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef, useRef } from 'react';
 
-import { cn } from "@/lib/utils";
-import { AnimatedBeam } from "@/components/magicui/animated-beam";
+import { cn } from '@/lib/utils';
+import { AnimatedBeam } from '@/components/magicui/animated-beam';
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -13,8 +13,8 @@ const Circle = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "z-10 flex size-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
-        className,
+        'z-10 flex size-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]',
+        className
       )}
     >
       {children}
@@ -22,10 +22,10 @@ const Circle = forwardRef<
   );
 });
 
-Circle.displayName = "Circle";
+Circle.displayName = 'Circle';
 
 export function AnimatedBeamMultipleOutputDemo({
-  className,
+  className
 }: {
   className?: string;
 }) {
@@ -41,8 +41,8 @@ export function AnimatedBeamMultipleOutputDemo({
   return (
     <div
       className={cn(
-        "relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-xl",
-        className,
+        'relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-xl',
+        className
       )}
       ref={containerRef}
     >
@@ -510,5 +510,5 @@ const Icons = {
       <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
       <circle cx="12" cy="7" r="4" />
     </svg>
-  ),
+  )
 };

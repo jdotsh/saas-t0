@@ -7,10 +7,7 @@ import {
   TooltipContent
 } from '@/components/ui/tooltip';
 import { createClient } from '@/utils/supabase/server';
-import {
-  getUser,
-  getUserDetails,
-} from '@/utils/supabase/queries';
+import { getUser, getUserDetails } from '@/utils/supabase/queries';
 import { Settings, User } from 'lucide-react';
 import { Navbar } from '@/components/dashboard-navbar';
 import Sidebar from '@/components/dashboard-sidebar';
@@ -26,7 +23,7 @@ export default async function DashboardLayout({
   const supabase = createClient();
   const [user, userDetails] = await Promise.all([
     getUser(supabase),
-    getUserDetails(supabase),
+    getUserDetails(supabase)
   ]);
 
   if (!user) {

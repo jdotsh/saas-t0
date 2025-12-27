@@ -127,7 +127,19 @@ export default function PricingRounded({
           </p>
           {displayProducts.length === 0 && (
             <p className="mt-4 text-center text-red-500">
-              Note: This is dummy pricing data. Please add your own pricing data in the Stripe Dashboard to see actual plans. Alternatively, you may use the Stripe Fixtures command to create your own pricing data, see <a href="https://hikari.antoineross.com/docs/configure/stripe/local" className="underline" target="_blank" rel="noopener noreferrer">documentation</a>.
+              Note: This is dummy pricing data. Please add your own pricing data
+              in the Stripe Dashboard to see actual plans. Alternatively, you
+              may use the Stripe Fixtures command to create your own pricing
+              data, see{' '}
+              <a
+                href="https://hikari.antoineross.com/docs/configure/stripe/local"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                documentation
+              </a>
+              .
             </p>
           )}
           <div className="flex items-center justify-center mt-6 space-x-4">
@@ -178,7 +190,9 @@ export default function PricingRounded({
                   <CardHeader className="rounded-t-4xl flex flex-col justify-center">
                     <div className="flex items-center">
                       <Moon className="h-8 w-8 text-gray-600 fill-zinc-500" />
-                      <CardTitle className="ml-2 text-2xl font-bold">{product.name}</CardTitle>
+                      <CardTitle className="ml-2 text-2xl font-bold">
+                        {product.name}
+                      </CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent>

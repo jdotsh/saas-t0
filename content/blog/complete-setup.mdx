@@ -48,19 +48,24 @@ pnpm install
 #### Start Local Supabase Instance
 
 1. Start Supabase:
+
    ```bash
    npx supabase start
    ```
 
 2. Configure environment variables:
+
    - Copy the `service_role_key` from the terminal output.
    - Set `SUPABASE_SERVICE_ROLE_KEY` in your `.env.local` file with this value.
 
 3. Get Supabase URLs:
+
    ```bash
    npx supabase status
    ```
+
    Copy the following values to your `.env.local` file:
+
    - `API URL` as `NEXT_PUBLIC_SUPABASE_URL`
    - `anon key` as `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `service_role key` as `SUPABASE_SERVICE_ROLE_KEY`
@@ -298,6 +303,7 @@ DB_PASSWORD="your_database_password"
 ### 7. Run the Development Server
 
 1. Start the Next.js development server:
+
    ```bash
    pnpm dev
    ```
@@ -309,6 +315,7 @@ DB_PASSWORD="your_database_password"
 ### Supabase Integration
 
 Hikari uses Supabase for database management and authentication. The setup process includes:
+
 - Local Supabase instance setup
 - Environment variable configuration
 - Database schema management
@@ -316,6 +323,7 @@ Hikari uses Supabase for database management and authentication. The setup proce
 ### Stripe Integration
 
 The Stripe integration in Hikari includes:
+
 - Webhook handling for various Stripe events
 - Product and pricing management using fixtures
 - Subscription handling
@@ -323,6 +331,7 @@ The Stripe integration in Hikari includes:
 ### UI Components
 
 Hikari comes with a rich set of UI components, including:
+
 - Complete landing page elements
 - Dashboard components
 - User management interfaces
@@ -330,6 +339,7 @@ Hikari comes with a rich set of UI components, including:
 ## Customization
 
 While Hikari provides a solid starting point, it's designed to be customizable:
+
 - Modify the `stripe-fixtures.json` file to adjust product and pricing information
 - Customize UI components to match your brand
 - Extend the provided API routes and add new ones as needed

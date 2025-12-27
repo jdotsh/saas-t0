@@ -18,10 +18,13 @@ import { Redis } from '@upstash/redis';
 let redis: Redis | null = null;
 let ratelimit: Ratelimit | null = null;
 
-if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+if (
+  process.env.UPSTASH_REDIS_REST_URL &&
+  process.env.UPSTASH_REDIS_REST_TOKEN
+) {
   redis = new Redis({
     url: process.env.UPSTASH_REDIS_REST_URL,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN
   });
 
   // Default rate limiter: 10 requests per 10 seconds
@@ -29,7 +32,7 @@ if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) 
     redis,
     limiter: Ratelimit.slidingWindow(10, '10 s'),
     analytics: true,
-    prefix: 'nexus:ratelimit',
+    prefix: 'nexus:ratelimit'
   });
 }
 
@@ -42,17 +45,22 @@ if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) 
  */
 export async function ratelimitRequest(
   identifier: string,
-  customLimit?: { requests: number; window: `${number} ${'ms' | 's' | 'm' | 'h' | 'd'}` }
+  customLimit?: {
+    requests: number;
+    window: `${number} ${'ms' | 's' | 'm' | 'h' | 'd'}`;
+  }
 ) {
   // If Redis not configured, allow request (fail open for development)
   if (!redis) {
-    console.warn('Rate limiting disabled: UPSTASH_REDIS_REST_URL not configured');
+    console.warn(
+      'Rate limiting disabled: UPSTASH_REDIS_REST_URL not configured'
+    );
     return {
       success: true,
       limit: 0,
       remaining: 0,
       reset: new Date(),
-      pending: Promise.resolve(),
+      pending: Promise.resolve()
     };
   }
 
@@ -60,9 +68,12 @@ export async function ratelimitRequest(
   const limiter = customLimit
     ? new Ratelimit({
         redis,
-        limiter: Ratelimit.slidingWindow(customLimit.requests, customLimit.window),
+        limiter: Ratelimit.slidingWindow(
+          customLimit.requests,
+          customLimit.window
+        ),
         analytics: true,
-        prefix: 'nexus:ratelimit',
+        prefix: 'nexus:ratelimit'
       })
     : ratelimit!;
 

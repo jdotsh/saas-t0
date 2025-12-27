@@ -3,17 +3,27 @@ title: Example - Updating your user avatar
 description: Updating your user avatar using supabase storage
 ---
 
-import Image from "next/image";
+import Image from 'next/image';
 
 ## Updating your user avatar
 
 Go to `http://localhost:3000/dashboard/account` and you will see a `Avatar Image` form under the `Personal Information` section.
 
-<Image src="/images/supabase-storage-4.png" alt="Supabase Storage" width={600} height={400} />
+<Image
+  src="/images/supabase-storage-4.png"
+  alt="Supabase Storage"
+  width={600}
+  height={400}
+/>
 
 Now that you have set up your supabase storage, you should be able to upload an image to your supabase storage, and replace your avatar image with your new uploaded image.
 
-<Image src="/images/supabase-storage-5.png" alt="Supabase Storage" width={600} height={400} />
+<Image
+  src="/images/supabase-storage-5.png"
+  alt="Supabase Storage"
+  width={600}
+  height={400}
+/>
 
 ## But wait, how does this work?
 
@@ -156,7 +166,8 @@ import { createClient } from '@/utils/supabase/server';
 
 export async function POST(request: Request) {
   const supabase = createClient();
-  const { userId, avatarUrl }: { userId: string; avatarUrl: string } = await request.json();
+  const { userId, avatarUrl }: { userId: string; avatarUrl: string } =
+    await request.json();
 
   const { data, error } = await supabase
     .from('users')

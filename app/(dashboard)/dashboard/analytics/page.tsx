@@ -1,9 +1,22 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import NumberTicker from '@/components/magicui/number-ticker';
-import { TrendingUp, Users, DollarSign, Activity, ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import {
+  TrendingUp,
+  Users,
+  DollarSign,
+  Activity,
+  ArrowUpRight,
+  ArrowDownRight
+} from 'lucide-react';
 
 /**
  * Analytics Dashboard
@@ -25,7 +38,7 @@ const mockData = {
     totalUsers: 2847,
     activeUsers: 1924,
     revenue: 45231,
-    growthRate: 12.5,
+    growthRate: 12.5
   },
   userGrowth: [
     { month: 'Jan', users: 1200, active: 850 },
@@ -33,7 +46,7 @@ const mockData = {
     { month: 'Mar', users: 1680, active: 1180 },
     { month: 'Apr', users: 1920, active: 1350 },
     { month: 'May', users: 2280, active: 1620 },
-    { month: 'Jun', users: 2847, active: 1924 },
+    { month: 'Jun', users: 2847, active: 1924 }
   ],
   revenue: [
     { month: 'Jan', revenue: 28500, subscriptions: 142 },
@@ -41,13 +54,13 @@ const mockData = {
     { month: 'Mar', revenue: 36800, subscriptions: 194 },
     { month: 'Apr', revenue: 38200, subscriptions: 201 },
     { month: 'May', revenue: 42100, subscriptions: 223 },
-    { month: 'Jun', revenue: 45231, subscriptions: 241 },
+    { month: 'Jun', revenue: 45231, subscriptions: 241 }
   ],
   planDistribution: [
     { name: 'Free', value: 1420, color: '#94a3b8' },
     { name: 'Pro', value: 987, color: '#3b82f6' },
-    { name: 'Enterprise', value: 440, color: '#8b5cf6' },
-  ],
+    { name: 'Enterprise', value: 440, color: '#8b5cf6' }
+  ]
 };
 
 // Stats Card Component
@@ -56,7 +69,7 @@ function StatsCard({
   value,
   change,
   icon: Icon,
-  format = 'number',
+  format = 'number'
 }: {
   title: string;
   value: number;
@@ -66,9 +79,11 @@ function StatsCard({
 }) {
   const isPositive = change >= 0;
   const formattedValue =
-    format === 'currency' ? `$${value.toLocaleString()}` :
-    format === 'percentage' ? `${value}%` :
-    value.toLocaleString();
+    format === 'currency'
+      ? `$${value.toLocaleString()}`
+      : format === 'percentage'
+        ? `${value}%`
+        : value.toLocaleString();
 
   return (
     <Card>
@@ -102,7 +117,7 @@ function StatsCard({
 
 // Simple Bar Chart Component (pure CSS, no recharts needed)
 function SimpleBarChart({ data }: { data: typeof mockData.userGrowth }) {
-  const maxUsers = Math.max(...data.map(d => d.users));
+  const maxUsers = Math.max(...data.map((d) => d.users));
 
   return (
     <div className="space-y-4">
@@ -114,7 +129,9 @@ function SimpleBarChart({ data }: { data: typeof mockData.userGrowth }) {
           <div key={index} className="space-y-2">
             <div className="flex justify-between text-sm">
               <span className="font-medium">{item.month}</span>
-              <span className="text-muted-foreground">{item.users.toLocaleString()} users</span>
+              <span className="text-muted-foreground">
+                {item.users.toLocaleString()} users
+              </span>
             </div>
             <div className="relative h-8 bg-muted rounded-md overflow-hidden">
               <div
@@ -135,7 +152,7 @@ function SimpleBarChart({ data }: { data: typeof mockData.userGrowth }) {
 
 // Simple Line Chart Component (pure CSS, no recharts needed)
 function SimpleLineChart({ data }: { data: typeof mockData.revenue }) {
-  const maxRevenue = Math.max(...data.map(d => d.revenue));
+  const maxRevenue = Math.max(...data.map((d) => d.revenue));
 
   return (
     <div className="space-y-4">
@@ -144,7 +161,10 @@ function SimpleLineChart({ data }: { data: typeof mockData.revenue }) {
           const height = (item.revenue / maxRevenue) * 100;
 
           return (
-            <div key={index} className="flex-1 flex flex-col items-center gap-2">
+            <div
+              key={index}
+              className="flex-1 flex flex-col items-center gap-2"
+            >
               <div className="w-full flex items-end justify-center relative group">
                 <div
                   className="w-full bg-gradient-to-t from-primary to-primary/50 rounded-t-md transition-all duration-500 hover:opacity-80 relative"
@@ -155,7 +175,9 @@ function SimpleLineChart({ data }: { data: typeof mockData.revenue }) {
                   </div>
                 </div>
               </div>
-              <span className="text-xs text-muted-foreground">{item.month}</span>
+              <span className="text-xs text-muted-foreground">
+                {item.month}
+              </span>
             </div>
           );
         })}
@@ -174,7 +196,9 @@ function SimplePieChart({ data }: { data: typeof mockData.planDistribution }) {
         <div className="relative w-48 h-48">
           {data.map((item, index) => {
             const percentage = (item.value / total) * 100;
-            const prevPercentage = data.slice(0, index).reduce((sum, d) => sum + (d.value / total) * 100, 0);
+            const prevPercentage = data
+              .slice(0, index)
+              .reduce((sum, d) => sum + (d.value / total) * 100, 0);
 
             return (
               <div
@@ -182,7 +206,7 @@ function SimplePieChart({ data }: { data: typeof mockData.planDistribution }) {
                 className="absolute inset-0 rounded-full"
                 style={{
                   background: `conic-gradient(${item.color} 0% ${percentage}%, transparent ${percentage}% 100%)`,
-                  transform: `rotate(${prevPercentage * 3.6}deg)`,
+                  transform: `rotate(${prevPercentage * 3.6}deg)`
                 }}
               />
             );
@@ -206,7 +230,8 @@ function SimplePieChart({ data }: { data: typeof mockData.planDistribution }) {
               <span className="text-sm">{item.name}</span>
             </div>
             <span className="text-sm font-medium">
-              {item.value.toLocaleString()} ({((item.value / total) * 100).toFixed(1)}%)
+              {item.value.toLocaleString()} (
+              {((item.value / total) * 100).toFixed(1)}%)
             </span>
           </div>
         ))}
@@ -270,7 +295,8 @@ export default function AnalyticsPage() {
             <CardHeader>
               <CardTitle>User Growth Over Time</CardTitle>
               <CardDescription>
-                Total users vs active users trend. Light bar shows total users, dark bar shows active users.
+                Total users vs active users trend. Light bar shows total users,
+                dark bar shows active users.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -299,7 +325,10 @@ export default function AnalyticsPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold">
-                  ${(mockData.stats.revenue / mockData.stats.activeUsers).toFixed(2)}
+                  $
+                  {(
+                    mockData.stats.revenue / mockData.stats.activeUsers
+                  ).toFixed(2)}
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
                   +$3.20 from last month
@@ -312,7 +341,12 @@ export default function AnalyticsPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold">
-                  <NumberTicker value={mockData.revenue[mockData.revenue.length - 1].subscriptions} />
+                  <NumberTicker
+                    value={
+                      mockData.revenue[mockData.revenue.length - 1]
+                        .subscriptions
+                    }
+                  />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
                   18 new this month
@@ -341,7 +375,9 @@ export default function AnalyticsPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm font-medium">Conversion Rate</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Conversion Rate
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">34.2%</div>
@@ -363,11 +399,15 @@ export default function AnalyticsPage() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm font-medium">Customer Lifetime Value</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Customer Lifetime Value
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">$2,847</div>
-            <p className="text-xs text-muted-foreground mt-1">+12% from last quarter</p>
+            <p className="text-xs text-muted-foreground mt-1">
+              +12% from last quarter
+            </p>
           </CardContent>
         </Card>
       </div>

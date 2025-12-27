@@ -135,7 +135,7 @@ export function ProgrammaticControlExample() {
 // Example 6: Conditional Rendering Based on Route
 // ============================================================================
 
-'use client';
+('use client');
 
 import { usePathname } from 'next/navigation';
 
@@ -143,7 +143,8 @@ export function ConditionalBannerExample() {
   const pathname = usePathname();
 
   // Only show on marketing pages
-  const showBanner = pathname?.startsWith('/') && !pathname?.startsWith('/dashboard');
+  const showBanner =
+    pathname?.startsWith('/') && !pathname?.startsWith('/dashboard');
 
   if (!showBanner) return null;
 
@@ -154,7 +155,7 @@ export function ConditionalBannerExample() {
 // Example 7: Time-Limited Campaign
 // ============================================================================
 
-'use client';
+('use client');
 
 import { useEffect, useState } from 'react';
 
@@ -185,7 +186,7 @@ export function TimeLimitedBannerExample() {
 // Example 8: A/B Testing Different Messages
 // ============================================================================
 
-'use client';
+('use client');
 
 export function ABTestBannerExample() {
   // Simple A/B test (50/50 split)
@@ -216,7 +217,7 @@ export function ABTestBannerExample() {
 // Example 9: Integration with Analytics
 // ============================================================================
 
-'use client';
+('use client');
 
 export function AnalyticsBannerExample() {
   const handleCopy = (code: string) => {

@@ -3,7 +3,7 @@ title: Example - Creating and editing posts using tRPC
 description: Implementing tRPC in your Supabase Project
 ---
 
-import Image from "next/image";
+import Image from 'next/image';
 
 ## Using tRPC in Your Application
 
@@ -12,14 +12,16 @@ import Image from "next/image";
 In your `server/api/routers/posts.ts`, you define routes using `createTRPCRouter`. Each route can be a query or a mutation. For example, to create a post, you define a mutation like this:
 
 ```typescript
-import { z } from "zod";
-import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
-import { createClient } from "@/utils/supabase/server";
-import { TRPCError } from "@trpc/server";
+import { z } from 'zod';
+import { createTRPCRouter, protectedProcedure } from '@/server/api/trpc';
+import { createClient } from '@/utils/supabase/server';
+import { TRPCError } from '@trpc/server';
 
 export const postsRouter = createTRPCRouter({
   create: protectedProcedure
-    .input(z.object({ title: z.string().min(1), content: z.string().nullable() }))
+    .input(
+      z.object({ title: z.string().min(1), content: z.string().nullable() })
+    )
     .mutation(async ({ input, ctx }) => {
       const { data, error } = await createClient()
         .from('posts')
@@ -28,17 +30,20 @@ export const postsRouter = createTRPCRouter({
           title: input.title,
           content: input.content,
           created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .select()
         .single();
 
       if (error) {
-        console.error("Error creating post:", error);
-        throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR', message: error.message });
+        console.error('Error creating post:', error);
+        throw new TRPCError({
+          code: 'INTERNAL_SERVER_ERROR',
+          message: error.message
+        });
       }
       return data;
-    }),
+    })
 });
 ```
 
@@ -54,10 +59,10 @@ To edit a post, you would use a similar mutation with the necessary input parame
     .mutation(async ({ input, ctx }) => {
       const { data, error } = await createClient()
         .from('posts')
-        .update({ 
-          title: input.title, 
-          content: input.content, 
-          updated_at: new Date().toISOString() 
+        .update({
+          title: input.title,
+          content: input.content,
+          updated_at: new Date().toISOString()
         })
         .eq('id', input.id)
         .eq('user_id', ctx.user.id)
@@ -87,7 +92,7 @@ And finally, to get all posts, you would use a query:
         console.error("Error fetching posts:", error);
         throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR', message: error.message });
       }
-      
+
       return data ?? [];
     }),
 ```
@@ -99,47 +104,51 @@ The structure of building API's with tRPC is simple. If you want to see the rest
 In your client component, such as `components/posts.tsx`, you can call these routes using hooks provided by tRPC. For example, to fetch all posts, you would use:
 
 ```typescript
-import { useQuery } from "@tanstack/react-query";
-import { trpc } from "@/utils/trpc";
+import { useQuery } from '@tanstack/react-query';
+import { trpc } from '@/utils/trpc';
 
 // Getting the posts
 
-const { data: posts, isLoading, error: fetchError } = api.posts.getAll.useQuery()
+const {
+  data: posts,
+  isLoading,
+  error: fetchError
+} = api.posts.getAll.useQuery();
 
 // Creating a post
 const createPost = api.posts.create.useMutation({
   onSuccess: async () => {
-    await utils.posts.getAll.invalidate()
-    setNewPost({ title: '', content: '' })
+    await utils.posts.getAll.invalidate();
+    setNewPost({ title: '', content: '' });
     toast({
-      title: "Success",
-      description: "Post created successfully!",
-    })
-  },
-})
+      title: 'Success',
+      description: 'Post created successfully!'
+    });
+  }
+});
 
 // Updating a post
 const updatePost = api.posts.update.useMutation({
   onSuccess: async () => {
-    await utils.posts.getAll.invalidate()
-    setEditingPost(null)
+    await utils.posts.getAll.invalidate();
+    setEditingPost(null);
     toast({
-      title: "Success",
-      description: "Post updated successfully!",
-    })
-  },
-})
+      title: 'Success',
+      description: 'Post updated successfully!'
+    });
+  }
+});
 
 // Deleting a post
 const deletePost = api.posts.delete.useMutation({
   onSuccess: async () => {
-    await utils.posts.getAll.invalidate()
+    await utils.posts.getAll.invalidate();
     toast({
-      title: "Success",
-      description: "Post deleted successfully!",
-    })
-  },
-})
+      title: 'Success',
+      description: 'Post deleted successfully!'
+    });
+  }
+});
 ```
 
 ### 3. Benefits of Using tRPC

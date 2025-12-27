@@ -9,10 +9,7 @@ import { useEffect } from 'react';
  * Usage:
  * useEscapeKey(() => setIsOpen(false));
  */
-export function useEscapeKey(
-  handler: () => void,
-  enabled: boolean = true
-) {
+export function useEscapeKey(handler: () => void, enabled: boolean = true) {
   useEffect(() => {
     if (!enabled) return;
 

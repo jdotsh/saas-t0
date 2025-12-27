@@ -133,14 +133,12 @@ const createOrRetrieveCustomer = async ({
   email: string;
   uuid: string;
 }) => {
-
   // Check if the customer already exists in Supabase
-  const { data: existingSupabaseCustomer, error: queryError } =
-    await supabase
-      .from('customers')
-      .select('*')
-      .eq('id', uuid)
-      .maybeSingle();
+  const { data: existingSupabaseCustomer, error: queryError } = await supabase
+    .from('customers')
+    .select('*')
+    .eq('id', uuid)
+    .maybeSingle();
 
   if (queryError) {
     console.error(`Supabase customer lookup failed: ${queryError.message}`);
@@ -297,7 +295,7 @@ const manageSubscriptionStatusChange = async (
     throw new Error(
       `Subscription insert/update failed: ${upsertError.message}`
     );
-  } 
+  }
 
   // For a new subscription copy the billing details to the customer object.
   // NOTE: This is a costly operation and should happen at the very end.

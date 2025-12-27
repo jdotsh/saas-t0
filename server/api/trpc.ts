@@ -6,11 +6,11 @@
  * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
  * need to use are documented accordingly near the end.
  */
-import { initTRPC, TRPCError } from "@trpc/server";
-import superjson from "superjson";
-import { ZodError } from "zod";
-import { getUser } from "@/utils/supabase/queries";
-import { createClient } from "@/utils/supabase/server";
+import { initTRPC, TRPCError } from '@trpc/server';
+import superjson from 'superjson';
+import { ZodError } from 'zod';
+import { getUser } from '@/utils/supabase/queries';
+import { createClient } from '@/utils/supabase/server';
 
 /**
  * 1. CONTEXT
@@ -30,7 +30,7 @@ export const createTRPCContext = async (opts: { headers: Headers }) => {
   return {
     ...opts,
     user,
-    supabase,
+    supabase
   };
 };
 
@@ -48,11 +48,10 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
       ...shape,
       data: {
         ...shape.data,
-        zodError:
-          error.cause instanceof ZodError ? error.cause.flatten() : null,
-      },
+        zodError: error.cause instanceof ZodError ? error.cause.flatten() : null
+      }
     };
-  },
+  }
 });
 
 /**
@@ -110,14 +109,15 @@ export const publicProcedure = t.procedure.use(timingMiddleware);
 
 const isAuthed = t.middleware(({ next, ctx }) => {
   if (!ctx.user) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
+    throw new TRPCError({ code: 'UNAUTHORIZED' });
   }
   return next({
     ctx: {
-      user: ctx.user,
-    },
+      user: ctx.user
+    }
   });
 });
 
-export const protectedProcedure = t.procedure.use(timingMiddleware).use(isAuthed);
-
+export const protectedProcedure = t.procedure
+  .use(timingMiddleware)
+  .use(isAuthed);

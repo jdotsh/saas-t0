@@ -1,9 +1,9 @@
 ---
-title: Setting up tRPC 
+title: Setting up tRPC
 description: Implementing tRPC in your Supabase Project
 ---
 
-import Image from "next/image";
+import Image from 'next/image';
 
 ## Installation
 
@@ -46,6 +46,7 @@ There are two folders of note when it comes to tRPC in your project. These are:
         );
       }
     ```
+
   </div>
   <div className="step">
     **app/api/trpc/[trpc]route.ts**: This file is the entry point for tRPC. It is used to create the tRPC router and handle requests.
@@ -88,16 +89,14 @@ export { handler as GET, handler as POST };
 
     ```
 
-      This file uses a local **env.js** file to store your environment variables. So make sure to add that in your project. [Here](https://github.com/antoineross/hikari/blob/main/env.js) is an example of what the env file should look like. 
+      This file uses a local **env.js** file to store your environment variables. So make sure to add that in your project. [Here](https://github.com/antoineross/hikari/blob/main/env.js) is an example of what the env file should look like.
 
   </div>
 
 </div>
 
-
-
 ## Creating a tRPC Router
-tRPC shines by enabling you to create a router that links your frontend and backend effortlessly. When you change props or types between the two, those updates are automatically reflected in the router. This feature *accelerates* your development cycles.
+
+tRPC shines by enabling you to create a router that links your frontend and backend effortlessly. When you change props or types between the two, those updates are automatically reflected in the router. This feature _accelerates_ your development cycles.
 
 This router is essential for managing all your API requests. You can find the `router.ts` file in the `trpc/` folder. This is where you'll define your API procedures.
-

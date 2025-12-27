@@ -13,10 +13,7 @@ export default function PricingLoading() {
         {/* Pricing cards skeleton */}
         <div className="grid md:grid-cols-3 gap-6 mt-12">
           {Array.from({ length: 3 }).map((_, i) => (
-            <div
-              key={i}
-              className="rounded-lg border bg-card p-6 space-y-4"
-            >
+            <div key={i} className="rounded-lg border bg-card p-6 space-y-4">
               {/* Plan name */}
               <Skeleton className="h-7 w-32" />
 

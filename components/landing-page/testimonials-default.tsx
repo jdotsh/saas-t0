@@ -14,9 +14,7 @@ export default function Testimonials() {
         <div className="flex-grow border-t border-gray-300"></div>
         <div className="flex-shrink px-2 text-center">
           <h2 className="text-3xl font-bold">Testimonials</h2>
-          <p className="text-muted-foreground">
-            What everyone else is saying
-          </p>
+          <p className="text-muted-foreground">What everyone else is saying</p>
         </div>
         <div className="flex-grow border-t border-gray-300"></div>
       </div>
@@ -30,15 +28,24 @@ export default function Testimonials() {
               <Card key={index} className="mb-4 h-full">
                 <CardHeader className="flex flex-row items-center bg-zinc-100 dark:bg-zinc-800 p-2 rounded-t-xl">
                   <div className="flex items-center">
-                    <Avatar className="size-7 mr-2"> {/* Adjusted size for smaller avatar */}
-                      <AvatarImage src={testimonial.avatarImg} className="h-full w-full" />
+                    <Avatar className="size-7 mr-2">
+                      {' '}
+                      {/* Adjusted size for smaller avatar */}
+                      <AvatarImage
+                        src={testimonial.avatarImg}
+                        className="h-full w-full"
+                      />
                       <AvatarFallback className="h-full w-full">
                         {testimonial.avatarFallback}
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col">
-                      <h3 className="text-sm font-semibold">{testimonial.name}</h3>
-                      <p className="text-xs text-muted-foreground">{testimonial.title}</p>
+                      <h3 className="text-sm font-semibold">
+                        {testimonial.name}
+                      </h3>
+                      <p className="text-xs text-muted-foreground">
+                        {testimonial.title}
+                      </p>
                     </div>
                   </div>
                 </CardHeader>

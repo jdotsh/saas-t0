@@ -20,6 +20,7 @@ Next, in your Vercel deployment settings, add a new **Production** environment v
 ### Install dependencies
 
 Ensure you have [pnpm](https://pnpm.io/installation) installed and run:
+
 ```bash
 pnpm install
 ```
@@ -52,6 +53,7 @@ pnpm install
 
     Note the URLs provided in the terminal output for
     accessing different services within the Supabase stack.
+
   </div>
   <div className="step">
     **Configure Environment Variables**: Copy the value of `service_role_key`
@@ -79,6 +81,7 @@ pnpm install
     # SUPABASE_SERVICE_ROLE_KEY
     service_role key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9*******sad
     ```
+
   </div>
   <div className="step">
     **Link Local Supabase Instance to Project**: Open your terminal. Run the
@@ -90,6 +93,7 @@ pnpm install
 
     Navigate to the Supabase
     project you created. Enter your database password when prompted.
+
   </div>
 </div>
 
@@ -114,6 +118,7 @@ pnpm install
     ```bash
     npx supabase db pull
     ```
+
   </div>
   <div className="step">
     **Seed Local Database**: Open your terminal. Run the following commands to
@@ -123,6 +128,7 @@ pnpm install
     npx supabase db dump --data-only -f supabase/seed.sql
     npx supabase db reset
     ```
+
   </div>
 </div>
 
@@ -136,6 +142,7 @@ pnpm install
     ```bash
     npx supabase gen types typescript --local --schema public > types_db.ts
     ```
+
   </div>
   <div className="step">
     **Generate Migration File**: Open your terminal. Run the following command
@@ -151,6 +158,7 @@ pnpm install
     ```bash
     npx supabase db push
     ```
+
   </div>
 </div>
 
@@ -169,6 +177,7 @@ pnpm install
 
     This will print a URL to navigate to in your browser and
     provide access to your Stripe account.
+
   </div>
   <div className="step">
     **Start Local Webhook Forwarding**: Run the following command:
@@ -182,6 +191,7 @@ pnpm install
     file. If you haven't already, set `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` and
     `STRIPE_SECRET_KEY` in your `.env.local` file using the **test mode** keys
     from your Stripe dashboard.
+
   </div>
 </div>
 
@@ -225,6 +235,7 @@ DB_PASSWORD="W23**********s8e"
 
     Note that webhook forwarding and the development server must be running concurrently
     in two separate terminals for the application to work correctly.
+
   </div>
   <div className="step">
     **View Application**: Navigate to

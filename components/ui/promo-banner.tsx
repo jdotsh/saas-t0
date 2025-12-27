@@ -182,7 +182,10 @@ export function PromoBanner({
                     transition={{ duration: 0.2, ease: 'easeOut' }}
                   >
                     {isCopied ? (
-                      <Check className="h-4 w-4 text-green-600 dark:text-green-500" aria-hidden="true" />
+                      <Check
+                        className="h-4 w-4 text-green-600 dark:text-green-500"
+                        aria-hidden="true"
+                      />
                     ) : (
                       <Copy className="h-4 w-4" aria-hidden="true" />
                     )}

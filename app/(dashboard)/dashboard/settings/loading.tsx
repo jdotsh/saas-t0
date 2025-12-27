@@ -21,7 +21,10 @@ export default function SettingsLoading() {
               </div>
               <div className="space-y-3">
                 {Array.from({ length: 3 }).map((_, i) => (
-                  <div key={i} className="flex items-center justify-between p-2">
+                  <div
+                    key={i}
+                    className="flex items-center justify-between p-2"
+                  >
                     <div className="flex items-center space-x-2 flex-1">
                       <Skeleton className="h-5 w-5 rounded-full" />
                       <div className="flex-1">

@@ -30,7 +30,7 @@ export const featureBenefits: FeatureBenefit[] = [
     benefit: 'Payments That Just Work',
     headline: 'Accept payments in minutes, not weeks.',
     description:
-      'Stripe integration is complex. We\'ve done the hard work: subscription management, webhook handling, invoice generation, and customer portal. Just add your API keys and start charging.',
+      "Stripe integration is complex. We've done the hard work: subscription management, webhook handling, invoice generation, and customer portal. Just add your API keys and start charging.",
     details: [
       'Multiple pricing tiers out of the box',
       'Automatic invoice generation',

@@ -25,12 +25,18 @@ export async function POST(request: Request) {
   const supabase = createClient();
 
   // Step 1: Authenticate user (CRITICAL - was missing)
-  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  const {
+    data: { user },
+    error: authError
+  } = await supabase.auth.getUser();
 
   if (authError || !user) {
-    return NextResponse.json({
-      error: 'Unauthorized. Please sign in to update your avatar.'
-    }, { status: 401 });
+    return NextResponse.json(
+      {
+        error: 'Unauthorized. Please sign in to update your avatar.'
+      },
+      { status: 401 }
+    );
   }
 
   // Step 2: Rate limiting (NEW - prevent abuse)
@@ -38,9 +44,12 @@ export async function POST(request: Request) {
   const { success } = await ratelimitRequest(identifier);
 
   if (!success) {
-    return NextResponse.json({
-      error: 'Too many requests. Please try again in a few seconds.'
-    }, { status: 429 });
+    return NextResponse.json(
+      {
+        error: 'Too many requests. Please try again in a few seconds.'
+      },
+      { status: 429 }
+    );
   }
 
   // Step 3: Parse and validate input
@@ -49,9 +58,12 @@ export async function POST(request: Request) {
     const body = await request.json();
     validatedInput = AvatarUrlSchema.parse(body);
   } catch (error) {
-    return NextResponse.json({
-      error: 'Invalid avatar URL. Must be a valid URL under 500 characters.'
-    }, { status: 400 });
+    return NextResponse.json(
+      {
+        error: 'Invalid avatar URL. Must be a valid URL under 500 characters.'
+      },
+      { status: 400 }
+    );
   }
 
   // Step 4: Update only the authenticated user's avatar (NOT userId from request body!)
@@ -64,9 +76,12 @@ export async function POST(request: Request) {
 
   if (error) {
     console.error('Avatar update error:', error);
-    return NextResponse.json({
-      error: 'Failed to update avatar. Please try again.'
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Failed to update avatar. Please try again.'
+      },
+      { status: 500 }
+    );
   }
 
   return NextResponse.json({

@@ -1,6 +1,6 @@
 /**
  * Spring Animation Configurations
- * 
+ *
  * Reusable spring physics for consistent animations across the app.
  * Based on industry best practices and competitor analysis.
  */
@@ -14,7 +14,7 @@ import { Transition } from 'framer-motion';
 export const snappySpring: Transition = {
   type: 'spring',
   stiffness: 400,
-  damping: 30,
+  damping: 30
 };
 
 /**
@@ -24,7 +24,7 @@ export const snappySpring: Transition = {
 export const smoothSpring: Transition = {
   type: 'spring',
   stiffness: 300,
-  damping: 24,
+  damping: 24
 };
 
 /**
@@ -35,7 +35,7 @@ export const bouncySpring: Transition = {
   type: 'spring',
   stiffness: 350,
   damping: 40,
-  bounce: 0.7,
+  bounce: 0.7
 };
 
 /**
@@ -45,7 +45,7 @@ export const bouncySpring: Transition = {
 export const gentleSpring: Transition = {
   type: 'spring',
   stiffness: 100,
-  damping: 20,
+  damping: 20
 };
 
 /**
@@ -54,7 +54,7 @@ export const gentleSpring: Transition = {
 export const navSpring: Transition = {
   type: 'spring',
   stiffness: 300,
-  damping: 24,
+  damping: 24
 };
 
 /**
@@ -63,5 +63,5 @@ export const navSpring: Transition = {
 export const itemSpring: Transition = {
   type: 'spring',
   stiffness: 350,
-  damping: 40,
+  damping: 40
 };

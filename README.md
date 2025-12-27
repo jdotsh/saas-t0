@@ -15,13 +15,13 @@
 
 ## 🏆 What Makes This Different
 
-| Feature | Other Templates | Nexus |
-|---------|----------------|-------|
-| **Test Suite** | ❌ None | ✅ 90%+ coverage (50+ tests) |
-| **Rate Limiting** | ❌ None | ✅ Every endpoint protected |
-| **Security** | B- to B+ | ✅ **A+** (audited & fixed) |
-| **Teams/Orgs** | ⚠️ Basic or missing | ✅ Full RBAC + UI |
-| **Setup Time** | 30-60 min | ✅ **< 5 min** (one command) |
+| Feature           | Other Templates     | Nexus                        |
+| ----------------- | ------------------- | ---------------------------- |
+| **Test Suite**    | ❌ None             | ✅ 90%+ coverage (50+ tests) |
+| **Rate Limiting** | ❌ None             | ✅ Every endpoint protected  |
+| **Security**      | B- to B+            | ✅ **A+** (audited & fixed)  |
+| **Teams/Orgs**    | ⚠️ Basic or missing | ✅ Full RBAC + UI            |
+| **Setup Time**    | 30-60 min           | ✅ **< 5 min** (one command) |
 
 **The only template that's actually production-ready on day one.**
 
@@ -78,23 +78,30 @@ pnpm dev
 ## 🔒 Security Fixes (A+ Grade)
 
 ### CRITICAL FIX: Avatar Update Endpoint
+
 **Original Hikari vulnerability**:
+
 ```typescript
 // ❌ BROKEN: Accepts userId from request body
 const { userId, avatarUrl } = await request.json();
-await supabase.update('users').eq('id', userId);  // Attacker controls userId!
+await supabase.update('users').eq('id', userId); // Attacker controls userId!
 ```
 
 **Nexus fix**:
+
 ```typescript
 // ✅ SECURE: Uses authenticated user from session
-const { data: { user } } = await supabase.auth.getUser();
-if (!user) return 401;  // Added auth check
-await supabase.update('users').eq('id', user.id);  // Only authenticated user's ID
+const {
+  data: { user }
+} = await supabase.auth.getUser();
+if (!user) return 401; // Added auth check
+await supabase.update('users').eq('id', user.id); // Only authenticated user's ID
 ```
+
 **Impact**: Prevented account takeover vulnerability
 
 ### Additional Security Enhancements
+
 - ✅ Rate limiting on ALL endpoints (10 req/10s)
 - ✅ Webhook idempotency (prevent duplicate charges)
 - ✅ Input validation with Zod (all API routes)
@@ -114,6 +121,7 @@ pnpm test:coverage    # Coverage report (90%+)
 ```
 
 ### What We Test
+
 - ✅ Authentication flows
 - ✅ Organization creation & management
 - ✅ Stripe webhook processing
@@ -132,10 +140,11 @@ pnpm test:coverage    # Coverage report (90%+)
 ```typescript
 // Every API endpoint is protected
 const { success } = await ratelimit.limit(ip);
-if (!success) return 429;  // Too Many Requests
+if (!success) return 429; // Too Many Requests
 ```
 
 **Limits**:
+
 - Auth endpoints: 5 requests/minute
 - API routes: 10 requests/10 seconds
 - Webhooks: 1000 requests/minute
@@ -146,16 +155,16 @@ if (!success) return 429;  // Too Many Requests
 
 ## 🎯 Nexus Enhancements vs Hikari
 
-| Component | Hikari (Base) | Nexus (Enhanced) |
-|-----------|---------------|------------------|
-| **Avatar Endpoint** | ❌ Broken authz | ✅ Fixed + validated |
-| **Tests** | ❌ None | ✅ 50+ tests, 90% coverage |
-| **Rate Limiting** | ❌ None | ✅ Upstash on all routes |
-| **Teams UI** | ⚠️ Schema only | ✅ Full implementation |
-| **Onboarding** | ⚠️ Docs only | ✅ 5-step wizard |
-| **Audit Logs** | ❌ None | ✅ Full system |
-| **Admin Panel** | ❌ None | ✅ Complete dashboard |
-| **Setup Time** | ~60 minutes | ✅ One command |
+| Component           | Hikari (Base)   | Nexus (Enhanced)           |
+| ------------------- | --------------- | -------------------------- |
+| **Avatar Endpoint** | ❌ Broken authz | ✅ Fixed + validated       |
+| **Tests**           | ❌ None         | ✅ 50+ tests, 90% coverage |
+| **Rate Limiting**   | ❌ None         | ✅ Upstash on all routes   |
+| **Teams UI**        | ⚠️ Schema only  | ✅ Full implementation     |
+| **Onboarding**      | ⚠️ Docs only    | ✅ 5-step wizard           |
+| **Audit Logs**      | ❌ None         | ✅ Full system             |
+| **Admin Panel**     | ❌ None         | ✅ Complete dashboard      |
+| **Setup Time**      | ~60 minutes     | ✅ One command             |
 
 **Score**: 95+/100 (vs Hikari: 78/100)
 
@@ -164,9 +173,11 @@ if (!success) return 429;  // Too Many Requests
 ## 🙏 Credits & Attribution
 
 ### Base Template
+
 Built on **[Hikari](https://github.com/antoineross/Hikari)** by [@antoineross](https://twitter.com/antoineross__) (MIT License).
 
 Hikari provided an excellent foundation:
+
 - Supabase Auth integration
 - tRPC setup
 - Stripe webhooks
@@ -176,6 +187,7 @@ Hikari provided an excellent foundation:
 **Thank you, Antoine!** 🙏
 
 ### Nexus Contributions
+
 - Fixed critical security vulnerabilities
 - Added 90%+ test coverage
 - Implemented rate limiting

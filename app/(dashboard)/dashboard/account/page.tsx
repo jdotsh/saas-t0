@@ -19,14 +19,14 @@ import {
   getSubscription
 } from '@/utils/supabase/queries';
 import { updateName, updateEmail } from '@/utils/auth-helpers/server';
-import { ImageUpload } from './image-upload'; 
+import { ImageUpload } from './image-upload';
 import { redirect } from 'next/navigation';
 
 export default async function AccountPage() {
   const supabase = createClient();
   const [user, userDetails] = await Promise.all([
     getUser(supabase),
-    getUserDetails(supabase),
+    getUserDetails(supabase)
   ]);
 
   const subscription = user ? await getSubscription(supabase, user.id) : null;
@@ -96,10 +96,13 @@ export default async function AccountPage() {
                 <Label htmlFor="renewal">Next Renewal</Label>
                 <div className="text-muted-foreground">
                   {subscription?.current_period_end
-                    ? new Date(subscription.current_period_end).toLocaleDateString(
-                        'en-US',
-                        { month: 'long', day: 'numeric', year: 'numeric' }
-                      )
+                    ? new Date(
+                        subscription.current_period_end
+                      ).toLocaleDateString('en-US', {
+                        month: 'long',
+                        day: 'numeric',
+                        year: 'numeric'
+                      })
                     : 'N/A'}
                 </div>
               </div>
@@ -127,14 +130,17 @@ export default async function AccountPage() {
             <CardHeader>
               <CardTitle>No Active Subscription</CardTitle>
               <CardDescription>
-                You currently do not have an active subscription. Please consider upgrading to access more features.
+                You currently do not have an active subscription. Please
+                consider upgrading to access more features.
               </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4">
               <div className="flex items-center justify-between">
                 <div>
                   <h4 className="text-lg font-medium">Explore Plans</h4>
-                  <p className="text-muted-foreground">Check out our pricing options.</p>
+                  <p className="text-muted-foreground">
+                    Check out our pricing options.
+                  </p>
                 </div>
                 <Link href="/pricing">
                   <Button>View Pricing</Button>

@@ -18,7 +18,7 @@ import {
   backdropVariants,
   mobileNavVariants,
   menuItemVariants,
-  menuItemHoverVariants,
+  menuItemHoverVariants
 } from '@/lib/animations/nav-variants';
 
 interface MobileNavProps {

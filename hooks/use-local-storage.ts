@@ -9,11 +9,11 @@
  * setTheme("light"); // Persists to localStorage automatically
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const useLocalStorage = <T>(
   key: string,
-  initialValue: T,
+  initialValue: T
 ): [T, (value: T) => void] => {
   const [storedValue, setStoredValue] = useState(initialValue);
 
