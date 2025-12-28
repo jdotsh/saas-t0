@@ -234,5 +234,11 @@ export const CoolMode: React.FC<CoolModeProps> = ({ children, options }) => {
     }
   }, [options]);
 
-  return React.cloneElement(children as React.ReactElement, { ref });
+  // Handle cases where children might not be a valid single element
+  if (!React.isValidElement(children)) {
+    return <>{children}</>;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return React.cloneElement(children, { ref } as any);
 };

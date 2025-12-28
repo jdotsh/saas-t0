@@ -40,14 +40,18 @@ export default function NotFound() {
             <div className="flex flex-col gap-4 sm:flex-row">
               <Button asChild size="lg" variant="default">
                 <Link href="/">
-                  <Home className="mr-2 h-4 w-4" />
-                  Back to Home
+                  <span className="flex items-center">
+                    <Home className="mr-2 h-4 w-4" />
+                    Back to Home
+                  </span>
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link href="javascript:history.back()">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  Go Back
+                  <span className="flex items-center">
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Go Back
+                  </span>
                 </Link>
               </Button>
             </div>

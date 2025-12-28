@@ -10,10 +10,10 @@ export default function Layout({ children }: { children: ReactNode }) {
     <DocsLayout
       nav={{
         title: (
-          <>
+          <span className="flex items-center gap-2">
             <SunIcon className="size-8 transition-transform duration-300 ease-in-out hover:scale-110" />
             <strong>Hikari</strong>
-          </>
+          </span>
         ),
         url: '/'
       }}

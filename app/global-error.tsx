@@ -76,8 +76,10 @@ export default function GlobalError({
                 <div className="mt-8">
                   <Button asChild variant="ghost" size="sm">
                     <a href="mailto:support@example.com">
-                      <MessageCircle className="mr-2 h-4 w-4" />
-                      Contact Support
+                      <span className="flex items-center">
+                        <MessageCircle className="mr-2 h-4 w-4" />
+                        Contact Support
+                      </span>
                     </a>
                   </Button>
                   <p className="mt-2 text-xs text-muted-foreground">

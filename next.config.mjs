@@ -5,9 +5,8 @@ const withMDX = createMDX();
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
-  output: 'standalone', // Required for Docker deployment
+  output: 'standalone',
   eslint: {
-    // Enforcing ESLint errors will fail the build (production-ready requirement)
     ignoreDuringBuilds: false
   },
   images: {

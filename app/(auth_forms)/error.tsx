@@ -32,8 +32,10 @@ export default function AuthError({
       <div className="mt-4">
         <Button asChild variant="outline" size="lg">
           <Link href="/signin">
-            <LogIn className="mr-2 h-4 w-4" />
-            Back to Sign In
+            <span className="flex items-center">
+              <LogIn className="mr-2 h-4 w-4" />
+              Back to Sign In
+            </span>
           </Link>
         </Button>
       </div>

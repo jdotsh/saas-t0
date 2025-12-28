@@ -87,8 +87,10 @@ export function ErrorPageLayout({
                   variant={showReset ? 'outline' : 'default'}
                 >
                   <Link href="/">
-                    <Home className="mr-2 h-4 w-4" />
-                    Go to Homepage
+                    <span className="flex items-center">
+                      <Home className="mr-2 h-4 w-4" />
+                      Go to Homepage
+                    </span>
                   </Link>
                 </Button>
               )}
@@ -109,8 +111,10 @@ export function ErrorPageLayout({
               <div className="mt-8">
                 <Button asChild variant="ghost" size="sm">
                   <a href="mailto:support@example.com">
-                    <MessageCircle className="mr-2 h-4 w-4" />
-                    Contact Support
+                    <span className="flex items-center">
+                      <MessageCircle className="mr-2 h-4 w-4" />
+                      Contact Support
+                    </span>
                   </a>
                 </Button>
                 <p className="mt-2 text-xs text-muted-foreground">
