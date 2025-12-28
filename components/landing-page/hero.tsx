@@ -6,7 +6,7 @@ import { buttonVariants } from '@/components/ui/button';
 import { Star } from 'lucide-react';
 import Particles from '@/components/magicui/particles';
 import Ripple from '@/components/magicui/ripple';
-import AnimatedGradientText from '@/components/magicui/animated-shiny-text';
+// import AnimatedGradientText from '@/components/magicui/animated-shiny-text'; // Commented out with old badge
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import AvatarCircles from '@/components/magicui/avatar-circles';
 import { useTheme } from 'next-themes';
@@ -69,7 +69,19 @@ export default function HeroSection() {
         <Ripple />
       </div>
       <div className="container mx-auto px-4 py-12 md:py-16 lg:py-32">
-        <div className="relative z-10 flex max-w-[64rem] flex-col items-center gap-4 text-center mx-auto">
+        <div className="relative z-10 flex max-w-[64rem] flex-col items-center gap-6 md:gap-8 text-center mx-auto">
+          {/* Premium Orange Announcement Badge - Fully Responsive */}
+          <Link
+            href={siteConfig.links.twitter}
+            className="inline-flex transition-transform hover:scale-105 cursor-pointer group bg-gradient-to-br from-white/10 to-white/0 rounded-full pt-1.5 pr-3 pb-1.5 pl-3 backdrop-blur-sm gap-2 items-center border border-white/10"
+          >
+            <span className="flex h-1.5 w-1.5 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)] group-hover:animate-pulse"></span>
+            <span className="text-xs md:text-sm font-medium text-orange-100/80 tracking-wide group-hover:text-white transition-colors">
+              New release: v2.0 with Next.js 15
+            </span>
+          </Link>
+
+          {/* Commented out old badge - keeping for reference
           <Link href={siteConfig.links.twitter} className="w-fit">
             <div
               className={cn(
@@ -89,36 +101,59 @@ export default function HeroSection() {
               </AnimatedGradientText>
             </div>
           </Link>
+          */}
 
-          <h1 className="font-heading tracking-tight   font-bold text-2xl sm:text-4xl md:text-5xl lg:text-6xl">
-            A Complete & Open Source Next.js 14 SaaS Template Using Supabase
+          {/* Responsive Hero Title with Letter Animation */}
+          <h1 className="font-heading tracking-tight font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight">
+            <span className="inline-flex flex-wrap justify-center gap-x-3 gap-y-2">
+              <span className="inline-flex bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground to-foreground/50">
+                Scale
+              </span>
+              <span className="inline-flex bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground to-foreground/50">
+                your
+              </span>
+              <span className="inline-flex bg-clip-text text-transparent bg-gradient-to-b from-primary via-primary to-primary/60 font-extrabold">
+                SaaS
+              </span>
+              <span className="inline-flex bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground to-foreground/50">
+                with
+              </span>
+              <span className="inline-flex bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground to-foreground/50">
+                Next.js
+              </span>
+            </span>
           </h1>
-          <div className="max-w-[42rem] font-bold tracking-tight text-primary sm:text-xl sm:leading-8 rounded-full p-2">
-            I&apos;m building a modern web app with Next.js 14 & Supabase and
-            open sourcing everything. Follow along as we figure this out
-            together.
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
+          {/* Responsive Subtitle */}
+          <p className="max-w-[42rem] text-base md:text-lg lg:text-xl font-medium tracking-tight text-muted-foreground leading-relaxed px-4">
+            Production-ready SaaS template with Next.js 15, Supabase, Stripe,
+            and TypeScript. Ship faster with authentication, payments, and
+            database ready to go.
+          </p>
+
+          {/* Responsive CTA Buttons */}
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4 w-full sm:w-auto px-4">
             <Link
               href="/signup"
               className={cn(
                 buttonVariants({ size: 'xl' }),
-                'rounded-full border-2 border-primary dark:border-white text-bold text-white shadow-lg hover:shadow-xl transition-all'
+                'w-full sm:w-auto rounded-full border-2 border-primary dark:border-white text-bold text-white shadow-lg hover:shadow-xl transition-all duration-200 ease-snappy'
               )}
             >
-              Start Free Trial <ArrowRightIcon className="ml-2" />
+              Start Free Trial <ArrowRightIcon className="ml-2 h-4 w-4" />
             </Link>
             <Link
               href="#pricing"
               className={cn(
                 buttonVariants({ variant: 'outline', size: 'xl' }),
-                'rounded-full border-2 border-primary dark:border-white text-semibold'
+                'w-full sm:w-auto rounded-full border-2 border-primary dark:border-white text-semibold transition-all duration-200 ease-snappy'
               )}
             >
               See Pricing
             </Link>
           </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2 w-full">
+
+          {/* Responsive Social Proof */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-4 w-full px-4">
             <AvatarCircles numPeople={155} avatarUrls={avatarUrls} />
             <div className="flex flex-col mt-2">
               <div className="flex flex-row justify-center sm:justify-start">
