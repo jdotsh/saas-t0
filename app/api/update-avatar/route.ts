@@ -11,18 +11,21 @@
  * - ✅ Added proper error handling
  */
 
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
 import { z } from 'zod';
 import { ratelimitRequest, getIdentifier } from '@/lib/rate-limit';
 import { logger } from '@/lib/logger';
+import { Database } from '@/types/db';
+
+type User = Database['public']['Tables']['users']['Row'];
 
 // Validate avatar URL is a proper URL and from allowed domains
 const AvatarUrlSchema = z.object({
   avatarUrl: z.string().url().max(500)
 });
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   const supabase = createClient();
 
   // Step 1: Authenticate user (CRITICAL - was missing)
@@ -72,12 +75,15 @@ export async function POST(request: Request) {
   // Step 4: Update only the authenticated user's avatar (NOT userId from request body!)
   const { data, error } = await supabase
     .from('users')
+    // @ts-ignore - Supabase SSR package has type inference issues with update operations
     .update({ avatar_url: validatedInput.avatarUrl })
     .eq('id', user.id) // ← SECURITY FIX: Use authenticated user's ID
     .select()
     .single();
 
-  if (error) {
+  const typedData = data as User | null;
+
+  if (error || !typedData) {
     logger.error('Avatar update error:', error);
     return NextResponse.json(
       {
@@ -90,7 +96,7 @@ export async function POST(request: Request) {
   return NextResponse.json({
     success: true,
     data: {
-      avatar_url: data.avatar_url
+      avatar_url: typedData.avatar_url
     }
   });
 }

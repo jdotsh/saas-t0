@@ -28,7 +28,7 @@ export default async function AccountPage() {
   const userDetails = user ? await getUserDetails(supabase) : null;
   const subscription = user ? await getSubscription(supabase, user.id) : null;
 
-  if (!user) {
+  if (!user || !userDetails) {
     return redirect('/signin');
   }
 

@@ -8,7 +8,7 @@ if (!stripeKey) {
 }
 
 export const stripe = new Stripe(stripeKey, {
-  apiVersion: '2024-11-20.acacia',
+  apiVersion: '2024-11-20.acacia' as Stripe.LatestApiVersion,
   appInfo: {
     name: 'Nexus SaaS Template',
     version: '1.0.0'

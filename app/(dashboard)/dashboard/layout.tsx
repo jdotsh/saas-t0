@@ -28,7 +28,7 @@ export default async function DashboardLayout({
     getUserDetails(supabase)
   ]);
 
-  if (!user) {
+  if (!user || !userDetails) {
     return redirect('/signin');
   }
 

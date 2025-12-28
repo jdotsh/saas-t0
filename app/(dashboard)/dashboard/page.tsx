@@ -1,6 +1,5 @@
 import { createClient } from '@/utils/supabase/server';
 import { getUser, getUserDetails } from '@/utils/supabase/queries';
-import Posts from '@/components/posts';
 import { redirect } from 'next/navigation';
 
 export default async function DashboardPage() {
@@ -16,7 +15,12 @@ export default async function DashboardPage() {
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40 gap-4">
-      <Posts user={user} />
+      <div className="p-8">
+        <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
+        <p className="text-muted-foreground">
+          Welcome to your dashboard, {user.email}!
+        </p>
+      </div>
     </div>
   );
 }

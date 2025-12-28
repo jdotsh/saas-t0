@@ -58,8 +58,9 @@ export type SubscriptionPlan = {
   stripe_price_id: string;
 };
 
-export type UserSubscriptionPlan = SubscriptionPlan &
+export type UserSubscriptionPlan = Omit<SubscriptionPlan, 'stripe_price_id'> &
   Pick<User, 'stripe_customer_id' | 'stripe_subscription_id'> & {
-    stripe_current_period_end: number;
+    stripe_price_id: string | null;
+    stripe_current_period_end: number | null;
     isPro: boolean;
   };

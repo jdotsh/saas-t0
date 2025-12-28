@@ -271,10 +271,12 @@ export async function updateEmail(formData: FormData): Promise<void> {
   const newEmail = String(formData.get('newEmail')).trim();
 
   if (!isValidEmail(newEmail)) {
-    return getErrorRedirect(
-      '/dashboard/account',
-      'Your email could not be updated.',
-      'Invalid email address.'
+    return redirect(
+      getErrorRedirect(
+        '/dashboard/account',
+        'Your email could not be updated.',
+        'Invalid email address.'
+      )
     );
   }
 
@@ -296,16 +298,20 @@ export async function updateEmail(formData: FormData): Promise<void> {
   );
 
   if (error) {
-    return getErrorRedirect(
-      '/dashboard/account',
-      'Your email could not be updated.',
-      error.message
+    return redirect(
+      getErrorRedirect(
+        '/dashboard/account',
+        'Your email could not be updated.',
+        error.message
+      )
     );
   } else {
-    return getStatusRedirect(
-      '/dashboard/account',
-      'Confirmation emails sent.',
-      `You will need to confirm the update by clicking the links sent to both the old and new email addresses.`
+    return redirect(
+      getStatusRedirect(
+        '/dashboard/account',
+        'Confirmation emails sent.',
+        `You will need to confirm the update by clicking the links sent to both the old and new email addresses.`
+      )
     );
   }
 }

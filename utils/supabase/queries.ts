@@ -39,31 +39,35 @@ export const getSubscription = cache(
   }
 );
 
-export const getProducts = cache(async (supabase: SupabaseClient) => {
-  const { data: products, error } = await supabase
-    .from('products')
-    .select('*, prices(*)')
-    .eq('active', true)
-    .eq('prices.active', true)
-    .order('metadata->index')
-    .order('unit_amount', { referencedTable: 'prices' });
+export const getProducts = cache(
+  async (supabase: SupabaseClient<Database, 'public', any>) => {
+    const { data: products, error } = await supabase
+      .from('products')
+      .select('*, prices(*)')
+      .eq('active', true)
+      .eq('prices.active', true)
+      .order('metadata->index')
+      .order('unit_amount', { referencedTable: 'prices' });
 
-  return products;
-});
-
-export const getPlans = cache(async (supabase: SupabaseClient) => {
-  const { data: plans, error } = await supabase
-    .from('plan')
-    .select('*')
-    .order('sort', { ascending: true })
-    .order('id', { ascending: true }); // Secondary sort by id as a fallback
-
-  if (error) {
-    logger.error('Error fetching plans:', error);
-    throw error;
+    return products;
   }
-  return plans;
-});
+);
+
+export const getPlans = cache(
+  async (supabase: SupabaseClient<Database, 'public', any>) => {
+    const { data: plans, error } = await supabase
+      .from('plan')
+      .select('*')
+      .order('sort', { ascending: true })
+      .order('id', { ascending: true }); // Secondary sort by id as a fallback
+
+    if (error) {
+      logger.error('Error fetching plans:', error);
+      throw error;
+    }
+    return plans;
+  }
+);
 
 export const getUserDetails = cache(
   async (supabase: SupabaseClient<Database, 'public', any>) => {
