@@ -27,7 +27,8 @@ interface PostsProps {
   user: User;
 }
 
-export default function Posts({ user }: PostsProps) {
+export default function Posts({ user: _user }: PostsProps) {
+  // Template: _user can be used for filtering posts by author or access control
   const [newPost, setNewPost] = useState({ title: '', content: '' });
   const [editingPost, setEditingPost] = useState<Post | null>(null);
   const { toast } = useToast();

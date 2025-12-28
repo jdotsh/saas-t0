@@ -1,0 +1,22 @@
+# Dependencies
+node_modules
+
+# Build outputs
+.next
+out
+dist
+build
+
+# Documentation and example files
+components/ui/*.example.tsx
+**/*.example.ts
+**/*.example.tsx
+
+# Generated files
+*.generated.ts
+types_db.ts
+
+# Config files
+*.config.js
+*.config.mjs
+*.config.ts

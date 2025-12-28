@@ -53,7 +53,7 @@ export function PromoBanner({
   title = 'Boxing Day Special',
   discount = '30% Off!',
   couponCode = 'BOX2025760',
-  ctaText = 'View Pricing',
+  ctaText: _ctaText = 'View Pricing', // Template: Reserved for future CTA button implementation
   ctaHref = '#pricing',
   storageKey = 'promo-banner-dismissed',
   className,
@@ -108,7 +108,7 @@ export function PromoBanner({
 
       // Reset icon after 2 seconds
       setTimeout(() => setIsCopied(false), 2000);
-    } catch (error: unknown) {
+    } catch {
       // Fallback for browsers that don't support clipboard API
       toast({
         title: 'Copy failed',

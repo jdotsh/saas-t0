@@ -1,6 +1,6 @@
 // @ts-nocheck
-// TODO: Fix this when we turn strict mode on.
-
+// TODO: mdast-util-toc doesn't have type declarations available
+// Consider adding @types/mdast-util-toc or creating a custom declaration file
 import { toc } from 'mdast-util-toc';
 import { remark } from 'remark';
 import { visit } from 'unist-util-visit';

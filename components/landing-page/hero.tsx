@@ -10,7 +10,7 @@ import AnimatedGradientText from '@/components/magicui/animated-shiny-text';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import AvatarCircles from '@/components/magicui/avatar-circles';
 import { useTheme } from 'next-themes';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react'; // Reserved for quote rotation feature
 export default function HeroSection() {
   const { theme } = useTheme();
   const avatarUrls = [
@@ -20,39 +20,41 @@ export default function HeroSection() {
     'https://avatars.githubusercontent.com/u/59228569'
   ];
 
-  const quotes = [
-    {
-      text: "That's beautiful bro!",
-      author: 'dcodesdev',
-      title: 'TypeScript Developer',
-      avatarFallback: 'DC',
-      avatarImg: '/images/dcodes.png'
-    },
-    {
-      text: "If you've built this a few months ago, it would have saved me hours :D",
-      author: 'SuhailKakar',
-      title: 'Developer at joinOnboard',
-      avatarFallback: 'SK',
-      avatarImg: '/images/SuhailKakar.jpg'
-    },
-    {
-      text: 'So cool, looks really clean. Any plan to open source it? ☺️ Wanna play with it!',
-      author: 'SaidAitmbarek',
-      title: 'Founder of microlaunch.net',
-      avatarFallback: 'SA',
-      avatarImg: '/images/said.jpg'
-    }
-  ];
+  // Template: Quote testimonials for future use
+  // const quotes = [
+  //   {
+  //     text: "That's beautiful bro!",
+  //     author: 'dcodesdev',
+  //     title: 'TypeScript Developer',
+  //     avatarFallback: 'DC',
+  //     avatarImg: '/images/dcodes.png'
+  //   },
+  //   {
+  //     text: "If you've built this a few months ago, it would have saved me hours :D",
+  //     author: 'SuhailKakar',
+  //     title: 'Developer at joinOnboard',
+  //     avatarFallback: 'SK',
+  //     avatarImg: '/images/SuhailKakar.jpg'
+  //   },
+  //   {
+  //     text: 'So cool, looks really clean. Any plan to open source it? ☺️ Wanna play with it!',
+  //     author: 'SaidAitmbarek',
+  //     title: 'Founder of microlaunch.net',
+  //     avatarFallback: 'SA',
+  //     avatarImg: '/images/said.jpg'
+  //   }
+  // ];
 
-  const [currentQuote, setCurrentQuote] = useState(0);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentQuote((prevQuote) => (prevQuote + 1) % quotes.length);
-    }, 5000); // Change quote every 5 seconds
-
-    return () => clearInterval(intervalId);
-  }, [quotes.length]);
+  // Template: Quote rotation logic - uncomment and add UI when needed
+  // const [currentQuote, setCurrentQuote] = useState(0);
+  //
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setCurrentQuote((prevQuote) => (prevQuote + 1) % quotes.length);
+  //   }, 5000); // Change quote every 5 seconds
+  //
+  //   return () => clearInterval(intervalId);
+  // }, [quotes.length]);
 
   return (
     <section className="relative w-full overflow-hidden">

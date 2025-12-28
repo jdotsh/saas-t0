@@ -58,7 +58,9 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     validatedInput = AvatarUrlSchema.parse(body);
-  } catch (error: unknown) {
+  } catch (_error: unknown) {
+    // Log validation error for debugging
+    logger.error('Avatar URL validation failed:', _error);
     return NextResponse.json(
       {
         error: 'Invalid avatar URL. Must be a valid URL under 500 characters.'

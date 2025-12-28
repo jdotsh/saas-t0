@@ -14,7 +14,7 @@ import { checkoutWithStripe } from '@/utils/stripe/server';
 import { getErrorRedirect } from '@/utils/helpers';
 import { User } from '@supabase/supabase-js';
 import { useRouter, usePathname } from 'next/navigation';
-import { Moon, Check } from 'lucide-react';
+import { Moon, Check, Loader2 } from 'lucide-react';
 import pricingPlans from '@/config/pricing';
 import { dummyPricing } from '@/config/pricing';
 
@@ -198,9 +198,19 @@ export default function PricingRounded({
                       variant="default"
                       type="button"
                       onClick={() => handleStripeCheckout(price)}
+                      disabled={priceIdLoading === price.id}
                       className="mt-4 w-full rounded-4xl"
                     >
-                      {subscription ? 'Manage' : 'Subscribe'}
+                      {priceIdLoading === price.id ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Processing...
+                        </>
+                      ) : subscription ? (
+                        'Manage'
+                      ) : (
+                        'Subscribe'
+                      )}
                     </Button>
                     <ul className="mt-4 space-y-2">
                       {features.map((feature, index) => (

@@ -74,20 +74,26 @@ const Particles: React.FC<ParticlesProps> = ({
     }
     initCanvas();
     animate();
-    window.addEventListener('resize', initCanvas);
+
+    // Create a stable reference for the resize handler
+    const handleResize = () => initCanvas();
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', initCanvas);
+      window.removeEventListener('resize', handleResize);
     };
-  }, [color]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [color]); // initCanvas and animate are intentionally omitted to avoid infinite loops
 
   useEffect(() => {
     onMouseMove();
-  }, [mousePosition.x, mousePosition.y]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mousePosition.x, mousePosition.y]); // onMouseMove is intentionally omitted
 
   useEffect(() => {
     initCanvas();
-  }, [refresh]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refresh]); // initCanvas is intentionally omitted
 
   const initCanvas = () => {
     resizeCanvas();

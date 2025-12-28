@@ -9,10 +9,11 @@ import { useToast } from '@/components/ui/use-toast';
 import { CoolMode } from '@/components/magicui/cool-mode';
 import { logger } from '@/lib/logger';
 import { ArrowRight, LogIn } from 'lucide-react';
+import { env } from '@/env.mjs';
 
 const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  env.NEXT_PUBLIC_SUPABASE_URL,
+  env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
 const AnimatedUnderline = ({
