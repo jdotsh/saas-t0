@@ -19,40 +19,81 @@ export default function LogoCloud() {
     setPrimaryColor(primaryColorValue.trim());
   }, []);
 
+  const logos = [
+    { Svg: NextjsSvg, href: 'https://nextjs.org', label: 'Next.js' },
+    { Svg: VercelSvg, href: 'https://vercel.com', label: 'Vercel' },
+    { Svg: StripeSvg, href: 'https://stripe.com', label: 'Stripe' },
+    { Svg: SupabaseSvg, href: 'https://supabase.io', label: 'Supabase' },
+    { Svg: GithubSvg, href: 'https://github.com', label: 'GitHub' }
+  ];
+
   return (
-    <div>
-      <p className="mt-12 text-xs uppercase text-primary text-center font-bold tracking-[0.3em]">
-        Built with these brands
+    <div className="w-full py-12">
+      <p className="text-xs uppercase text-muted-foreground text-center font-semibold tracking-[0.3em] mb-8">
+        Trusted by the modern web3 ecosystem
       </p>
-      <div className="grid grid-cols-1 place-items-center justify-center my-12 space-y-4 sm:mt-8 sm:space-y-0 md:mx-auto md:max-w-2xl sm:grid sm:gap-10 sm:grid-cols-6">
-        <div className="flex items-center justify-center h-15 w-24">
-          <a href="https://nextjs.org" aria-label="Next.js Link">
-            <NextjsSvg className="size-full" style={{ color: primaryColor }} />
-          </a>
-        </div>
-        <div className="flex items-center justify-center h-15 w-24">
-          <a href="https://vercel.com" aria-label="Vercel.com Link">
-            <VercelSvg className="size-full" style={{ color: primaryColor }} />
-          </a>
-        </div>
-        <div className="flex items-center justify-center h-12 w-24">
-          <a href="https://stripe.com" aria-label="stripe.com Link">
-            <StripeSvg className="size-full" style={{ color: primaryColor }} />
-          </a>
-        </div>
-        <LogoSupacrawler />
-        <div className="flex items-center justify-center h-15 w-24 sm:ml-8">
-          <a href="https://supabase.io" aria-label="supabase.io Link">
-            <SupabaseSvg
-              className="size-full"
-              style={{ color: primaryColor }}
-            />
-          </a>
-        </div>
-        <div className="flex items-center justify-center h-15 w-24">
-          <a href="https://github.com" aria-label="github.com Link">
-            <GithubSvg className="size-full" style={{ color: primaryColor }} />
-          </a>
+
+      {/* Scrolling container with mask */}
+      <div className="relative overflow-hidden">
+        {/* Gradient masks on edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+
+        {/* Scrolling logos */}
+        <div className="flex gap-16 animate-marquee hover:[animation-play-state:paused]">
+          {/* First set of logos */}
+          {logos.map(({ Svg, href, label }) => (
+            <div
+              key={`${label}-1`}
+              className="flex items-center justify-center h-16 w-32 flex-shrink-0"
+            >
+              <a
+                href={href}
+                aria-label={`${label} Link`}
+                className="opacity-60 hover:opacity-100 transition-opacity duration-300 ease-smooth"
+              >
+                <Svg
+                  className="h-full w-auto max-w-full"
+                  style={{ color: primaryColor }}
+                />
+              </a>
+            </div>
+          ))}
+
+          {/* Supacrawler logo */}
+          <div
+            key="supacrawler-1"
+            className="flex items-center justify-center h-16 w-32 flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300 ease-smooth"
+          >
+            <LogoSupacrawler />
+          </div>
+
+          {/* Duplicate set for seamless loop */}
+          {logos.map(({ Svg, href, label }) => (
+            <div
+              key={`${label}-2`}
+              className="flex items-center justify-center h-16 w-32 flex-shrink-0"
+            >
+              <a
+                href={href}
+                aria-label={`${label} Link`}
+                className="opacity-60 hover:opacity-100 transition-opacity duration-300 ease-smooth"
+              >
+                <Svg
+                  className="h-full w-auto max-w-full"
+                  style={{ color: primaryColor }}
+                />
+              </a>
+            </div>
+          ))}
+
+          {/* Duplicate Supacrawler */}
+          <div
+            key="supacrawler-2"
+            className="flex items-center justify-center h-16 w-32 flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300 ease-smooth"
+          >
+            <LogoSupacrawler />
+          </div>
         </div>
       </div>
     </div>
