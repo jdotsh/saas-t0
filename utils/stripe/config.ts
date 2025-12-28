@@ -3,10 +3,21 @@ import { env } from '@/env.mjs';
 
 const stripeKey = env.STRIPE_API_KEY || '';
 
-if (!stripeKey && process.env.NODE_ENV === 'production') {
-  console.warn(
-    'WARNING: STRIPE_API_KEY is not set. Stripe functionality will not work.'
-  );
+// Validate Stripe configuration
+if (!stripeKey) {
+  const errorMsg = 'STRIPE_API_KEY is required for Stripe functionality';
+
+  if (
+    process.env.NODE_ENV === 'production' &&
+    process.env.VERCEL_ENV === 'production'
+  ) {
+    // In production deployment, log error but don't crash the build
+    console.error(`❌ ${errorMsg}`);
+    console.error('⚠️  Payment features will be unavailable until configured');
+  } else if (process.env.NODE_ENV === 'production') {
+    // In build/preview, warn but allow build to continue
+    console.warn(`⚠️  ${errorMsg}`);
+  }
 }
 
 export const stripe = new Stripe(stripeKey, {

@@ -5,6 +5,9 @@ import { appRouter } from '@/server/api/root';
 import { createTRPCContext } from '@/server/api/trpc';
 import { logger } from '@/lib/logger';
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
  * handling a HTTP request (e.g. when you make requests from Client Components).

@@ -25,7 +25,10 @@ export async function checkRateLimit(identifier: string): Promise<boolean> {
 }
 
 export function getIdentifier(req: NextRequest): string {
-  return req.headers.get('x-forwarded-for') || req.ip || 'anonymous';
+  // Next.js 16+ removed req.ip, use headers instead
+  const forwarded = req.headers.get('x-forwarded-for');
+  const realIp = req.headers.get('x-real-ip');
+  return forwarded || realIp || 'anonymous';
 }
 
 export async function ratelimitRequest(req: NextRequest): Promise<boolean> {

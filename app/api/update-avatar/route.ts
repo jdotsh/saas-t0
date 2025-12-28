@@ -25,6 +25,9 @@ const AvatarUrlSchema = z.object({
   avatarUrl: z.string().url().max(500)
 });
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 export async function POST(request: NextRequest) {
   const supabase = createClient();
 

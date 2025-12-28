@@ -1,6 +1,7 @@
 import { LockIcon, Trash2Icon } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -19,8 +20,19 @@ import {
   getSubscription
 } from '@/utils/supabase/queries';
 import { updateName, updateEmail } from './actions';
-import { ImageUpload } from './image-upload';
 import { redirect } from 'next/navigation';
+
+// Dynamically import ImageUpload to reduce initial bundle size
+const ImageUpload = dynamic(
+  () => import('./image-upload').then((mod) => ({ default: mod.ImageUpload })),
+  {
+    loading: () => (
+      <div className="flex items-center justify-center h-32 bg-muted rounded-lg">
+        <p className="text-sm text-muted-foreground">Loading...</p>
+      </div>
+    )
+  }
+);
 
 export default async function AccountPage() {
   const supabase = createClient();

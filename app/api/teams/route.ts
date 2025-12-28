@@ -4,6 +4,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { ratelimitRequest } from '@/lib/rate-limit';
 import { logger } from '@/lib/logger';
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 export async function GET(req: NextRequest) {
   const supabase = createRouteHandlerClient({ cookies });
 

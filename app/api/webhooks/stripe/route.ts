@@ -11,6 +11,9 @@ import {
   deletePriceRecord
 } from '@/utils/supabase/admin';
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 const relevantEvents = new Set([
   'product.created',
   'product.updated',

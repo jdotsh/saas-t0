@@ -2,9 +2,6 @@
 const config = {
   reactStrictMode: true,
   output: 'standalone',
-  eslint: {
-    ignoreDuringBuilds: false
-  },
   typescript: {
     ignoreBuildErrors: false
   },
