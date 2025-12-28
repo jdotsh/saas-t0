@@ -8,6 +8,7 @@ import { createClient } from '@supabase/supabase-js';
 import { useToast } from '@/components/ui/use-toast';
 import { CoolMode } from '@/components/magicui/cool-mode';
 import { logger } from '@/lib/logger';
+import { ArrowRight, LogIn } from 'lucide-react';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -179,7 +180,7 @@ export default function FooterPrimary() {
                     type="submit"
                     className="my-1 bg-black text-white rounded-md mr-1 "
                   >
-                    <ArrowRightIcon className="h-5 w-5" />
+                    <ArrowRight className="h-5 w-5" />
                   </Button>
                   {/* <Button type="submit" className="w-full text-lg relative z-20 bg-gradient-to-b from-black to-gray-300/80 hover:from-gray-800 hover:to-gray-400/80 dark:from-white dark:to-slate-900/10 dark:hover:from-slate-200 dark:hover:to-slate-800/10">
                   <span className="bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-white dark:from-white dark:to-slate-900/10">
@@ -193,53 +194,12 @@ export default function FooterPrimary() {
         </div>
         <div className="border-t mt-10 pt-6 flex flex-col items-center md:flex-row justify-between">
           <div className="flex items-center space-x-2">
-            <LogInIcon className="h-6 w-6" />
+            <LogIn className="h-6 w-6" />
             <span className="text-xl font-bold">Hikari.</span>
           </div>
           <p className="text-gray-500 mt-4 md:mt-0">© Hikari Inc. 2024</p>
         </div>
       </div>
     </footer>
-  );
-}
-
-function ArrowRightIcon(props: unknown) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M5 12h14" />
-      <path d="m12 5 7 7-7 7" />
-    </svg>
-  );
-}
-
-function LogInIcon(props: unknown) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
-      <polyline points="10 17 15 12 10 7" />
-      <line x1="15" x2="3" y1="12" y2="12" />
-    </svg>
   );
 }
