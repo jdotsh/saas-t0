@@ -6,7 +6,7 @@
  */
 
 import { Variants } from 'framer-motion';
-import { navSpring, itemSpring, gentleSpring } from './spring-configs';
+import { navSpring, itemSpring } from './spring-configs';
 
 /**
  * Backdrop overlay animation

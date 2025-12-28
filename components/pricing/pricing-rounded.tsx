@@ -160,7 +160,7 @@ export default function PricingRounded({
               if (!price) return null;
               const priceString = new Intl.NumberFormat('en-US', {
                 style: 'currency',
-                currency: price.currency!,
+                currency: price.currency || 'USD',
                 minimumFractionDigits: 0
               }).format((price?.unit_amount || 0) / 100);
               const isActive = subscription

@@ -76,7 +76,11 @@ export async function ratelimitRequest(
         analytics: true,
         prefix: 'nexus:ratelimit'
       })
-    : ratelimit!;
+    : ratelimit;
+
+  if (!limiter) {
+    throw new Error('Rate limiter not initialized');
+  }
 
   const result = await limiter.limit(identifier);
   return result;

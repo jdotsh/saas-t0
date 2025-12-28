@@ -13,7 +13,7 @@ import { useState } from 'react';
 
 export default function EmailSignIn() {
   const allowPassword = true;
-  const redirectMethod = 'client';
+  const _redirectMethod = 'client'; // Template: customize redirect behavior
   const disableButton = false;
 
   const router = useRouter(); // Always call the hook

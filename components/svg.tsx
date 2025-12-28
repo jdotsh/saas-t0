@@ -103,7 +103,11 @@ export function LogoSupacrawler() {
       aria-label="Home"
       className={clsx('flex items-center gap-x-1 mr-2')}
     >
-      <img src="/images/supacrawler.jpg" className="size-6 sm:size-8" />
+      <img
+        src="/images/supacrawler.jpg"
+        alt="Supacrawler logo"
+        className="size-6 sm:size-8"
+      />
       <span
         className={clsx(
           'flex items-center text-sm py-1 tracking-tighter text-slate-900'

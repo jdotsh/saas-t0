@@ -1,8 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 
-export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-
+export async function GET(_req: NextRequest) {
   try {
     return NextResponse.json(
       {
@@ -17,7 +15,7 @@ export async function GET(req: NextRequest) {
         }
       }
     );
-  } catch (e: unknown) {
+  } catch {
     return NextResponse.error();
   }
 }

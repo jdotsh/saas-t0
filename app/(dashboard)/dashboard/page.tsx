@@ -5,9 +5,9 @@ import { redirect } from 'next/navigation';
 
 export default async function DashboardPage() {
   const supabase = createClient();
-  const [user, userDetails] = await Promise.all([
+  const [user, _userDetails] = await Promise.all([
     getUser(supabase),
-    getUserDetails(supabase)
+    getUserDetails(supabase) // Template: use for user-specific features
   ]);
 
   if (!user) {
