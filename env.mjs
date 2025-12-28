@@ -3,10 +3,6 @@ import { z } from 'zod';
 
 export const env = createEnv({
   server: {
-    // This is optional because it's only used in development.
-    // See https://next-auth.js.org/deployment.
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
-    NEXT_PUBLIC_SUPABASE_URL: z.string().url().min(1),
     STRIPE_API_KEY: z.string().min(1).optional(),
     STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
     STRIPE_PRO_MONTHLY_PLAN_ID: z.string().min(1).optional(),
@@ -14,6 +10,9 @@ export const env = createEnv({
     SERVER_API_KEY: z.string().optional()
   },
   client: {
+    // Client-side environment variables (NEXT_PUBLIC_*)
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
+    NEXT_PUBLIC_SUPABASE_URL: z.string().url().min(1),
     NEXT_PUBLIC_APP_URL: z.string().min(1)
   },
   runtimeEnv: {

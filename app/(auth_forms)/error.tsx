@@ -1,9 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
+import { ErrorPageLayout } from '@/components/error-page-layout';
 import { Button } from '@/components/ui/button';
-import { AlertTriangle } from 'lucide-react';
 import { logger } from '@/lib/logger';
+import { LogIn } from 'lucide-react';
+import Link from 'next/link';
 
 export default function AuthError({
   error,
@@ -18,44 +20,32 @@ export default function AuthError({
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="mx-auto max-w-sm space-y-6 px-4">
-        <div className="space-y-2 text-center">
-          <AlertTriangle className="mx-auto h-10 w-10 text-warning" />
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Authentication Error
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            We encountered an issue with authentication. Please try again.
+    <ErrorPageLayout
+      title="Authentication Error"
+      description="We encountered an issue with authentication. This might be due to an expired session or invalid credentials."
+      showReset={true}
+      onReset={reset}
+      showHome={false}
+      errorId={error.digest}
+    >
+      {/* Custom authentication-specific actions */}
+      <div className="mt-4">
+        <Button asChild variant="outline" size="lg">
+          <Link href="/signin">
+            <LogIn className="mr-2 h-4 w-4" />
+            Back to Sign In
+          </Link>
+        </Button>
+      </div>
+
+      {/* Show error details in development */}
+      {process.env.NODE_ENV === 'development' && error.message && (
+        <div className="mt-6 rounded-lg border border-warning/20 bg-warning/10 p-4 text-left max-w-lg">
+          <p className="text-sm font-mono text-warning-foreground">
+            {error.message}
           </p>
         </div>
-
-        {error.message && (
-          <div className="rounded-lg border border-warning/20 bg-warning/10 p-3">
-            <p className="text-xs text-warning-foreground">{error.message}</p>
-          </div>
-        )}
-
-        <div className="flex flex-col gap-2">
-          <Button onClick={reset} className="w-full">
-            Try again
-          </Button>
-          <Button
-            onClick={() => (window.location.href = '/signin')}
-            variant="outline"
-            className="w-full"
-          >
-            Back to sign in
-          </Button>
-        </div>
-
-        <p className="text-center text-xs text-muted-foreground">
-          If you continue to experience issues, please contact support
-          {error.digest && (
-            <span className="block mt-1">Error ID: {error.digest}</span>
-          )}
-        </p>
-      </div>
-    </div>
+      )}
+    </ErrorPageLayout>
   );
 }
