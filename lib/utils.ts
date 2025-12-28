@@ -116,7 +116,7 @@ export function capitalize(str: string) {
 /**
  * Type-safe fetcher for SWR and data fetching
  */
-export async function fetcher<JSON = any>(
+export async function fetcher<JSON = unknown>(
   input: RequestInfo,
   init?: RequestInit
 ): Promise<JSON> {
