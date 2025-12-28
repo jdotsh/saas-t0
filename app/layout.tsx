@@ -6,8 +6,7 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ErrorBoundary } from '@/components/error-boundary';
-import { Inter as FontSans } from 'next/font/google';
-import localFont from 'next/font/local';
+import { Inter } from 'next/font/google';
 import type { Viewport } from 'next';
 import { TRPCReactProvider } from '@/trpc/react';
 import { Analytics } from '@vercel/analytics/react';
@@ -21,16 +20,32 @@ export const viewport: Viewport = {
 
 import '@/styles/globals.css';
 
-const fontSans = FontSans({
+/**
+ * Font System - Optimized for readability
+ *
+ * Primary: Inter (body text)
+ * - Excellent readability at all sizes
+ * - Designed specifically for screens
+ * - Variable font for optimal rendering
+ *
+ * Fallback: Geist Sans (Vercel's font)
+ * - Modern, clean alternative
+ * - Great for UI elements
+ */
+const fontSans = Inter({
   subsets: ['latin'],
-  variable: '--font-sans'
+  variable: '--font-sans',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  preload: true
 });
 
-// Font files can be colocated inside of `pages`
-const fontHeading = localFont({
-  // src: "../assets/fonts/NotoSansMono-VariableFont_wdth,wght.ttf",
-  src: '../assets/fonts/CalSans-SemiBold.woff2',
-  variable: '--font-heading'
+const fontHeading = Inter({
+  subsets: ['latin'],
+  variable: '--font-heading',
+  weight: ['600', '700', '800'],
+  display: 'swap',
+  preload: true
 });
 
 export const metadata: Metadata = {
@@ -83,7 +98,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
       <head />
       <body
         className={cn(
-          'min-h-screen bg-background font-mono antialiased',
+          'min-h-screen bg-background font-sans antialiased',
           fontSans.variable,
           fontHeading.variable
         )}

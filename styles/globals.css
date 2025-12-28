@@ -63,11 +63,75 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+    /* Typography optimizations for better readability */
     font-feature-settings:
       'rlig' 1,
-      'calt' 1;
+      'calt' 1,
+      'kern' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-size: 16px; /* Base size for better readability */
+    line-height: 1.6; /* Improved line spacing */
+    letter-spacing: -0.011em; /* Subtle tightening for Inter */
+  }
+
+  /* Improved heading hierarchy */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 2.5rem; /* 40px */
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 2rem; /* 32px */
+  }
+
+  h3 {
+    font-size: 1.5rem; /* 24px */
+  }
+
+  h4 {
+    font-size: 1.25rem; /* 20px */
+  }
+
+  /* Better paragraph spacing */
+  p {
+    line-height: 1.7;
+    margin-bottom: 1em;
+  }
+
+  /* Improved link readability */
+  a {
+    text-decoration-skip-ink: auto;
+  }
+
+  /* Better code readability */
+  code,
+  pre {
+    font-family: 'SF Mono', 'Roboto Mono', 'Courier New', monospace;
+    font-size: 0.9em;
+  }
+
+  /* Optimized input text */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevent iOS zoom on focus */
   }
 }
 
