@@ -39,21 +39,21 @@ export default function LogoCloud() {
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
 
-        {/* Scrolling logos */}
-        <div className="flex gap-16 animate-marquee hover:[animation-play-state:paused]">
+        {/* Scrolling logos - normalized sizes for consistency */}
+        <div className="flex gap-12 md:gap-16 animate-marquee hover:[animation-play-state:paused]">
           {/* First set of logos */}
           {logos.map(({ Svg, href, label }) => (
             <div
               key={`${label}-1`}
-              className="flex items-center justify-center h-16 w-32 flex-shrink-0"
+              className="flex items-center justify-center h-12 w-24 md:h-14 md:w-28 flex-shrink-0"
             >
               <a
                 href={href}
                 aria-label={`${label} Link`}
-                className="opacity-60 hover:opacity-100 transition-opacity duration-300 ease-smooth"
+                className="opacity-50 hover:opacity-100 transition-opacity duration-300 ease-smooth w-full h-full flex items-center justify-center"
               >
                 <Svg
-                  className="h-full w-auto max-w-full"
+                  className="h-8 w-auto md:h-10 object-contain"
                   style={{ color: primaryColor }}
                 />
               </a>
@@ -63,24 +63,26 @@ export default function LogoCloud() {
           {/* Supacrawler logo */}
           <div
             key="supacrawler-1"
-            className="flex items-center justify-center h-16 w-32 flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300 ease-smooth"
+            className="flex items-center justify-center h-12 w-24 md:h-14 md:w-28 flex-shrink-0 opacity-50 hover:opacity-100 transition-opacity duration-300 ease-smooth"
           >
-            <LogoSupacrawler />
+            <div className="h-8 w-auto md:h-10 flex items-center justify-center">
+              <LogoSupacrawler />
+            </div>
           </div>
 
           {/* Duplicate set for seamless loop */}
           {logos.map(({ Svg, href, label }) => (
             <div
               key={`${label}-2`}
-              className="flex items-center justify-center h-16 w-32 flex-shrink-0"
+              className="flex items-center justify-center h-12 w-24 md:h-14 md:w-28 flex-shrink-0"
             >
               <a
                 href={href}
                 aria-label={`${label} Link`}
-                className="opacity-60 hover:opacity-100 transition-opacity duration-300 ease-smooth"
+                className="opacity-50 hover:opacity-100 transition-opacity duration-300 ease-smooth w-full h-full flex items-center justify-center"
               >
                 <Svg
-                  className="h-full w-auto max-w-full"
+                  className="h-8 w-auto md:h-10 object-contain"
                   style={{ color: primaryColor }}
                 />
               </a>
@@ -90,9 +92,11 @@ export default function LogoCloud() {
           {/* Duplicate Supacrawler */}
           <div
             key="supacrawler-2"
-            className="flex items-center justify-center h-16 w-32 flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300 ease-smooth"
+            className="flex items-center justify-center h-12 w-24 md:h-14 md:w-28 flex-shrink-0 opacity-50 hover:opacity-100 transition-opacity duration-300 ease-smooth"
           >
-            <LogoSupacrawler />
+            <div className="h-8 w-auto md:h-10 flex items-center justify-center">
+              <LogoSupacrawler />
+            </div>
           </div>
         </div>
       </div>
