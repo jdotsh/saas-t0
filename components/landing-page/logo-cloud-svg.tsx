@@ -39,8 +39,11 @@ export default function LogoCloud() {
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
 
-        {/* Scrolling logos - normalized sizes for consistency */}
-        <div className="flex gap-12 md:gap-16 animate-marquee hover:[animation-play-state:paused]">
+        {/* Scrolling logos - normalized sizes, faster left-scroll animation */}
+        <div
+          className="flex gap-12 md:gap-16 animate-marquee hover:[animation-play-state:paused]"
+          style={{ animationDuration: '25s' }}
+        >
           {/* First set of logos */}
           {logos.map(({ Svg, href, label }) => (
             <div
