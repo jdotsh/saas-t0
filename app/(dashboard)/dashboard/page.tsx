@@ -1,9 +1,5 @@
 import { createClient } from '@/utils/supabase/server';
-import {
-  getUser,
-  getUserDetails,
-  getSubscription
-} from '@/utils/supabase/queries';
+import { getUser, getUserDetails } from '@/utils/supabase/queries';
 import Posts from '@/components/posts';
 import { redirect } from 'next/navigation';
 

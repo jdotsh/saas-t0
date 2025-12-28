@@ -1,6 +1,7 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { Database } from '@/types/db';
+import { logger } from '@/lib/logger';
 
 export function createClient() {
   const cookieStore = cookies();
@@ -18,8 +19,8 @@ export function createClient() {
             cookiesToSet.forEach(({ name, value, options }) =>
               cookieStore.set(name, value, options)
             );
-          } catch (error) {
-            console.error('Error setting cookies:', error);
+          } catch (error: unknown) {
+            logger.error('Error setting cookies:', error);
           }
         }
       }

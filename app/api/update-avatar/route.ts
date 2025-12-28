@@ -15,6 +15,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
 import { z } from 'zod';
 import { ratelimitRequest, getIdentifier } from '@/lib/rate-limit';
+import { logger } from '@/lib/logger';
 
 // Validate avatar URL is a proper URL and from allowed domains
 const AvatarUrlSchema = z.object({
@@ -57,7 +58,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     validatedInput = AvatarUrlSchema.parse(body);
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
         error: 'Invalid avatar URL. Must be a valid URL under 500 characters.'
@@ -75,7 +76,7 @@ export async function POST(request: Request) {
     .single();
 
   if (error) {
-    console.error('Avatar update error:', error);
+    logger.error('Avatar update error:', error);
     return NextResponse.json(
       {
         error: 'Failed to update avatar. Please try again.'

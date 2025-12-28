@@ -13,6 +13,7 @@
 
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
+import { logger } from '@/lib/logger';
 
 // Create Redis instance (only if env vars are set)
 let redis: Redis | null = null;
@@ -52,7 +53,7 @@ export async function ratelimitRequest(
 ) {
   // If Redis not configured, allow request (fail open for development)
   if (!redis) {
-    console.warn(
+    logger.warn(
       'Rate limiting disabled: UPSTASH_REDIS_REST_URL not configured'
     );
     return {

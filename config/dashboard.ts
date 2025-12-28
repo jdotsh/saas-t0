@@ -1,7 +1,6 @@
 import {
   LineChart,
   Package,
-  Package2,
   Settings,
   ShoppingCart,
   Users2,

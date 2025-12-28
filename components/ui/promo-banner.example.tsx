@@ -68,8 +68,8 @@ export function CustomPromoExample() {
       ctaHref="/products"
       storageKey="flash-sale-dismissed" // Custom storage key
       className="bg-gradient-to-r from-purple-500 to-pink-500 text-white" // Custom styling
-      onDismiss={() => console.log('Banner dismissed')}
-      onCopy={(code) => console.log('Copied code:', code)}
+      onDismiss={() => logger.info('Banner dismissed')}
+      onCopy={(code) => logger.info('Copied code:', code)}
     />
   );
 }
@@ -222,8 +222,8 @@ export function ABTestBannerExample() {
 export function AnalyticsBannerExample() {
   const handleCopy = (code: string) => {
     // Track coupon copy event
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'coupon_copied', {
+    if (typeof window !== 'undefined' && (window as unknown).gtag) {
+      (window as unknown).gtag('event', 'coupon_copied', {
         coupon_code: code,
         campaign: 'boxing_day_2025'
       });
@@ -232,8 +232,8 @@ export function AnalyticsBannerExample() {
 
   const handleDismiss = () => {
     // Track banner dismiss event
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'promo_banner_dismissed', {
+    if (typeof window !== 'undefined' && (window as unknown).gtag) {
+      (window as unknown).gtag('event', 'promo_banner_dismissed', {
         campaign: 'boxing_day_2025'
       });
     }
@@ -260,6 +260,7 @@ export function AnalyticsBannerExample() {
 import { getUserSubscriptionPlan } from '@/lib/subscription';
 import { getUser } from '@/utils/supabase/queries';
 import { createClient } from '@/utils/supabase/client';
+import { logger } from '@/lib/logger';
 
 export async function ServerSidePersonalizedBanner() {
   const supabase = createClient();

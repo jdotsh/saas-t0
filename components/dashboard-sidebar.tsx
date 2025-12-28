@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import {
   Tooltip,
   TooltipContent,
@@ -8,15 +7,7 @@ import {
   TooltipTrigger
 } from '@/components/ui/tooltip';
 import Link from 'next/link';
-import {
-  LineChart,
-  Package,
-  Package2,
-  Eclipse,
-  ShoppingCart,
-  Users2,
-  Inbox
-} from 'lucide-react';
+import { Eclipse } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { NavItem, iconComponents } from '@/config/dashboard';
 

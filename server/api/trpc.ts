@@ -65,6 +65,7 @@ export const createCallerFactory = t.createCallerFactory;
  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
  *
  * These are the pieces you use to build your tRPC API. You should import these a lot in the
+import { logger } from '@/lib/logger';
  * "/src/server/api/routers" directory.
  */
 
@@ -93,7 +94,7 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
   const result = await next();
 
   const end = Date.now();
-  console.log(`[TRPC] ${path} took ${end - start}ms to execute`);
+  logger.info(`[TRPC] ${path} took ${end - start}ms to execute`);
 
   return result;
 });

@@ -12,9 +12,8 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar } from '@/components/ui/avatar';
 import { Database } from '@/types/db';
-import { User } from '@/types/main';
 import Image from 'next/image';
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {

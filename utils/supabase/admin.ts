@@ -3,6 +3,7 @@ import { stripe } from '@/utils/stripe/config';
 import { createClient } from '@supabase/supabase-js';
 import Stripe from 'stripe';
 import type { Database, Tables, TablesInsert } from '@/types/db';
+import { logger } from '@/lib/logger';
 
 type Product = Tables<'products'>;
 type Price = Tables<'prices'>;
@@ -29,7 +30,7 @@ const upsertProductRecord = async (product: Stripe.Product) => {
     .from('products')
     .upsert([productData]);
   if (upsertError) {
-    console.error(`Product insert/update failed: ${upsertError.message}`);
+    logger.error(`Product insert/update failed: ${upsertError.message}`);
     throw new Error(`Product insert/update failed: ${upsertError.message}`);
   }
 };
@@ -62,7 +63,7 @@ const upsertPriceRecord = async (
       await new Promise((resolve) => setTimeout(resolve, 2000));
       await upsertPriceRecord(price, retryCount + 1, maxRetries);
     } else {
-      console.error(
+      logger.error(
         `Price insert/update failed after ${maxRetries} retries: ${upsertError.message}`
       );
       throw new Error(
@@ -70,7 +71,7 @@ const upsertPriceRecord = async (
       );
     }
   } else if (upsertError) {
-    console.error(`Price insert/update failed: ${upsertError.message}`);
+    logger.error(`Price insert/update failed: ${upsertError.message}`);
     throw new Error(`Price insert/update failed: ${upsertError.message}`);
   } else {
   }
@@ -82,7 +83,7 @@ const deleteProductRecord = async (product: Stripe.Product) => {
     .delete()
     .eq('id', product.id);
   if (deletionError) {
-    console.error(`Product deletion failed: ${deletionError.message}`);
+    logger.error(`Product deletion failed: ${deletionError.message}`);
     throw new Error(`Product deletion failed: ${deletionError.message}`);
   }
 };
@@ -93,7 +94,7 @@ const deletePriceRecord = async (price: Stripe.Price) => {
     .delete()
     .eq('id', price.id);
   if (deletionError) {
-    console.error(`Price deletion failed: ${deletionError.message}`);
+    logger.error(`Price deletion failed: ${deletionError.message}`);
     throw new Error(`Price deletion failed: ${deletionError.message}`);
   }
 };
@@ -104,7 +105,7 @@ const upsertCustomerToSupabase = async (uuid: string, customerId: string) => {
     .upsert([{ id: uuid, stripe_customer_id: customerId }]);
 
   if (upsertError) {
-    console.error(
+    logger.error(
       `Supabase customer record creation failed: ${upsertError.message}`
     );
     throw new Error(
@@ -119,7 +120,7 @@ const createCustomerInStripe = async (uuid: string, email: string) => {
   const customerData = { metadata: { supabaseUUID: uuid }, email: email };
   const newCustomer = await stripe.customers.create(customerData);
   if (!newCustomer) {
-    console.error('Stripe customer creation failed.');
+    logger.error('Stripe customer creation failed.');
     throw new Error('Stripe customer creation failed.');
   }
 
@@ -141,7 +142,7 @@ const createOrRetrieveCustomer = async ({
     .maybeSingle();
 
   if (queryError) {
-    console.error(`Supabase customer lookup failed: ${queryError.message}`);
+    logger.error(`Supabase customer lookup failed: ${queryError.message}`);
     throw new Error(`Supabase customer lookup failed: ${queryError.message}`);
   }
 
@@ -168,7 +169,7 @@ const createOrRetrieveCustomer = async ({
   if (existingSupabaseCustomer && stripeCustomerId) {
     // If Supabase has a record but doesn't match Stripe, update Supabase record
     if (existingSupabaseCustomer.stripe_customer_id !== stripeCustomerId) {
-      console.warn(
+      logger.warn(
         'Supabase customer record mismatched Stripe ID. Updating Supabase record.'
       );
       const { error: updateError } = await supabase
@@ -177,7 +178,7 @@ const createOrRetrieveCustomer = async ({
         .eq('id', uuid);
 
       if (updateError) {
-        console.error(
+        logger.error(
           `Supabase customer record update failed: ${updateError.message}`
         );
         throw new Error(
@@ -188,9 +189,7 @@ const createOrRetrieveCustomer = async ({
     // If Supabase has a record and matches Stripe, return Stripe customer ID
     return stripeCustomerId;
   } else {
-    console.warn(
-      'Supabase customer record was missing. Creating a new record.'
-    );
+    logger.warn('Supabase customer record was missing. Creating a new record.');
 
     // If Supabase has no record, create a new record and return Stripe customer ID
     const upsertedStripeCustomer = await upsertCustomerToSupabase(
@@ -225,7 +224,7 @@ const copyBillingDetailsToCustomer = async (
     })
     .eq('id', uuid);
   if (updateError) {
-    console.error(`Customer update failed: ${updateError.message}`);
+    logger.error(`Customer update failed: ${updateError.message}`);
     throw new Error(`Customer update failed: ${updateError.message}`);
   }
 };
@@ -243,7 +242,7 @@ const manageSubscriptionStatusChange = async (
     .single();
 
   if (noCustomerError) {
-    console.error(`Customer lookup failed: ${noCustomerError.message}`);
+    logger.error(`Customer lookup failed: ${noCustomerError.message}`);
     throw new Error(`Customer lookup failed: ${noCustomerError.message}`);
   }
 
@@ -291,7 +290,7 @@ const manageSubscriptionStatusChange = async (
     .from('subscriptions')
     .upsert([subscriptionData]);
   if (upsertError) {
-    console.error(`Subscription insert/update failed: ${upsertError.message}`);
+    logger.error(`Subscription insert/update failed: ${upsertError.message}`);
     throw new Error(
       `Subscription insert/update failed: ${upsertError.message}`
     );

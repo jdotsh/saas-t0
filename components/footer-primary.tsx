@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { createClient } from '@supabase/supabase-js';
 import { useToast } from '@/components/ui/use-toast';
 import { CoolMode } from '@/components/magicui/cool-mode';
+import { logger } from '@/lib/logger';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -47,8 +48,8 @@ export default function FooterPrimary() {
           'Thank you for subscribing! You will get an email when the app comes out.'
       });
       setEmail('');
-    } catch (error) {
-      console.error('Error inserting email:', error);
+    } catch (error: unknown) {
+      logger.error('Error inserting email:', error);
       toast({
         title: 'Error',
         description: 'An error occurred. Please try again.',
@@ -202,7 +203,7 @@ export default function FooterPrimary() {
   );
 }
 
-function ArrowRightIcon(props: any) {
+function ArrowRightIcon(props: unknown) {
   return (
     <svg
       {...props}
@@ -222,7 +223,7 @@ function ArrowRightIcon(props: any) {
   );
 }
 
-function LogInIcon(props: any) {
+function LogInIcon(props: unknown) {
   return (
     <svg
       {...props}

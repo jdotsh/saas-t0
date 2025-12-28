@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Home, RefreshCw } from 'lucide-react';
+import { logger } from '@/lib/logger';
 
 export default function MarketingError({
   error,
@@ -13,7 +14,7 @@ export default function MarketingError({
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error('Marketing page error:', error);
+    logger.error('Marketing page error:', error);
   }, [error]);
 
   return (

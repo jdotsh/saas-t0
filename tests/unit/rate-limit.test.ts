@@ -8,6 +8,7 @@ describe('Rate Limit Configuration', () => {
     process.env.UPSTASH_REDIS_REST_TOKEN = 'test-token';
 
     // Dynamically import to get fresh module
+    import { logger } from '@/lib/logger';
     const rateLimitModule = await import('@/lib/rate-limit');
 
     // Check that all rate limit functions are exported

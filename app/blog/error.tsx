@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { FileX } from 'lucide-react';
+import { logger } from '@/lib/logger';
 
 export default function BlogError({
   error,
@@ -13,7 +14,7 @@ export default function BlogError({
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error('Blog error:', error);
+    logger.error('Blog error:', error);
   }, [error]);
 
   return (

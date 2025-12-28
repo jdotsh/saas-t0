@@ -15,6 +15,7 @@ import { PlusCircle, Edit, Trash, FileText } from 'lucide-react';
 import { api } from '@/trpc/react';
 import { useToast } from '@/components/ui/use-toast';
 import { User } from '@supabase/supabase-js';
+import { logger } from '@/lib/logger';
 
 interface Post {
   id: number;
@@ -41,7 +42,7 @@ export default function Posts({ user }: PostsProps) {
 
   useEffect(() => {
     if (fetchError) {
-      console.error('Error fetching posts:', fetchError);
+      logger.error('Error fetching posts:', fetchError);
       toast({
         title: 'Error',
         description: fetchError.message,
@@ -60,7 +61,7 @@ export default function Posts({ user }: PostsProps) {
       });
     },
     onError: (error) => {
-      console.error('Error creating post:', error);
+      logger.error('Error creating post:', error);
       toast({
         title: 'Error',
         description: error.message,
@@ -79,7 +80,7 @@ export default function Posts({ user }: PostsProps) {
       });
     },
     onError: (error) => {
-      console.error('Error updating post:', error);
+      logger.error('Error updating post:', error);
       toast({
         title: 'Error',
         description: error.message,
@@ -97,7 +98,7 @@ export default function Posts({ user }: PostsProps) {
       });
     },
     onError: (error) => {
-      console.error('Error deleting post:', error);
+      logger.error('Error deleting post:', error);
       toast({
         title: 'Error',
         description: error.message,

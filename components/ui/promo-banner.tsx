@@ -108,7 +108,7 @@ export function PromoBanner({
 
       // Reset icon after 2 seconds
       setTimeout(() => setIsCopied(false), 2000);
-    } catch (error) {
+    } catch (error: unknown) {
       // Fallback for browsers that don't support clipboard API
       toast({
         title: 'Copy failed',

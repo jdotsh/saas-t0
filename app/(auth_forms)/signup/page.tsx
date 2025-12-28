@@ -112,7 +112,7 @@ export default function SignUp() {
   );
 }
 
-function ArrowLeftIcon(props: any) {
+function ArrowLeftIcon(props: unknown) {
   return (
     <svg
       {...props}
@@ -132,7 +132,7 @@ function ArrowLeftIcon(props: any) {
   );
 }
 
-function ChromeIcon(props: any) {
+function ChromeIcon(props: unknown) {
   return (
     <svg
       {...props}
@@ -155,7 +155,7 @@ function ChromeIcon(props: any) {
   );
 }
 
-function GithubIcon(props: any) {
+function GithubIcon(props: unknown) {
   return (
     <svg
       {...props}

@@ -10,6 +10,7 @@ import {
   calculateTrialEndUnixTimestamp
 } from '@/utils/helpers';
 import { Tables } from '@/types/db';
+import { logger } from '@/lib/logger';
 
 type Price = Tables<'prices'>;
 
@@ -31,7 +32,7 @@ export async function checkoutWithStripe(
     } = await supabase.auth.getUser();
 
     if (error || !user) {
-      console.error(error);
+      logger.error(error);
       throw new Error('Could not get user session.');
     }
 
@@ -42,8 +43,8 @@ export async function checkoutWithStripe(
         uuid: user?.id || '',
         email: user?.email || ''
       });
-    } catch (err) {
-      console.error(err);
+    } catch (err: unknown) {
+      logger.error(err);
       throw new Error('Unable to access customer record.');
     }
 
@@ -64,7 +65,7 @@ export async function checkoutWithStripe(
       success_url: getURL(redirectPath)
     };
 
-    console.log(
+    logger.info(
       'Trial end:',
       calculateTrialEndUnixTimestamp(price.trial_period_days)
     );
@@ -87,8 +88,8 @@ export async function checkoutWithStripe(
     let session;
     try {
       session = await stripe.checkout.sessions.create(params);
-    } catch (err) {
-      console.error(err);
+    } catch (err: unknown) {
+      logger.error(err);
       throw new Error('Unable to create checkout session.');
     }
 
@@ -98,7 +99,7 @@ export async function checkoutWithStripe(
     } else {
       throw new Error('Unable to create checkout session.');
     }
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof Error) {
       return {
         errorRedirect: getErrorRedirect(
@@ -129,7 +130,7 @@ export async function createStripePortal(currentPath: string) {
 
     if (!user) {
       if (error) {
-        console.error(error);
+        logger.error(error);
       }
       throw new Error('Could not get user session.');
     }
@@ -140,8 +141,8 @@ export async function createStripePortal(currentPath: string) {
         uuid: user.id || '',
         email: user.email || ''
       });
-    } catch (err) {
-      console.error(err);
+    } catch (err: unknown) {
+      logger.error(err);
       throw new Error('Unable to access customer record.');
     }
 
@@ -158,13 +159,13 @@ export async function createStripePortal(currentPath: string) {
         throw new Error('Could not create billing portal');
       }
       return url;
-    } catch (err) {
-      console.error(err);
+    } catch (err: unknown) {
+      logger.error(err);
       throw new Error('Could not create billing portal');
     }
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof Error) {
-      console.error(error);
+      logger.error(error);
       return getErrorRedirect(
         currentPath,
         error.message,

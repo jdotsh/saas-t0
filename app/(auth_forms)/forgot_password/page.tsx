@@ -58,7 +58,7 @@ export default function Component() {
   );
 }
 
-function ArrowLeftIcon(props: any) {
+function ArrowLeftIcon(props: unknown) {
   return (
     <svg
       {...props}

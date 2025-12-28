@@ -6,10 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import {
-  signInWithEmail,
-  signInWithPassword
-} from '@/utils/auth-helpers/server';
+import { signInWithPassword } from '@/utils/auth-helpers/server';
 import { signInWithOAuth } from '@/utils/auth-helpers/client';
 import { handleRequest } from '@/utils/auth-helpers/client';
 import { useRouter } from 'next/navigation';
@@ -148,7 +145,7 @@ export default function SignIn() {
   );
 }
 
-function ArrowLeftIcon(props: any) {
+function ArrowLeftIcon(props: unknown) {
   return (
     <svg
       {...props}
@@ -168,7 +165,7 @@ function ArrowLeftIcon(props: any) {
   );
 }
 
-function ChromeIcon(props: any) {
+function ChromeIcon(props: unknown) {
   return (
     <svg
       {...props}
@@ -191,7 +188,7 @@ function ChromeIcon(props: any) {
   );
 }
 
-function GithubIcon(props: any) {
+function GithubIcon(props: unknown) {
   return (
     <svg
       {...props}

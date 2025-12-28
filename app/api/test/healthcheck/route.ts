@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
         }
       }
     );
-  } catch (e) {
+  } catch (e: unknown) {
     return NextResponse.error();
   }
 }

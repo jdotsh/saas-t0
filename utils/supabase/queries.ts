@@ -1,6 +1,7 @@
 import { SupabaseClient } from '@supabase/supabase-js';
 import { cache } from 'react';
 import { Database } from '@/types/db';
+import { logger } from '@/lib/logger';
 
 export const getUser = cache(async (supabase: SupabaseClient<Database>) => {
   const {
@@ -28,7 +29,7 @@ export const getSubscription = cache(
       .maybeSingle();
 
     if (subscriptionError) {
-      console.error('Error fetching subscription:', subscriptionError);
+      logger.error('Error fetching subscription:', subscriptionError);
       return null;
     }
 
@@ -56,7 +57,7 @@ export const getPlans = cache(async (supabase: SupabaseClient) => {
     .order('id', { ascending: true }); // Secondary sort by id as a fallback
 
   if (error) {
-    console.error('Error fetching plans:', error);
+    logger.error('Error fetching plans:', error);
     throw error;
   }
   return plans;

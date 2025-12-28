@@ -16,11 +16,9 @@ import {
   SelectContent,
   SelectItem
 } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { Icons } from '@/components/icons';
-import { AtSign, Bell, EyeOff, X } from 'lucide-react';
+import { AtSign, Bell, EyeOff } from 'lucide-react';
 
 export default function SettingsPage() {
   const [isEverythingToggled, setIsEverythingToggled] = useState(false);

@@ -2,6 +2,7 @@ import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { ratelimitRequest, getIdentifier } from '@/lib/rate-limit';
+import { logger } from '@/lib/logger';
 
 export async function GET(req: Request) {
   const supabase = createRouteHandlerClient({ cookies });
@@ -46,7 +47,7 @@ export async function GET(req: Request) {
     .eq('user_id', user.id);
 
   if (error) {
-    console.error('Error fetching teams:', error);
+    logger.error('Error fetching teams:', error);
     return NextResponse.json(
       { error: 'Failed to fetch teams' },
       { status: 500 }

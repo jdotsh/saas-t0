@@ -7,19 +7,10 @@ import { Star } from 'lucide-react';
 import Particles from '@/components/magicui/particles';
 import Ripple from '@/components/magicui/ripple';
 import AnimatedGradientText from '@/components/magicui/animated-shiny-text';
-import { ArrowRightIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
+import { ArrowRightIcon } from '@radix-ui/react-icons';
 import AvatarCircles from '@/components/magicui/avatar-circles';
 import { useTheme } from 'next-themes';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious
-} from '@/components/ui/carousel';
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
-
+import { useState, useEffect } from 'react';
 export default function HeroSection() {
   const { theme } = useTheme();
   const avatarUrls = [

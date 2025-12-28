@@ -7,8 +7,7 @@ import {
   BreadcrumbList,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
-  BreadcrumbPage
+  BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
 import { Input } from '@/components/ui/input';
 
@@ -23,7 +22,7 @@ export function Navbar({
   userDetails,
   navConfig
 }: {
-  userDetails: any;
+  userDetails: unknown;
   navConfig: NavItem[];
 }) {
   const pathname = usePathname();

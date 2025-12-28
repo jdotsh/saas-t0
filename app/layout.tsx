@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { PropsWithChildren, Suspense } from 'react';
+import { PropsWithChildren } from 'react';
 import { getURL } from '@/utils/helpers';
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';

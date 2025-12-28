@@ -8,7 +8,7 @@ import { convertBlobUrlToFile } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 
-export function ImageUpload({ user }: { user: any }) {
+export function ImageUpload({ user }: { user: unknown }) {
   const [avatarUrl, setAvatarUrl] = useState(
     `${user.avatar_url}?t=${Date.now()}`
   );

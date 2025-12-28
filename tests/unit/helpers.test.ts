@@ -57,7 +57,7 @@ describe('Helper Functions', () => {
 
       const result = await postData({
         url: '/api/test',
-        data: { price: { id: 'price_123' } as any }
+        data: { price: { id: 'price_123' } as unknown }
       });
 
       expect(global.fetch).toHaveBeenCalledWith('/api/test', {

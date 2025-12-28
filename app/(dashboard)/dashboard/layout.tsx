@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { NavItem, navConfig, iconComponents } from '@/config/dashboard';
+import { NavItem, navConfig } from '@/config/dashboard';
 import {
   TooltipProvider,
   Tooltip,

@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { BookX } from 'lucide-react';
+import { logger } from '@/lib/logger';
 
 export default function DocsError({
   error,
@@ -13,7 +14,7 @@ export default function DocsError({
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error('Documentation error:', error);
+    logger.error('Documentation error:', error);
   }, [error]);
 
   return (

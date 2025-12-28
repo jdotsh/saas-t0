@@ -1,3 +1,5 @@
+import { logger } from '@/lib/logger';
+
 /**
  * Centralized Logger Utility
  *
@@ -8,7 +10,7 @@
 type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 
 interface LogContext {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 class Logger {
@@ -23,7 +25,7 @@ class Logger {
     level: LogLevel,
     message: string,
     context?: LogContext
-  ): any {
+  ): unknown {
     const baseLog = {
       timestamp: this.getTimestamp(),
       level,
@@ -65,7 +67,7 @@ class Logger {
     const log = this.formatMessage('debug', message, context);
 
     if (this.isDevelopment) {
-      console.log(log.formatted, log.context || '');
+      logger.info(log.formatted, log.context || '');
     } else {
       // In production, send to logging service
       this.sendToLoggingService('debug', message, context);
@@ -78,9 +80,9 @@ class Logger {
     const log = this.formatMessage('info', message, context);
 
     if (this.isDevelopment) {
-      console.log(log.formatted, log.context || '');
+      logger.info(log.formatted, log.context || '');
     } else {
-      console.log(JSON.stringify(log));
+      logger.info(JSON.stringify(log));
       this.sendToLoggingService('info', message, context);
     }
   }
@@ -91,9 +93,9 @@ class Logger {
     const log = this.formatMessage('warn', message, context);
 
     if (this.isDevelopment) {
-      console.warn(log.formatted, log.context || '');
+      logger.warn(log.formatted, log.context || '');
     } else {
-      console.warn(JSON.stringify(log));
+      logger.warn(JSON.stringify(log));
       this.sendToLoggingService('warn', message, context);
     }
   }
@@ -118,9 +120,9 @@ class Logger {
     const log = this.formatMessage('error', message, errorContext);
 
     if (this.isDevelopment) {
-      console.error(log.formatted, errorContext);
+      logger.error(log.formatted, errorContext);
     } else {
-      console.error(JSON.stringify(log));
+      logger.error(JSON.stringify(log));
       this.sendToLoggingService('error', message, errorContext);
     }
   }

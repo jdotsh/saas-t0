@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { createTRPCRouter, protectedProcedure } from '@/server/api/trpc';
 import { createClient } from '@/utils/supabase/server';
 import { TRPCError } from '@trpc/server';
+import { logger } from '@/lib/logger';
 
 export const postsRouter = createTRPCRouter({
   create: protectedProcedure
@@ -22,7 +23,7 @@ export const postsRouter = createTRPCRouter({
         .single();
 
       if (error) {
-        console.error('Error creating post:', error);
+        logger.error('Error creating post:', error);
         throw new TRPCError({
           code: 'INTERNAL_SERVER_ERROR',
           message: error.message
@@ -53,7 +54,7 @@ export const postsRouter = createTRPCRouter({
         .single();
 
       if (error) {
-        console.error('Error updating post:', error);
+        logger.error('Error updating post:', error);
         throw new TRPCError({
           code: 'INTERNAL_SERVER_ERROR',
           message: error.message
@@ -72,7 +73,7 @@ export const postsRouter = createTRPCRouter({
         .eq('user_id', ctx.user.id);
 
       if (error) {
-        console.error('Error deleting post:', error);
+        logger.error('Error deleting post:', error);
         throw new TRPCError({
           code: 'INTERNAL_SERVER_ERROR',
           message: error.message
@@ -89,7 +90,7 @@ export const postsRouter = createTRPCRouter({
       .order('created_at', { ascending: false });
 
     if (error) {
-      console.error('Error fetching posts:', error);
+      logger.error('Error fetching posts:', error);
       throw new TRPCError({
         code: 'INTERNAL_SERVER_ERROR',
         message: error.message
@@ -110,7 +111,7 @@ export const postsRouter = createTRPCRouter({
         .single();
 
       if (error) {
-        console.error('Error fetching post by ID:', error);
+        logger.error('Error fetching post by ID:', error);
         throw new TRPCError({
           code: 'INTERNAL_SERVER_ERROR',
           message: error.message

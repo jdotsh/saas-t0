@@ -51,7 +51,7 @@ export default function FAQSection() {
   );
 }
 
-function ArrowDownLeftIcon(props: any) {
+function ArrowDownLeftIcon(props: unknown) {
   return (
     <svg
       {...props}
@@ -71,7 +71,7 @@ function ArrowDownLeftIcon(props: any) {
   );
 }
 
-function CrossIcon(props: any) {
+function CrossIcon(props: unknown) {
   return (
     <svg
       {...props}

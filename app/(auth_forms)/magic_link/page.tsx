@@ -15,7 +15,7 @@ export default function EmailSignIn() {
   const redirectMethod = 'client';
   const disableButton = false;
 
-  const router = redirectMethod === 'client' ? useRouter() : null;
+  const router = useRouter(); // Always call the hook
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -103,7 +103,7 @@ export default function EmailSignIn() {
   );
 }
 
-function ArrowLeftIcon(props: any) {
+function ArrowLeftIcon(props: unknown) {
   return (
     <svg
       {...props}

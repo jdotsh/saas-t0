@@ -4,11 +4,11 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { MainNavItem } from 'types';
 import { cn } from '@/lib/utils';
 import { Icons } from '@/components/icons';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { ModeToggle } from '@/components/mode-toggle';
 import { useLockBody } from '@/hooks/use-lock-body';
 import { useClickOutside } from '@/hooks/use-click-outside';

@@ -44,13 +44,7 @@ export default function PricingRounded({
   products,
   subscription
 }: Props) {
-  const intervals = Array.from(
-    new Set(
-      products.flatMap((product) =>
-        product?.prices?.map((price) => price?.interval)
-      )
-    )
-  );
+  // Removed unused: intervals
   const router = useRouter();
   const [billingInterval, setBillingInterval] =
     useState<BillingInterval>('month');
@@ -227,7 +221,7 @@ export default function PricingRounded({
   }
 }
 
-function CheckIcon(props: any) {
+function CheckIcon(props: unknown) {
   return (
     <svg
       {...props}

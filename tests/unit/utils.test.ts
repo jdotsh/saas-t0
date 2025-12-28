@@ -83,8 +83,8 @@ describe('Utility Functions', () => {
 
     it('should handle zero and undefined', () => {
       expect(nFormatter(0)).toBe('0');
-      expect(nFormatter(null as any)).toBe('0');
-      expect(nFormatter(undefined as any)).toBe('0');
+      expect(nFormatter(null as unknown)).toBe('0');
+      expect(nFormatter(undefined as unknown)).toBe('0');
     });
 
     it('should respect digits parameter', () => {
@@ -152,8 +152,8 @@ describe('Utility Functions', () => {
     });
 
     it('should handle null/undefined', () => {
-      expect(timeAgo(null as any)).toBe('never');
-      expect(timeAgo(undefined as any)).toBe('never');
+      expect(timeAgo(null as unknown)).toBe('never');
+      expect(timeAgo(undefined as unknown)).toBe('never');
     });
   });
 
@@ -203,8 +203,8 @@ describe('Utility Functions', () => {
     });
 
     it('should handle non-string values', () => {
-      expect(capitalize(null as any)).toBe(null);
-      expect(capitalize(undefined as any)).toBe(undefined);
+      expect(capitalize(null as unknown)).toBe(null);
+      expect(capitalize(undefined as unknown)).toBe(undefined);
     });
 
     it('should only capitalize first letter', () => {
@@ -229,8 +229,8 @@ describe('Utility Functions', () => {
     });
 
     it('should handle null and undefined', () => {
-      expect(truncate(null as any, 5)).toBe(null);
-      expect(truncate(undefined as any, 5)).toBe(undefined);
+      expect(truncate(null as unknown, 5)).toBe(null);
+      expect(truncate(undefined as unknown, 5)).toBe(undefined);
     });
 
     it('should handle exact length', () => {

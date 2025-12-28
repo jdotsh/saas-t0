@@ -1,5 +1,6 @@
 import { createClient } from '@/utils/supabase/client';
 import imageCompression from 'browser-image-compression';
+import { logger } from '@/lib/logger';
 
 function getStorage() {
   const { storage } = createClient();
@@ -17,7 +18,7 @@ export const uploadImage = async ({ file, bucket, folder }: UploadProps) => {
   const fileExtension = fileName.slice(fileName.lastIndexOf('.') + 1);
   const path = `${folder ? folder + '/' : ''}avatar_url.${fileExtension}`;
 
-  console.log(
+  logger.info(
     `Preparing to upload image: ${fileName} to bucket: ${bucket} in folder: ${folder}`
   );
 
@@ -25,9 +26,9 @@ export const uploadImage = async ({ file, bucket, folder }: UploadProps) => {
     file = await imageCompression(file, {
       maxSizeMB: 0.5
     });
-    console.log(`Image compressed: ${fileName}`);
-  } catch (error) {
-    console.error('Image compression error:', error);
+    logger.info(`Image compressed: ${fileName}`);
+  } catch (error: unknown) {
+    logger.error('Image compression error:', error);
     return { imageUrl: '', error: 'Image compression failed' };
   }
 
@@ -38,12 +39,12 @@ export const uploadImage = async ({ file, bucket, folder }: UploadProps) => {
     .upload(path, file, { upsert: true });
 
   if (error) {
-    console.error('Upload error:', error.message);
+    logger.error('Upload error:', error.message);
     return { imageUrl: '', error: error.message };
   }
 
   const imageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL!}/storage/v1/object/public/${bucket}/${data?.path}`;
-  console.log(`Image uploaded successfully: ${imageUrl}`);
+  logger.info(`Image uploaded successfully: ${imageUrl}`);
 
   return { imageUrl, error: '' };
 };
@@ -55,7 +56,7 @@ export const deleteImage = async (imageUrl: string) => {
   const bucket = bucketAndPathString.slice(0, firstSlashIndex);
   const path = bucketAndPathString.slice(firstSlashIndex + 1);
 
-  console.log(
+  logger.info(
     `Preparing to delete image from bucket: ${bucket}, path: ${path}`
   );
 
@@ -64,9 +65,9 @@ export const deleteImage = async (imageUrl: string) => {
   const { data, error } = await storage.from(bucket).remove([path]);
 
   if (error) {
-    console.error('Delete error:', error.message);
+    logger.error('Delete error:', error.message);
   } else {
-    console.log(`Image deleted successfully: ${imageUrl}`);
+    logger.info(`Image deleted successfully: ${imageUrl}`);
   }
 
   return { data, error: error?.message };
