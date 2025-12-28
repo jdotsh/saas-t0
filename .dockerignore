@@ -1,0 +1,78 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store
+
+# Next.js build output
+.next
+out
+dist
+build
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.local.example
+
+# Version control
+.git
+.gitignore
+.github
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+coverage
+.nyc_output
+playwright-report
+test-results
+tests
+vitest.config.ts
+
+# Documentation
+*.md
+docs
+LICENSE
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.circleci
+
+# Logs
+logs
+*.log
+
+# Temporary files
+tmp
+temp
+.cache
+
+# Supabase local
+supabase/.branches
+supabase/.temp
+
+# Other
+.husky
+.prettierrc*
+.eslintrc*
+*.config.js
+*.config.mjs
+!next.config.mjs
+!postcss.config.js
+!tailwind.config.js

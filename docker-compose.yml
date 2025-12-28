@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # Next.js Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+        NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - UPSTASH_REDIS_REST_URL=${UPSTASH_REDIS_REST_URL}
+      - UPSTASH_REDIS_REST_TOKEN=${UPSTASH_REDIS_REST_TOKEN}
+    restart: unless-stopped
+    networks:
+      - nexus-network
+
+  # Supabase Local Development (Optional)
+  # Uncomment if you want to run Supabase locally
+  # supabase-db:
+  #   image: supabase/postgres:14.1.0.21
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     POSTGRES_PASSWORD: postgres
+  #   volumes:
+  #     - supabase-db-data:/var/lib/postgresql/data
+  #   networks:
+  #     - nexus-network
+
+  # supabase-auth:
+  #   image: supabase/gotrue:v2.92.0
+  #   depends_on:
+  #     - supabase-db
+  #   ports:
+  #     - "9999:9999"
+  #   environment:
+  #     GOTRUE_API_HOST: 0.0.0.0
+  #     GOTRUE_API_PORT: 9999
+  #     API_EXTERNAL_URL: ${SUPABASE_URL:-http://localhost:54321}
+  #     GOTRUE_DB_DRIVER: postgres
+  #     GOTRUE_DB_DATABASE_URL: postgres://postgres:postgres@supabase-db:5432/postgres?sslmode=disable
+  #     GOTRUE_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+  #     GOTRUE_URI_ALLOW_LIST: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+  #     GOTRUE_JWT_SECRET: ${JWT_SECRET}
+  #     GOTRUE_JWT_EXP: 3600
+  #   networks:
+  #     - nexus-network
+
+  # Redis Cache (Optional - for rate limiting)
+  # Using Redis instead of Upstash for local development
+  # redis:
+  #   image: redis:7-alpine
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis-data:/data
+  #   networks:
+  #     - nexus-network
+
+networks:
+  nexus-network:
+    driver: bridge
+
+volumes:
+  supabase-db-data:
+  redis-data:

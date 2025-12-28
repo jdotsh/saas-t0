@@ -5,10 +5,10 @@ const withMDX = createMDX();
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
+  output: 'standalone', // Required for Docker deployment
   eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true
+    // Enforcing ESLint errors will fail the build (production-ready requirement)
+    ignoreDuringBuilds: false
   },
   images: {
     remotePatterns: [
