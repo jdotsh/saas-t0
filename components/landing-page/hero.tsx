@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
-import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
+// import { cn } from '@/lib/utils'; // Removed - using direct classes for cleaner code
+// import { buttonVariants } from '@/components/ui/button'; // Removed - using custom button styles
 import { Star } from 'lucide-react';
 import Particles from '@/components/magicui/particles';
 import Ripple from '@/components/magicui/ripple';
@@ -68,16 +68,16 @@ export default function HeroSection() {
         />
         <Ripple />
       </div>
-      <div className="container mx-auto px-4 py-12 md:py-16 lg:py-32">
-        <div className="relative z-10 flex max-w-[64rem] flex-col items-center gap-6 md:gap-8 text-center mx-auto">
-          {/* Premium Orange Announcement Badge - Fully Responsive */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+        <div className="relative z-10 flex max-w-5xl flex-col items-center gap-8 md:gap-10 text-center mx-auto">
+          {/* Premium Orange Announcement Badge */}
           <Link
             href={siteConfig.links.twitter}
-            className="inline-flex transition-transform hover:scale-105 cursor-pointer group bg-gradient-to-br from-white/10 to-white/0 rounded-full pt-1.5 pr-3 pb-1.5 pl-3 backdrop-blur-sm gap-2 items-center border border-white/10"
+            className="inline-flex transition-transform hover:scale-105 duration-200 ease-snappy cursor-pointer group bg-gradient-to-br from-white/10 to-white/5 rounded-full py-2 px-4 backdrop-blur-md gap-2.5 items-center border border-white/20 hover:border-white/30 shadow-lg hover:shadow-xl"
           >
-            <span className="flex h-1.5 w-1.5 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)] group-hover:animate-pulse"></span>
-            <span className="text-xs md:text-sm font-medium text-orange-100/80 tracking-wide group-hover:text-white transition-colors">
-              New release: v2.0 with Next.js 15
+            <span className="flex h-2 w-2 rounded-full bg-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.6)] group-hover:shadow-[0_0_16px_rgba(249,115,22,0.8)] group-hover:animate-pulse"></span>
+            <span className="text-sm font-semibold text-orange-50/90 tracking-tight group-hover:text-white transition-colors duration-200">
+              New: Next.js 15 + Supabase Starter
             </span>
           </Link>
 
@@ -103,70 +103,63 @@ export default function HeroSection() {
           </Link>
           */}
 
-          {/* Responsive Hero Title with Letter Animation */}
-          <h1 className="font-heading tracking-tight font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight">
-            <span className="inline-flex flex-wrap justify-center gap-x-3 gap-y-2">
-              <span className="inline-flex bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground to-foreground/50">
-                Scale
+          {/* Hero Title - Clean & Bold */}
+          <h1 className="font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.1] max-w-4xl">
+            <span className="inline-block bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
+              Ship your SaaS
+            </span>
+            <br />
+            <span className="inline-block bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
+              in{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 font-extrabold">
+                days
               </span>
-              <span className="inline-flex bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground to-foreground/50">
-                your
-              </span>
-              <span className="inline-flex bg-clip-text text-transparent bg-gradient-to-b from-primary via-primary to-primary/60 font-extrabold">
-                SaaS
-              </span>
-              <span className="inline-flex bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground to-foreground/50">
-                with
-              </span>
-              <span className="inline-flex bg-clip-text text-transparent bg-gradient-to-b from-foreground via-foreground to-foreground/50">
-                Next.js
-              </span>
+              , not months
             </span>
           </h1>
-          {/* Responsive Subtitle */}
-          <p className="max-w-[42rem] text-base md:text-lg lg:text-xl font-medium tracking-tight text-muted-foreground leading-relaxed px-4">
-            Production-ready SaaS template with Next.js 15, Supabase, Stripe,
-            and TypeScript. Ship faster with authentication, payments, and
-            database ready to go.
+
+          {/* Subtitle - Clear Value Prop */}
+          <p className="max-w-2xl text-lg md:text-xl lg:text-2xl font-normal text-muted-foreground/90 leading-relaxed px-4">
+            Production-ready Next.js 15 starter with auth, payments, and
+            database.
+            <br className="hidden sm:block" />
+            Everything you need to launch fast.
           </p>
 
-          {/* Responsive CTA Buttons */}
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 md:gap-4 w-full sm:w-auto px-4">
+          {/* CTA Buttons - Clean & Modern */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 w-full sm:w-auto px-4">
             <Link
               href="/signup"
-              className={cn(
-                buttonVariants({ size: 'xl' }),
-                'w-full sm:w-auto rounded-full border-2 border-primary dark:border-white text-bold text-white shadow-lg hover:shadow-xl transition-all duration-200 ease-snappy'
-              )}
+              className="group relative inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-pink-600 rounded-xl shadow-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-200 ease-snappy hover:scale-105 active:scale-95"
             >
-              Start Free Trial <ArrowRightIcon className="ml-2 h-4 w-4" />
+              Get Started Free
+              <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="#pricing"
-              className={cn(
-                buttonVariants({ variant: 'outline', size: 'xl' }),
-                'w-full sm:w-auto rounded-full border-2 border-primary dark:border-white text-semibold transition-all duration-200 ease-snappy'
-              )}
+              className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 text-base font-semibold text-foreground bg-background/50 backdrop-blur-sm border-2 border-border/50 hover:border-border rounded-xl transition-all duration-200 ease-snappy hover:scale-105 hover:bg-background/80 active:scale-95"
             >
-              See Pricing
+              View Pricing
             </Link>
           </div>
 
-          {/* Responsive Social Proof */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-4 w-full px-4">
-            <AvatarCircles numPeople={155} avatarUrls={avatarUrls} />
-            <div className="flex flex-col mt-2">
-              <div className="flex flex-row justify-center sm:justify-start">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="fill-yellow-200 text-yellow-300 size-5"
-                  />
-                ))}
+          {/* Social Proof - Minimal & Clean */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-6 w-full px-4">
+            <div className="flex items-center gap-3">
+              <AvatarCircles numPeople={155} avatarUrls={avatarUrls} />
+              <div className="flex flex-col items-start">
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="fill-yellow-400 text-yellow-400 size-4"
+                    />
+                  ))}
+                </div>
+                <span className="text-sm text-muted-foreground font-medium">
+                  160+ developers
+                </span>
               </div>
-              <span className="text-xs font-semibold">
-                Join 160+ developers
-              </span>
             </div>
           </div>
         </div>

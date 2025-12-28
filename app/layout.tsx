@@ -6,7 +6,8 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ErrorBoundary } from '@/components/error-boundary';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Manrope } from 'next/font/google';
+import localFont from 'next/font/local';
 import type { Viewport } from 'next';
 import { TRPCReactProvider } from '@/trpc/react';
 import { Analytics } from '@vercel/analytics/react';
@@ -21,32 +22,33 @@ export const viewport: Viewport = {
 import '@/styles/globals.css';
 
 /**
- * Font System - Optimized for global SaaS
+ * Font System - Premium Design-Forward Pairing
  *
- * Body: Inter
- * - 147 languages, 2000+ glyphs (US, DE, CN, JP, UK, IT, NO)
- * - Screen-optimized for maximum readability
- * - Variable font for performance
- * - Used by GitHub, Mozilla, Vercel
+ * Body: Manrope
+ * - Modern geometric sans with humanist warmth
+ * - Variable font for optimal performance
+ * - Excellent readability at all sizes
+ * - Perfect for body text and UI elements
  *
- * Headings: Space Grotesk
- * - Tech-forward, geometric sans serif
- * - Creates strong visual hierarchy
- * - Variable font for smooth weight transitions
- * - Perfect contrast with Inter's humanist style
+ * Headings: Satoshi
+ * - Industrial geometric sans serif
+ * - Variable font with 10 weights
+ * - Design-centric and approachable
+ * - Creates strong visual impact
  */
-const fontSans = Inter({
+const fontSans = Manrope({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
   preload: true
 });
 
-const fontHeading = Space_Grotesk({
-  subsets: ['latin'],
+const fontHeading = localFont({
+  src: '../assets/fonts/Satoshi-Variable.woff2',
   variable: '--font-heading',
   display: 'swap',
-  preload: true
+  preload: true,
+  fallback: ['system-ui', 'sans-serif']
 });
 
 export const metadata: Metadata = {
