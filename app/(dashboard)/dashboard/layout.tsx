@@ -13,6 +13,8 @@ import { Navbar } from '@/components/dashboard-navbar';
 import Sidebar from '@/components/dashboard-sidebar';
 import { redirect } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }

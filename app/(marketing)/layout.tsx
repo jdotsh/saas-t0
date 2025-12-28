@@ -7,6 +7,8 @@ import React from 'react';
 import { getUser } from '@/utils/supabase/queries';
 import { createClient } from '@/utils/supabase/client';
 
+export const dynamic = 'force-dynamic';
+
 interface MarketingLayoutProps {
   children: React.ReactNode;
 }
