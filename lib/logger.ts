@@ -1,5 +1,3 @@
-import { logger } from '@/lib/logger';
-
 /**
  * Centralized Logger Utility
  *
@@ -67,7 +65,8 @@ class Logger {
     const log = this.formatMessage('debug', message, context);
 
     if (this.isDevelopment) {
-      logger.info(log.formatted, log.context || '');
+      // eslint-disable-next-line no-console
+      console.log(log.formatted, log.context || '');
     } else {
       // In production, send to logging service
       this.sendToLoggingService('debug', message, context);
@@ -80,9 +79,11 @@ class Logger {
     const log = this.formatMessage('info', message, context);
 
     if (this.isDevelopment) {
-      logger.info(log.formatted, log.context || '');
+      // eslint-disable-next-line no-console
+      console.log(log.formatted, log.context || '');
     } else {
-      logger.info(JSON.stringify(log));
+      // eslint-disable-next-line no-console
+      console.log(JSON.stringify(log));
       this.sendToLoggingService('info', message, context);
     }
   }
@@ -93,9 +94,11 @@ class Logger {
     const log = this.formatMessage('warn', message, context);
 
     if (this.isDevelopment) {
-      logger.warn(log.formatted, log.context || '');
+      // eslint-disable-next-line no-console
+      console.warn(log.formatted, log.context || '');
     } else {
-      logger.warn(JSON.stringify(log));
+      // eslint-disable-next-line no-console
+      console.warn(JSON.stringify(log));
       this.sendToLoggingService('warn', message, context);
     }
   }
@@ -120,9 +123,11 @@ class Logger {
     const log = this.formatMessage('error', message, errorContext);
 
     if (this.isDevelopment) {
-      logger.error(log.formatted, errorContext);
+      // eslint-disable-next-line no-console
+      console.error(log.formatted, errorContext);
     } else {
-      logger.error(JSON.stringify(log));
+      // eslint-disable-next-line no-console
+      console.error(JSON.stringify(log));
       this.sendToLoggingService('error', message, errorContext);
     }
   }
@@ -224,9 +229,9 @@ class Logger {
    * This is a placeholder - implement with your preferred service (Sentry, LogRocket, etc.)
    */
   private sendToLoggingService(
-    level: LogLevel,
-    message: string,
-    context?: LogContext
+    _level: LogLevel,
+    _message: string,
+    _context?: LogContext
   ): void {
     // TODO: Implement integration with logging service
     // Example services:

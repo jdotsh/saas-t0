@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { signInWithEmail } from '@/utils/auth-helpers/server';
 import { handleRequest } from '@/utils/auth-helpers/client';
 import { useRouter } from 'next/navigation';
+import { ArrowLeft } from 'lucide-react';
 import { useState } from 'react';
 
 export default function EmailSignIn() {
@@ -33,7 +34,7 @@ export default function EmailSignIn() {
           className="rounded-md p-2 transition-colors hover:bg-muted"
           prefetch={false}
         >
-          <ArrowLeftIcon className="h-5 w-5" />
+          <ArrowLeft className="h-5 w-5" />
           <span className="sr-only">Back</span>
         </Link>
         <div />
@@ -100,25 +101,5 @@ export default function EmailSignIn() {
         </Card>
       </div>
     </div>
-  );
-}
-
-function ArrowLeftIcon(props: unknown) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m12 19-7-7 7-7" />
-      <path d="M19 12H5" />
-    </svg>
   );
 }

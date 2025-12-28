@@ -8,9 +8,14 @@ import { convertBlobUrlToFile } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 
-export function ImageUpload({ user }: { user: unknown }) {
+interface User {
+  id?: string;
+  avatar_url?: string;
+}
+
+export function ImageUpload({ user }: { user: User }) {
   const [avatarUrl, setAvatarUrl] = useState(
-    `${user.avatar_url}?t=${Date.now()}`
+    user?.avatar_url ? `${user.avatar_url}?t=${Date.now()}` : ''
   );
   const [imageUrl, setImageUrl] = useState('');
   const imageInputRef = useRef<HTMLInputElement>(null);
@@ -45,7 +50,7 @@ export function ImageUpload({ user }: { user: unknown }) {
       const { imageUrl: uploadedImageUrl, error } = await uploadImage({
         file: imageFile,
         bucket: 'avatar',
-        folder: user.id
+        folder: user.id || ''
       });
       if (error) {
         toast({

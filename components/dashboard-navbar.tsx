@@ -18,11 +18,17 @@ import { usePathname } from 'next/navigation';
 
 import { NavItem, iconComponents } from '@/config/dashboard';
 
+interface UserDetails {
+  full_name: string;
+  avatar_url: string | null;
+  email: string | null;
+}
+
 export function Navbar({
   userDetails,
   navConfig
 }: {
-  userDetails: unknown;
+  userDetails: UserDetails;
   navConfig: NavItem[];
 }) {
   const pathname = usePathname();

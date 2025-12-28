@@ -37,8 +37,9 @@ export async function POST(req: Request) {
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
     logger.info(`🔔  Webhook received: ${event.type}`);
   } catch (err: unknown) {
-    logger.info(`❌ Error message: ${err.message}`);
-    return new Response(`Webhook Error: ${err.message}`, { status: 400 });
+    const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+    logger.info(`❌ Error message: ${errorMessage}`);
+    return new Response(`Webhook Error: ${errorMessage}`, { status: 400 });
   }
 
   if (relevantEvents.has(event.type)) {
@@ -95,8 +96,10 @@ export async function POST(req: Request) {
         case 'invoice.payment_succeeded':
           const invoice = event.data.object as Stripe.Invoice;
 
-          logger.info('Invoice', invoice);
-          logger.info('Invoice subscripton reason', invoice.billing_reason);
+          logger.info('Invoice', { invoiceId: invoice.id });
+          logger.info('Invoice subscription reason', {
+            reason: invoice.billing_reason
+          });
 
           if (invoice.billing_reason === 'subscription_cycle') {
             // Subscription cycle payment - could be used for resetting usage limits
@@ -113,7 +116,9 @@ export async function POST(req: Request) {
           throw new Error('Unhandled relevant event!');
       }
     } catch (error: unknown) {
-      logger.info(`Error handling event: ${event.type}`, error);
+      logger.info(`Error handling event: ${event.type}`, {
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
       return new Response(
         'Webhook handler failed. View your Next.js function logs.',
         {
