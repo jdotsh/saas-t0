@@ -29,7 +29,7 @@ export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
 export async function POST(request: NextRequest) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   // Step 1: Authenticate user (CRITICAL - was missing)
   const {

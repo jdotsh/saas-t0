@@ -3,7 +3,7 @@ import { getUser, getUserDetails } from '@/utils/supabase/queries';
 import { redirect } from 'next/navigation';
 
 export default async function DashboardPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const [user, _userDetails] = await Promise.all([
     getUser(supabase),
     getUserDetails(supabase) // Template: use for user-specific features

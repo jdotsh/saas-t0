@@ -8,7 +8,7 @@ type Subscription = Database['public']['Tables']['subscriptions']['Row'];
 export async function getUserSubscriptionPlan(
   userId: string
 ): Promise<UserSubscriptionPlan> {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data, error } = await supabase
     .from('subscriptions')

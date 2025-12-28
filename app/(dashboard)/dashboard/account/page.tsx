@@ -35,7 +35,7 @@ const ImageUpload = dynamic(
 );
 
 export default async function AccountPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const user = await getUser(supabase);
   const userDetails = user ? await getUserDetails(supabase) : null;
   const subscription = user ? await getSubscription(supabase, user.id) : null;
