@@ -10,26 +10,26 @@ import { navSpring, itemSpring } from './spring-configs';
 
 /**
  * Backdrop overlay animation
- * Fades in with blur effect
+ * Fades in with blur effect - OPTIMIZED for speed
  */
 export const backdropVariants: Variants = {
   hidden: {
     opacity: 0,
     transition: {
-      duration: 0.2
+      duration: 0.15
     }
   },
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.3
+      duration: 0.2
     }
   }
 };
 
 /**
  * Mobile navigation panel animation
- * Slides in from right with spring physics
+ * Slides in from right with spring physics - OPTIMIZED
  * Includes stagger configuration for children (menu items)
  */
 export const mobileNavVariants: Variants = {
@@ -37,7 +37,7 @@ export const mobileNavVariants: Variants = {
     x: '100%',
     transition: {
       ...navSpring,
-      staggerChildren: 0.05,
+      staggerChildren: 0.03,
       staggerDirection: -1 // Reverse order on exit
     }
   },
@@ -45,8 +45,8 @@ export const mobileNavVariants: Variants = {
     x: 0,
     transition: {
       ...navSpring,
-      staggerChildren: 0.07,
-      delayChildren: 0.2 // Wait for panel to start sliding
+      staggerChildren: 0.04,
+      delayChildren: 0.1 // Faster start - Wait for panel to start sliding
     }
   }
 };

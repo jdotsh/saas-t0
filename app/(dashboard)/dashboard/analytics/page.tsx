@@ -135,11 +135,11 @@ function SimpleBarChart({ data }: { data: typeof mockData.userGrowth }) {
             </div>
             <div className="relative h-8 bg-muted rounded-md overflow-hidden">
               <div
-                className="absolute h-full bg-primary/20 transition-all duration-500"
+                className="absolute h-full bg-primary/20 transition-all duration-200 ease-smooth"
                 style={{ width: `${percentage}%` }}
               />
               <div
-                className="absolute h-full bg-primary transition-all duration-500"
+                className="absolute h-full bg-primary transition-all duration-200 ease-smooth"
                 style={{ width: `${activePercentage}%` }}
               />
             </div>
@@ -167,10 +167,10 @@ function SimpleLineChart({ data }: { data: typeof mockData.revenue }) {
             >
               <div className="w-full flex items-end justify-center relative group">
                 <div
-                  className="w-full bg-gradient-to-t from-primary to-primary/50 rounded-t-md transition-all duration-500 hover:opacity-80 relative"
+                  className="w-full bg-gradient-to-t from-primary to-primary/50 rounded-t-md transition-all duration-200 ease-smooth hover:opacity-80 relative"
                   style={{ height: `${height}%`, minHeight: '4px' }}
                 >
-                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-popover text-popover-foreground px-2 py-1 rounded text-xs whitespace-nowrap shadow-md">
+                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-150 bg-popover text-popover-foreground px-2 py-1 rounded text-xs whitespace-nowrap shadow-md">
                     ${(item.revenue / 1000).toFixed(1)}k
                   </div>
                 </div>

@@ -100,35 +100,36 @@ module.exports = {
         heading: ['var(--font-heading)', ...fontFamily.sans]
       },
       keyframes: {
+        // Accordion animations - faster, snappier
         'accordion-down': {
-          from: { height: 0 },
-          to: { height: 'var(--radix-accordion-content-height)' }
+          from: { height: '0', opacity: '0' },
+          to: { height: 'var(--radix-accordion-content-height)', opacity: '1' }
         },
         'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: 0 }
+          from: { height: 'var(--radix-accordion-content-height)', opacity: '1' },
+          to: { height: '0', opacity: '0' }
         },
+        // Ripple effect - smooth and fast
         ripple: {
-          '0%, 100%': {
-            transform: 'translate(-50%, -50%) scale(1)'
-          },
-          '50%': {
-            transform: 'translate(-50%, -50%) scale(0.9)'
-          }
+          '0%': { transform: 'translate(-50%, -50%) scale(0)', opacity: '1' },
+          '100%': { transform: 'translate(-50%, -50%) scale(4)', opacity: '0' }
         },
+        // Pulse for loading states
+        pulse: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' }
+        },
+        // Gradient animation for backgrounds
         gradient: {
-          to: {
-            backgroundPosition: 'var(--bg-size) 0'
-          }
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' }
         },
+        // Shimmer effect - faster, more noticeable
         shimmer: {
-          '0%, 90%, 100%': {
-            'background-position': 'calc(-100% - var(--shimmer-width)) 0'
-          },
-          '30%, 60%': {
-            'background-position': 'calc(100% + var(--shimmer-width)) 0'
-          }
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' }
         },
+        // Marquee scrolling
         marquee: {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(calc(-100% - var(--gap)))' }
@@ -136,16 +137,99 @@ module.exports = {
         'marquee-vertical': {
           from: { transform: 'translateY(0)' },
           to: { transform: 'translateY(calc(-100% - var(--gap)))' }
+        },
+        // Fade in from bottom (entrance animation)
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        },
+        // Fade in from top
+        'fade-down': {
+          '0%': { opacity: '0', transform: 'translateY(-10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        },
+        // Scale in (pop effect)
+        'scale-in': {
+          '0%': { opacity: '0', transform: 'scale(0.9)' },
+          '100%': { opacity: '1', transform: 'scale(1)' }
+        },
+        // Slide in from right (mobile menu)
+        'slide-in-right': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' }
+        },
+        // Slide in from left
+        'slide-in-left': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' }
+        },
+        // Spin (loading spinner)
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' }
         }
       },
       animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-        ripple: 'ripple 3400ms ease infinite',
-        shimmer: 'shimmer 8s infinite',
-        marquee: 'marquee var(--duration) linear infinite',
-        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
-        gradient: 'gradient 8s linear infinite'
+        // Faster, snappier accordions
+        'accordion-down': 'accordion-down 150ms cubic-bezier(0.4, 0, 0, 1)',
+        'accordion-up': 'accordion-up 150ms cubic-bezier(0.4, 0, 0, 1)',
+
+        // Ripple effect
+        'ripple': 'ripple 600ms cubic-bezier(0, 0, 0.2, 1)',
+        'ripple-slow': 'ripple 1000ms cubic-bezier(0, 0, 0.2, 1)',
+
+        // Pulse
+        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+
+        // Gradient
+        'gradient': 'gradient 3s ease infinite',
+        'gradient-slow': 'gradient 6s ease infinite',
+
+        // Shimmer - faster for better visibility
+        'shimmer': 'shimmer 2s ease-in-out infinite',
+        'shimmer-slow': 'shimmer 3s ease-in-out infinite',
+
+        // Marquee
+        'marquee': 'marquee var(--duration, 30s) linear infinite',
+        'marquee-vertical': 'marquee-vertical var(--duration, 30s) linear infinite',
+
+        // Entrance animations
+        'fade-up': 'fade-up 200ms cubic-bezier(0.4, 0, 0, 1)',
+        'fade-down': 'fade-down 200ms cubic-bezier(0.4, 0, 0, 1)',
+        'scale-in': 'scale-in 150ms cubic-bezier(0.4, 0, 0, 1)',
+
+        // Slide animations
+        'slide-in-right': 'slide-in-right 200ms cubic-bezier(0.4, 0, 0, 1)',
+        'slide-in-left': 'slide-in-left 200ms cubic-bezier(0.4, 0, 0, 1)',
+
+        // Spin
+        'spin': 'spin 1s linear infinite',
+        'spin-slow': 'spin 2s linear infinite',
+        'spin-fast': 'spin 0.6s linear infinite'
+      },
+      // Custom transition timing functions
+      transitionTimingFunction: {
+        'snappy': 'cubic-bezier(0.4, 0, 0, 1)',
+        'smooth': 'cubic-bezier(0.32, 0.72, 0, 1)',
+        'spring': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+      },
+      // Faster transition durations
+      transitionDuration: {
+        '0': '0ms',
+        '50': '50ms',
+        '100': '100ms',
+        '150': '150ms',
+        '200': '200ms',
+        '250': '250ms',
+        '300': '300ms',
+        '400': '400ms',
+        '500': '500ms',
+        '600': '600ms',
+        '700': '700ms',
+        '800': '800ms',
+        '900': '900ms',
+        '1000': '1000ms',
       }
     }
   },

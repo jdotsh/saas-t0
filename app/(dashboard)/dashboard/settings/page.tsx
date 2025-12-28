@@ -45,7 +45,7 @@ export default function SettingsPage() {
             </CardHeader>
             <CardContent className="grid gap-2">
               <div
-                className={`flex items-center justify-between p-2 ${isEverythingToggled ? 'bg-accent text-accent-foreground rounded-md' : ''} transition-colors ease-in-out duration-300`}
+                className={`flex items-center justify-between p-2 ${isEverythingToggled ? 'bg-accent text-accent-foreground rounded-md' : ''} transition-colors ease-snappy duration-150`}
               >
                 <div className="flex items-center space-x-2">
                   <Bell className="h-5 w-5" />
@@ -63,7 +63,7 @@ export default function SettingsPage() {
                 />
               </div>
               <div
-                className={`flex items-center justify-between p-2 ${isAvailableToggled ? 'bg-accent text-accent-foreground rounded-md' : ''} transition-colors ease-in-out duration-300`}
+                className={`flex items-center justify-between p-2 ${isAvailableToggled ? 'bg-accent text-accent-foreground rounded-md' : ''} transition-colors ease-snappy duration-150`}
               >
                 <div className="flex items-center space-x-2">
                   <AtSign className="h-5 w-5" />
@@ -82,7 +82,7 @@ export default function SettingsPage() {
                 />
               </div>
               <div
-                className={`flex items-center justify-between p-2 ${isNotificationToggled ? 'bg-accent text-accent-foreground rounded-md' : ''} transition-colors ease-in-out duration-300`}
+                className={`flex items-center justify-between p-2 ${isNotificationToggled ? 'bg-accent text-accent-foreground rounded-md' : ''} transition-colors ease-snappy duration-150`}
               >
                 <div className="flex items-center space-x-2">
                   <EyeOff className="h-5 w-5" />
