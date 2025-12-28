@@ -1,10 +1,10 @@
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { ratelimitRequest, getIdentifier } from '@/lib/rate-limit';
 import { logger } from '@/lib/logger';
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   const supabase = createRouteHandlerClient({ cookies });
 
   // Check if the user is authenticated
@@ -17,8 +17,8 @@ export async function GET(req: Request) {
   }
 
   // Rate limiting (prevent abuse)
-  const identifier = getIdentifier(req, user.id);
-  const { success } = await ratelimitRequest(identifier);
+  const identifier = getIdentifier(req);
+  const success = await ratelimitRequest(req);
 
   if (!success) {
     return NextResponse.json(

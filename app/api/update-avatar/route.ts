@@ -41,8 +41,8 @@ export async function POST(request: Request) {
   }
 
   // Step 2: Rate limiting (NEW - prevent abuse)
-  const identifier = getIdentifier(request, user.id);
-  const { success } = await ratelimitRequest(identifier);
+  const identifier = getIdentifier(request);
+  const success = await ratelimitRequest(request);
 
   if (!success) {
     return NextResponse.json(

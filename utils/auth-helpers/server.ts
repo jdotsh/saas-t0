@@ -267,7 +267,7 @@ export async function updatePassword(formData: FormData) {
   return redirectPath;
 }
 
-export async function updateEmail(formData: FormData) {
+export async function updateEmail(formData: FormData): Promise<void> {
   const newEmail = String(formData.get('newEmail')).trim();
 
   if (!isValidEmail(newEmail)) {
@@ -310,7 +310,7 @@ export async function updateEmail(formData: FormData) {
   }
 }
 
-export async function updateName(formData: FormData) {
+export async function updateName(formData: FormData): Promise<void> {
   const fullName = String(formData.get('fullName')).trim();
 
   const supabase = createClient();
@@ -319,22 +319,28 @@ export async function updateName(formData: FormData) {
   });
 
   if (error) {
-    return getErrorRedirect(
-      '/dashboard/account',
-      'Your name could not be updated.',
-      error.message
+    return redirect(
+      getErrorRedirect(
+        '/dashboard/account',
+        'Your name could not be updated.',
+        error.message
+      )
     );
   } else if (data.user) {
-    return getStatusRedirect(
-      '/dashboard/account',
-      'Success!',
-      'Your name has been updated.'
+    return redirect(
+      getStatusRedirect(
+        '/dashboard/account',
+        'Success!',
+        'Your name has been updated.'
+      )
     );
   } else {
-    return getErrorRedirect(
-      '/dashboard/account',
-      'Hmm... Something went wrong.',
-      'Your name could not be updated.'
+    return redirect(
+      getErrorRedirect(
+        '/dashboard/account',
+        'Hmm... Something went wrong.',
+        'Your name could not be updated.'
+      )
     );
   }
 }

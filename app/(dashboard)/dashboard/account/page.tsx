@@ -18,7 +18,7 @@ import {
   getUserDetails,
   getSubscription
 } from '@/utils/supabase/queries';
-import { updateName, updateEmail } from '@/utils/auth-helpers/server';
+import { updateName, updateEmail } from './actions';
 import { ImageUpload } from './image-upload';
 import { redirect } from 'next/navigation';
 
