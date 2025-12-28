@@ -73,10 +73,10 @@ export default function HeroSection() {
           {/* Premium Orange Announcement Badge */}
           <Link
             href={siteConfig.links.twitter}
-            className="inline-flex transition-transform hover:scale-105 duration-200 ease-snappy cursor-pointer group bg-gradient-to-br from-white/10 to-white/5 rounded-full py-2 px-4 backdrop-blur-md gap-2.5 items-center border border-white/20 hover:border-white/30 shadow-lg hover:shadow-xl"
+            className="inline-flex transition-transform hover:scale-105 duration-200 ease-snappy cursor-pointer group bg-gradient-to-br from-orange-500/10 to-orange-600/5 dark:from-white/10 dark:to-white/5 rounded-full py-2 px-4 backdrop-blur-md gap-2.5 items-center border border-orange-500/30 dark:border-white/20 hover:border-orange-500/50 dark:hover:border-white/30 shadow-lg hover:shadow-xl"
           >
             <span className="flex h-2 w-2 rounded-full bg-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.6)] group-hover:shadow-[0_0_16px_rgba(249,115,22,0.8)] group-hover:animate-pulse"></span>
-            <span className="text-sm font-semibold text-orange-50/90 tracking-tight group-hover:text-white transition-colors duration-200">
+            <span className="text-sm font-semibold text-orange-700 dark:text-orange-50/90 tracking-tight group-hover:text-orange-900 dark:group-hover:text-white transition-colors duration-200">
               New: Next.js 15 + Supabase Starter
             </span>
           </Link>
@@ -126,18 +126,18 @@ export default function HeroSection() {
             Everything you need to launch fast.
           </p>
 
-          {/* CTA Buttons - Clean & Modern */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 w-full sm:w-auto px-4">
+          {/* CTA Buttons - Clean & Modern - Mobile Optimized */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-4 w-full max-w-md sm:max-w-none px-4 sm:px-0">
             <Link
               href="/signup"
-              className="group relative inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-pink-600 rounded-xl shadow-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-200 ease-snappy hover:scale-105 active:scale-95"
+              className="group relative inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg sm:rounded-xl shadow-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-150 ease-snappy hover:scale-105 active:scale-95"
             >
               Get Started Free
               <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="#pricing"
-              className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 text-base font-semibold text-foreground bg-background/50 backdrop-blur-sm border-2 border-border/50 hover:border-border rounded-xl transition-all duration-200 ease-snappy hover:scale-105 hover:bg-background/80 active:scale-95"
+              className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-foreground bg-background/50 backdrop-blur-sm border-2 border-border/50 hover:border-border rounded-lg sm:rounded-xl transition-all duration-150 ease-snappy hover:scale-105 hover:bg-background/80 active:scale-95"
             >
               View Pricing
             </Link>

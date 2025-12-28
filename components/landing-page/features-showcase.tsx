@@ -44,10 +44,10 @@ function FeatureModule({
   const bgClass = index % 2 === 0 ? 'bg-background' : 'bg-muted/30';
 
   return (
-    <section className={`w-full ${bgClass} transition-colors duration-500`}>
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
+    <section className={`w-full ${bgClass} transition-colors duration-150`}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:px-8 lg:py-32">
         <div
-          className={`grid gap-12 lg:grid-cols-2 lg:gap-16 ${
+          className={`grid gap-8 sm:gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 ${
             reverse ? 'lg:flex-row-reverse' : ''
           }`}
         >
@@ -56,26 +56,28 @@ function FeatureModule({
             initial={{ opacity: 0, x: reverse ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
             className={`flex flex-col justify-center ${
               reverse ? 'lg:order-2' : 'lg:order-1'
             }`}
           >
             {/* Benefit Badge */}
-            <div className="mb-4 inline-flex w-fit items-center rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+            <div className="mb-3 sm:mb-4 inline-flex w-fit items-center rounded-full border border-primary/30 bg-primary/10 px-3 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-semibold text-primary">
               {benefit}
             </div>
 
             {/* Headline */}
-            <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
               {headline}
             </h2>
 
             {/* Description */}
-            <p className="mb-8 text-lg text-muted-foreground">{description}</p>
+            <p className="mb-6 sm:mb-8 text-base sm:text-lg text-muted-foreground">
+              {description}
+            </p>
 
             {/* Details Checklist */}
-            <ul className="space-y-4">
+            <ul className="space-y-3 sm:space-y-4">
               {details.map((detail, idx) => (
                 <motion.li
                   key={idx}
@@ -83,18 +85,20 @@ function FeatureModule({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{
-                    duration: 0.4,
-                    delay: 0.1 * idx
+                    duration: 0.15,
+                    delay: 0.03 * idx
                   }}
-                  className="flex items-start gap-3"
+                  className="flex items-start gap-2 sm:gap-3"
                 >
-                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                  <div className="mt-0.5 flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full bg-primary/10">
                     <Check
-                      className="h-4 w-4 text-primary"
+                      className="h-3 w-3 sm:h-4 sm:w-4 text-primary"
                       aria-hidden="true"
                     />
                   </div>
-                  <span className="text-base text-foreground">{detail}</span>
+                  <span className="text-sm sm:text-base text-foreground">
+                    {detail}
+                  </span>
                 </motion.li>
               ))}
             </ul>
@@ -105,7 +109,7 @@ function FeatureModule({
             initial={{ opacity: 0, x: reverse ? -50 : 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+            transition={{ duration: 0.2, ease: 'easeOut', delay: 0.05 }}
             className={`relative ${reverse ? 'lg:order-1' : 'lg:order-2'}`}
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-muted/50 shadow-2xl">

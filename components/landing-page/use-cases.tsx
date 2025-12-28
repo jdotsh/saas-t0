@@ -24,24 +24,24 @@ import { Check } from 'lucide-react';
 export function UseCases() {
   return (
     <section className="w-full bg-background">
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:px-8 lg:py-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
+          transition={{ duration: 0.2 }}
+          className="text-center px-4"
         >
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
             Built for every type of builder
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+          <p className="mx-auto mt-3 sm:mt-4 max-w-2xl text-base sm:text-lg text-muted-foreground">
             Whether you're a solo founder, freelancer, or agency, Nexus adapts
             to your workflow
           </p>
         </motion.div>
 
-        <div className="mt-16 grid gap-8 lg:mt-20 lg:grid-cols-3 lg:gap-8">
+        <div className="mt-12 sm:mt-16 lg:mt-20 grid gap-6 sm:gap-8 lg:grid-cols-3 lg:gap-8">
           {useCases.map((useCase, index) => {
             const Icon = useCase.icon;
 
@@ -52,32 +52,35 @@ export function UseCases() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{
-                  duration: 0.5,
-                  delay: 0.1 * index
+                  duration: 0.2,
+                  delay: 0.03 * index
                 }}
                 whileHover={{
                   y: -8,
-                  transition: { duration: 0.2, ease: 'easeOut' }
+                  transition: { duration: 0.15, ease: 'easeOut' }
                 }}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-shadow duration-300 hover:shadow-lg"
+                className="group relative flex flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm transition-shadow duration-150 hover:shadow-lg"
               >
                 {/* Icon */}
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
-                  <Icon className="h-7 w-7 text-primary" aria-hidden="true" />
+                <div className="mb-4 sm:mb-6 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-lg sm:rounded-xl bg-primary/10 transition-colors duration-150 group-hover:bg-primary/20">
+                  <Icon
+                    className="h-6 w-6 sm:h-7 sm:w-7 text-primary"
+                    aria-hidden="true"
+                  />
                 </div>
 
                 {/* Persona Badge */}
-                <div className="mb-3 inline-flex w-fit items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                <div className="mb-2 sm:mb-3 inline-flex w-fit items-center rounded-full border border-primary/20 bg-primary/5 px-2.5 sm:px-3 py-0.5 sm:py-1 text-xs font-medium text-primary">
                   {useCase.persona}
                 </div>
 
                 {/* Title */}
-                <h3 className="mb-3 text-2xl font-bold tracking-tight">
+                <h3 className="mb-2 sm:mb-3 text-xl sm:text-2xl font-bold tracking-tight">
                   {useCase.title}
                 </h3>
 
                 {/* Problem */}
-                <p className="mb-4 text-sm text-muted-foreground">
+                <p className="mb-3 sm:mb-4 text-xs sm:text-sm text-muted-foreground">
                   <span className="font-semibold text-foreground">
                     The problem:
                   </span>{' '}
@@ -85,7 +88,7 @@ export function UseCases() {
                 </p>
 
                 {/* Solution */}
-                <p className="mb-6 text-sm text-muted-foreground">
+                <p className="mb-4 sm:mb-6 text-xs sm:text-sm text-muted-foreground">
                   <span className="font-semibold text-foreground">
                     The solution:
                   </span>{' '}
@@ -93,14 +96,16 @@ export function UseCases() {
                 </p>
 
                 {/* Benefits Checklist */}
-                <ul className="mb-8 space-y-3 flex-1">
+                <ul className="mb-6 sm:mb-8 space-y-2 sm:space-y-3 flex-1">
                   {useCase.benefits.map((benefit, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <Check
-                        className="mt-0.5 h-5 w-5 shrink-0 text-primary"
+                        className="mt-0.5 h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-primary"
                         aria-hidden="true"
                       />
-                      <span className="text-sm text-foreground">{benefit}</span>
+                      <span className="text-xs sm:text-sm text-foreground">
+                        {benefit}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -109,8 +114,8 @@ export function UseCases() {
                 <Link
                   href={useCase.ctaHref}
                   className={cn(
-                    buttonVariants({ variant: 'default', size: 'lg' }),
-                    'w-full transition-transform duration-200 group-hover:translate-x-0.5'
+                    buttonVariants({ variant: 'default' }),
+                    'w-full text-sm sm:text-base py-2 sm:py-2.5 transition-transform duration-150 group-hover:translate-x-0.5'
                   )}
                 >
                   {useCase.ctaText}
