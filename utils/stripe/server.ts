@@ -32,7 +32,7 @@ export async function checkoutWithStripe(
     } = await supabase.auth.getUser();
 
     if (error || !user) {
-      logger.error(error);
+      logger.error('Could not get user session', error);
       throw new Error('Could not get user session.');
     }
 
@@ -44,7 +44,7 @@ export async function checkoutWithStripe(
         email: user?.email || ''
       });
     } catch (err: unknown) {
-      logger.error(err);
+      logger.error('Unable to access customer record', err);
       throw new Error('Unable to access customer record.');
     }
 
@@ -65,10 +65,9 @@ export async function checkoutWithStripe(
       success_url: getURL(redirectPath)
     };
 
-    logger.info(
-      'Trial end:',
-      calculateTrialEndUnixTimestamp(price.trial_period_days)
-    );
+    logger.info('Trial end', {
+      timestamp: calculateTrialEndUnixTimestamp(price.trial_period_days)
+    });
     if (price.type === 'recurring') {
       params = {
         ...params,
@@ -89,7 +88,7 @@ export async function checkoutWithStripe(
     try {
       session = await stripe.checkout.sessions.create(params);
     } catch (err: unknown) {
-      logger.error(err);
+      logger.error('Unable to create checkout session', err);
       throw new Error('Unable to create checkout session.');
     }
 
@@ -130,7 +129,7 @@ export async function createStripePortal(currentPath: string) {
 
     if (!user) {
       if (error) {
-        logger.error(error);
+        logger.error('Could not get user session', error);
       }
       throw new Error('Could not get user session.');
     }
@@ -142,7 +141,7 @@ export async function createStripePortal(currentPath: string) {
         email: user.email || ''
       });
     } catch (err: unknown) {
-      logger.error(err);
+      logger.error('Unable to access customer record', err);
       throw new Error('Unable to access customer record.');
     }
 
@@ -160,12 +159,12 @@ export async function createStripePortal(currentPath: string) {
       }
       return url;
     } catch (err: unknown) {
-      logger.error(err);
+      logger.error('Could not create billing portal', err);
       throw new Error('Could not create billing portal');
     }
   } catch (error: unknown) {
     if (error instanceof Error) {
-      logger.error(error);
+      logger.error('Error creating billing portal session', error);
       return getErrorRedirect(
         currentPath,
         error.message,

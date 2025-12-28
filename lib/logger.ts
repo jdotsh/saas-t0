@@ -11,6 +11,18 @@ interface LogContext {
   [key: string]: unknown;
 }
 
+interface FormattedLog {
+  formatted: string;
+  context?: LogContext;
+}
+
+interface BaseLog {
+  timestamp: string;
+  level: LogLevel;
+  message: string;
+  [key: string]: unknown;
+}
+
 class Logger {
   private isDevelopment = process.env.NODE_ENV === 'development';
   private isProduction = process.env.NODE_ENV === 'production';
@@ -23,7 +35,7 @@ class Logger {
     level: LogLevel,
     message: string,
     context?: LogContext
-  ): unknown {
+  ): FormattedLog | BaseLog {
     const baseLog = {
       timestamp: this.getTimestamp(),
       level,
@@ -64,7 +76,7 @@ class Logger {
 
     const log = this.formatMessage('debug', message, context);
 
-    if (this.isDevelopment) {
+    if (this.isDevelopment && 'formatted' in log) {
       // eslint-disable-next-line no-console
       console.log(log.formatted, log.context || '');
     } else {
@@ -78,7 +90,7 @@ class Logger {
 
     const log = this.formatMessage('info', message, context);
 
-    if (this.isDevelopment) {
+    if (this.isDevelopment && 'formatted' in log) {
       // eslint-disable-next-line no-console
       console.log(log.formatted, log.context || '');
     } else {
@@ -93,7 +105,7 @@ class Logger {
 
     const log = this.formatMessage('warn', message, context);
 
-    if (this.isDevelopment) {
+    if (this.isDevelopment && 'formatted' in log) {
       // eslint-disable-next-line no-console
       console.warn(log.formatted, log.context || '');
     } else {
@@ -122,7 +134,7 @@ class Logger {
 
     const log = this.formatMessage('error', message, errorContext);
 
-    if (this.isDevelopment) {
+    if (this.isDevelopment && 'formatted' in log) {
       // eslint-disable-next-line no-console
       console.error(log.formatted, errorContext);
     } else {

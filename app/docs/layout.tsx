@@ -2,8 +2,6 @@ import { DocsLayout } from 'fumadocs-ui/layout';
 import type { ReactNode } from 'react';
 import { docsOptions } from '@/app/layout.config';
 // import 'fumadocs-ui/style.css';
-import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle';
-import { Icons } from '@/components/icons';
 import { SunIcon } from '@heroicons/react/24/solid';
 import 'fumadocs-ui/twoslash.css';
 

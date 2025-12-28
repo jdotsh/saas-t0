@@ -8,6 +8,7 @@
  */
 import { initTRPC, TRPCError } from '@trpc/server';
 import superjson from 'superjson';
+import { logger } from '@/lib/logger';
 import { ZodError } from 'zod';
 import { getUser } from '@/utils/supabase/queries';
 import { createClient } from '@/utils/supabase/server';

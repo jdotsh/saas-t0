@@ -5,6 +5,7 @@
  */
 
 import { PromoBanner, usePromoBanner } from '@/components/ui/promo-banner';
+import { logger } from '@/lib/logger';
 
 // ============================================================================
 // Example 1: Basic Usage - Add to Root Layout
@@ -69,7 +70,7 @@ export function CustomPromoExample() {
       storageKey="flash-sale-dismissed" // Custom storage key
       className="bg-gradient-to-r from-purple-500 to-pink-500 text-white" // Custom styling
       onDismiss={() => logger.info('Banner dismissed')}
-      onCopy={(code) => logger.info('Copied code:', code)}
+      onCopy={(code) => logger.info('Copied code', { code })}
     />
   );
 }
@@ -219,11 +220,21 @@ export function ABTestBannerExample() {
 
 ('use client');
 
+// Type for Google Analytics gtag
+interface WindowWithGtag extends Window {
+  gtag?: (
+    command: string,
+    action: string,
+    params: Record<string, unknown>
+  ) => void;
+}
+
 export function AnalyticsBannerExample() {
   const handleCopy = (code: string) => {
     // Track coupon copy event
-    if (typeof window !== 'undefined' && (window as unknown).gtag) {
-      (window as unknown).gtag('event', 'coupon_copied', {
+    const win = window as WindowWithGtag;
+    if (typeof window !== 'undefined' && win.gtag) {
+      win.gtag('event', 'coupon_copied', {
         coupon_code: code,
         campaign: 'boxing_day_2025'
       });
@@ -232,8 +243,9 @@ export function AnalyticsBannerExample() {
 
   const handleDismiss = () => {
     // Track banner dismiss event
-    if (typeof window !== 'undefined' && (window as unknown).gtag) {
-      (window as unknown).gtag('event', 'promo_banner_dismissed', {
+    const win = window as WindowWithGtag;
+    if (typeof window !== 'undefined' && win.gtag) {
+      win.gtag('event', 'promo_banner_dismissed', {
         campaign: 'boxing_day_2025'
       });
     }

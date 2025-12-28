@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { faqItems } from '@/config/faq';
+import { ArrowDownLeft } from 'lucide-react';
 
 export default function FAQSection() {
   const [activeItem, setActiveItem] = useState<number | null>(null);
@@ -26,14 +27,9 @@ export default function FAQSection() {
               onClick={() => toggleItem(index)}
             >
               <span>{item.question}</span>
-              <ArrowDownLeftIcon
+              <ArrowDownLeft
                 className={`h-5 w-5 text-muted-foreground transition-transform duration-300 ease-in-out ${activeItem === index ? 'rotate-45' : ''}`}
               />
-              {/* 
-              <CrossIcon
-              className={`h-5 w-5 text-muted-foreground transition-transform ${activeItem === index ? "rotate-90" : ""}`}
-              /> 
-              */}
             </div>
             <div
               className={`overflow-hidden transition-all duration-300 ease-in-out ${
@@ -48,44 +44,5 @@ export default function FAQSection() {
         ))}
       </div>
     </section>
-  );
-}
-
-function ArrowDownLeftIcon(props: unknown) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M17 7 7 17" />
-      <path d="M17 17H7V7" />
-    </svg>
-  );
-}
-
-function CrossIcon(props: unknown) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z" />
-    </svg>
   );
 }

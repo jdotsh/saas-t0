@@ -1,6 +1,6 @@
 import { Icons } from '@/components/icons';
 import { Separator } from '@/components/ui/separator';
-import { Eclipse, Github } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 export default function FooterBlog() {
   return (
