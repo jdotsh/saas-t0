@@ -14,7 +14,7 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
 import { z } from 'zod';
-import { ratelimitRequest, getIdentifier } from '@/lib/rate-limit';
+import { ratelimitRequest } from '@/lib/rate-limit';
 import { logger } from '@/lib/logger';
 import { Database } from '@/types/db';
 
@@ -44,7 +44,6 @@ export async function POST(request: NextRequest) {
   }
 
   // Step 2: Rate limiting (NEW - prevent abuse)
-  const identifier = getIdentifier(request);
   const success = await ratelimitRequest(request);
 
   if (!success) {
@@ -75,7 +74,7 @@ export async function POST(request: NextRequest) {
   // Step 4: Update only the authenticated user's avatar (NOT userId from request body!)
   const { data, error } = await supabase
     .from('users')
-    // @ts-ignore - Supabase SSR package has type inference issues with update operations
+    // @ts-expect-error - Supabase SSR package has type inference issues with update operations
     .update({ avatar_url: validatedInput.avatarUrl })
     .eq('id', user.id) // ← SECURITY FIX: Use authenticated user's ID
     .select()

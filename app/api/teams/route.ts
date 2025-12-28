@@ -1,7 +1,7 @@
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
-import { ratelimitRequest, getIdentifier } from '@/lib/rate-limit';
+import { ratelimitRequest } from '@/lib/rate-limit';
 import { logger } from '@/lib/logger';
 
 export async function GET(req: NextRequest) {
@@ -17,7 +17,6 @@ export async function GET(req: NextRequest) {
   }
 
   // Rate limiting (prevent abuse)
-  const identifier = getIdentifier(req);
   const success = await ratelimitRequest(req);
 
   if (!success) {

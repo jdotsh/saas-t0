@@ -3,9 +3,10 @@ import { z } from 'zod';
 
 export const env = createEnv({
   server: {
-    STRIPE_API_KEY: z.string().min(1),
-    STRIPE_WEBHOOK_SECRET: z.string().min(1),
-    STRIPE_PRO_MONTHLY_PLAN_ID: z.string().min(1),
+    // Stripe keys are optional for build time, but required at runtime for payment features
+    STRIPE_API_KEY: z.string().optional(),
+    STRIPE_WEBHOOK_SECRET: z.string().optional(),
+    STRIPE_PRO_MONTHLY_PLAN_ID: z.string().optional(),
     GITHUB_ACCESS_TOKEN: z.string().optional(),
     SERVER_API_KEY: z.string().optional()
   },
