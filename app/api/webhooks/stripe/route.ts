@@ -1,6 +1,8 @@
 import Stripe from 'stripe';
 import { stripe } from '@/utils/stripe/config';
 import { logger } from '@/lib/logger';
+import { checkRateLimit } from '@/lib/rate-limit';
+import { env } from '@/env.mjs';
 import {
   upsertProductRecord,
   upsertPriceRecord,
@@ -23,10 +25,18 @@ const relevantEvents = new Set([
 ]);
 
 export async function POST(req: Request) {
-  logger.info('Received a request');
+  const ip = req.headers.get('x-forwarded-for') || 'unknown';
+  const isAllowed = await checkRateLimit(`webhook:${ip}`);
+
+  if (!isAllowed) {
+    logger.warn('Rate limit exceeded for webhook', { ip });
+    return new Response('Too many requests', { status: 429 });
+  }
+
+  logger.info('Received Stripe webhook request');
   const body = await req.text();
   const sig = req.headers.get('stripe-signature') as string;
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  const webhookSecret = env.STRIPE_WEBHOOK_SECRET;
   let event: Stripe.Event;
 
   try {
@@ -35,10 +45,12 @@ export async function POST(req: Request) {
       return new Response('Webhook secret not found.', { status: 400 });
     }
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
-    logger.info(`🔔  Webhook received: ${event.type}`);
+    logger.info('Stripe webhook received', { type: event.type });
   } catch (err: unknown) {
     const errorMessage = err instanceof Error ? err.message : 'Unknown error';
-    logger.info(`❌ Error message: ${errorMessage}`);
+    logger.error('Webhook signature verification failed', {
+      error: errorMessage
+    });
     return new Response(`Webhook Error: ${errorMessage}`, { status: 400 });
   }
 

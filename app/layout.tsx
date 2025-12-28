@@ -5,6 +5,7 @@ import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
+import { ErrorBoundary } from '@/components/error-boundary';
 import { Inter as FontSans } from 'next/font/google';
 import localFont from 'next/font/local';
 import type { Viewport } from 'next';
@@ -87,10 +88,12 @@ export default async function RootLayout({ children }: PropsWithChildren) {
           fontHeading.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TRPCReactProvider>{children}</TRPCReactProvider>
-          <Toaster />
-        </ThemeProvider>
+        <ErrorBoundary>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <TRPCReactProvider>{children}</TRPCReactProvider>
+            <Toaster />
+          </ThemeProvider>
+        </ErrorBoundary>
         <Analytics />
       </body>
     </html>

@@ -3,10 +3,10 @@ const config = {
   reactStrictMode: true,
   output: 'standalone',
   eslint: {
-    ignoreDuringBuilds: true
+    ignoreDuringBuilds: false
   },
   typescript: {
-    ignoreBuildErrors: true
+    ignoreBuildErrors: false
   },
   images: {
     remotePatterns: [
@@ -22,7 +22,7 @@ const config = {
       },
       {
         protocol: 'https',
-        hostname: 'llmgwifgtszjgjlzlwjq.supabase.co',
+        hostname: '*.supabase.co',
         port: ''
       }
     ]

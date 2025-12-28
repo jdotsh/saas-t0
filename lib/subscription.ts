@@ -1,7 +1,3 @@
-// @ts-nocheck
-// TODO: This file needs refactoring - subscription data should come from 'subscriptions' table,
-// not from 'users' table. The database schema doesn't have stripe columns on users table.
-// This requires coordination with database migrations.
 import { freePlan, proPlan } from '@/config/subscriptions';
 import { createClient } from '@/utils/supabase/server';
 import { UserSubscriptionPlan } from '../types';
@@ -10,31 +6,33 @@ export async function getUserSubscriptionPlan(
   userId: string
 ): Promise<UserSubscriptionPlan> {
   const supabase = createClient();
-  const { data: user } = await supabase
-    .from('users')
-    .select(
-      'stripe_subscription_id, stripe_current_period_end, stripe_customer_id, stripe_price_id'
-    )
-    .eq('id', userId)
-    .single();
-  if (!user) {
-    throw new Error('User not found');
+
+  const { data: subscription, error } = await supabase
+    .from('subscriptions')
+    .select('*')
+    .eq('user_id', userId)
+    .eq('status', 'active')
+    .maybeSingle();
+
+  if (error) {
+    throw new Error(`Failed to fetch subscription: ${error.message}`);
   }
 
-  // Check if user is on a pro plan.
-  // Supabase returns dates as ISO strings, so we need to parse them
-  const periodEnd = user.stripe_current_period_end
-    ? new Date(user.stripe_current_period_end).getTime()
-    : 0;
-
-  const isPro = user.stripe_price_id && periodEnd + 86_400_000 > Date.now();
+  const isPro =
+    subscription?.status === 'active' &&
+    subscription?.price_id &&
+    new Date(subscription.current_period_end).getTime() > Date.now();
 
   const plan = isPro ? proPlan : freePlan;
 
   return {
     ...plan,
-    ...user,
-    stripe_current_period_end: periodEnd || undefined,
+    stripe_subscription_id: subscription?.id,
+    stripe_customer_id: subscription?.user_id,
+    stripe_price_id: subscription?.price_id,
+    stripe_current_period_end: subscription?.current_period_end
+      ? new Date(subscription.current_period_end).getTime()
+      : undefined,
     isPro
   };
 }

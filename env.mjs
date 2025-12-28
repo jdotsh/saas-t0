@@ -3,9 +3,9 @@ import { z } from 'zod';
 
 export const env = createEnv({
   server: {
-    STRIPE_API_KEY: z.string().min(1).optional(),
-    STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
-    STRIPE_PRO_MONTHLY_PLAN_ID: z.string().min(1).optional(),
+    STRIPE_API_KEY: z.string().min(1),
+    STRIPE_WEBHOOK_SECRET: z.string().min(1),
+    STRIPE_PRO_MONTHLY_PLAN_ID: z.string().min(1),
     GITHUB_ACCESS_TOKEN: z.string().optional(),
     SERVER_API_KEY: z.string().optional()
   },

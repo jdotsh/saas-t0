@@ -6,9 +6,17 @@ import { redirect } from 'next/navigation';
 import { getURL, getErrorRedirect, getStatusRedirect } from '@/utils/helpers';
 import { getAuthTypes } from '@/utils/auth-helpers/settings';
 
-function isValidEmail(email: string) {
-  const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-  return regex.test(email);
+import { z } from 'zod';
+
+const emailSchema = z.string().email();
+
+function isValidEmail(email: string): boolean {
+  try {
+    emailSchema.parse(email);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export async function redirectToPath(path: string) {

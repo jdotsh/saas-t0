@@ -1,18 +1,16 @@
 import Stripe from 'stripe';
+import { env } from '@/env.mjs';
 
-export const stripe = new Stripe(
-  process.env.STRIPE_SECRET_KEY_LIVE ?? process.env.STRIPE_SECRET_KEY ?? '',
-  {
-    // https://github.com/stripe/stripe-node#configuration
-    // https://stripe.com/docs/api/versioning
-    // @ts-ignore
-    apiVersion: null,
-    // Register this as an official Stripe plugin.
-    // https://stripe.com/docs/building-plugins#setappinfo
-    appInfo: {
-      name: 'Next.js Subscription Starter',
-      version: '0.0.0',
-      url: 'https://github.com/vercel/nextjs-subscription-payments'
-    }
+const stripeKey = env.STRIPE_API_KEY;
+
+if (!stripeKey) {
+  throw new Error('STRIPE_API_KEY is required');
+}
+
+export const stripe = new Stripe(stripeKey, {
+  apiVersion: '2024-11-20.acacia',
+  appInfo: {
+    name: 'Nexus SaaS Template',
+    version: '1.0.0'
   }
-);
+});
