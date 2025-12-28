@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ErrorBoundary } from '@/components/error-boundary';
-import { Inter } from 'next/font/google';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import type { Viewport } from 'next';
 import { TRPCReactProvider } from '@/trpc/react';
 import { Analytics } from '@vercel/analytics/react';
@@ -21,29 +21,30 @@ export const viewport: Viewport = {
 import '@/styles/globals.css';
 
 /**
- * Font System - Optimized for readability
+ * Font System - Optimized for global SaaS
  *
- * Primary: Inter (body text)
- * - Excellent readability at all sizes
- * - Designed specifically for screens
- * - Variable font for optimal rendering
+ * Body: Inter
+ * - 147 languages, 2000+ glyphs (US, DE, CN, JP, UK, IT, NO)
+ * - Screen-optimized for maximum readability
+ * - Variable font for performance
+ * - Used by GitHub, Mozilla, Vercel
  *
- * Fallback: Geist Sans (Vercel's font)
- * - Modern, clean alternative
- * - Great for UI elements
+ * Headings: Space Grotesk
+ * - Tech-forward, geometric sans serif
+ * - Creates strong visual hierarchy
+ * - Variable font for smooth weight transitions
+ * - Perfect contrast with Inter's humanist style
  */
 const fontSans = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
-  weight: ['400', '500', '600', '700'],
   display: 'swap',
   preload: true
 });
 
-const fontHeading = Inter({
+const fontHeading = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-heading',
-  weight: ['600', '700', '800'],
   display: 'swap',
   preload: true
 });
