@@ -8,7 +8,6 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Inter as FontSans } from 'next/font/google';
 import localFont from 'next/font/local';
 import type { Viewport } from 'next';
-import { RootProvider } from 'fumadocs-ui/provider';
 import { TRPCReactProvider } from '@/trpc/react';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -89,11 +88,8 @@ export default async function RootLayout({ children }: PropsWithChildren) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <RootProvider>
-            <TRPCReactProvider>{children}</TRPCReactProvider>
-          </RootProvider>
+          <TRPCReactProvider>{children}</TRPCReactProvider>
           <Toaster />
-          {/* <TailwindIndicator /> */}
         </ThemeProvider>
         <Analytics />
       </body>

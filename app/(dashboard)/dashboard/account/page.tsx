@@ -24,12 +24,18 @@ import { redirect } from 'next/navigation';
 
 export default async function AccountPage() {
   const supabase = createClient();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [user, userDetails] = await Promise.all([
-    getUser(supabase),
-    getUserDetails(supabase)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    getUser(supabase as any),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    getUserDetails(supabase as any)
   ]);
 
-  const subscription = user ? await getSubscription(supabase, user.id) : null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const subscription = user
+    ? await getSubscription(supabase as any, user.id)
+    : null;
 
   if (!user) {
     return redirect('/signin'); // Keep this for user redirection
