@@ -245,6 +245,9 @@ export default function FooterPrimary() {
               <span className="text-xs text-muted-foreground">
                 © 2024 Nexus. All rights reserved.
               </span>
+              <span className="hidden sm:inline text-xs text-muted-foreground">
+                SOC 2 Type II
+              </span>
             </div>
 
             {/* Mobile Social Icons */}
