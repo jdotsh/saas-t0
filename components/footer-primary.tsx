@@ -1,37 +1,30 @@
 'use client';
 import { useState } from 'react';
 import React from 'react';
-
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { createClient } from '@supabase/supabase-js';
 import { useToast } from '@/components/ui/use-toast';
 import { logger } from '@/lib/logger';
-import { ArrowRight, LogIn } from 'lucide-react';
+import {
+  ArrowRight,
+  Github,
+  Twitter,
+  Linkedin,
+  ChevronDown
+} from 'lucide-react';
 import { env } from '@/env.mjs';
+import { cn } from '@/lib/utils';
 
 const supabase = createClient(
   env.NEXT_PUBLIC_SUPABASE_URL,
   env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
-const AnimatedUnderline = ({
-  children,
-  href,
-  className
-}: {
-  children: React.ReactNode;
-  href: string;
-  className?: string;
-}) => (
-  <a href={href} className={`${className} relative overflow-hidden group`}>
-    {children}
-    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 origin-left transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
-  </a>
-);
-
 export default function FooterPrimary() {
   const [email, setEmail] = useState('');
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -45,8 +38,7 @@ export default function FooterPrimary() {
 
       toast({
         title: 'Subscribed! 🎉',
-        description:
-          'Thank you for subscribing! You will get an email when the app comes out.'
+        description: 'Thank you for subscribing!'
       });
       setEmail('');
     } catch (error: unknown) {
@@ -59,141 +51,227 @@ export default function FooterPrimary() {
     }
   };
 
+  const toggleSection = (section: string) => {
+    setExpandedSection(expandedSection === section ? null : section);
+  };
+
+  const footerSections = [
+    {
+      id: 'product',
+      title: 'Product',
+      links: [
+        { label: 'Features', href: '#features' },
+        { label: 'Pricing', href: '#pricing' },
+        { label: 'Documentation', href: '/documentation' },
+        { label: 'Blog', href: '/blog' }
+      ]
+    },
+    {
+      id: 'company',
+      title: 'Company',
+      links: [
+        { label: 'About', href: '#about' },
+        { label: 'Careers', href: '#careers' },
+        { label: 'Contact', href: 'mailto:hello@antoineross.com' }
+      ]
+    },
+    {
+      id: 'legal',
+      title: 'Legal',
+      links: [
+        { label: 'Privacy', href: '#privacy' },
+        { label: 'Terms', href: '#terms' },
+        { label: 'Cookie Policy', href: '#cookies' }
+      ]
+    }
+  ];
+
+  const socialLinks = [
+    {
+      icon: Github,
+      href: 'https://github.com/antoineross/hikari',
+      label: 'GitHub'
+    },
+    {
+      icon: Twitter,
+      href: 'https://x.com/antoineross__',
+      label: 'Twitter'
+    },
+    {
+      icon: Linkedin,
+      href: 'https://linkedin.com/in/antoineross',
+      label: 'LinkedIn'
+    }
+  ];
+
   return (
-    <footer className="py-10">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-6 md:gap-8">
-          <div>
-            <h3 className="text-lg font-bold mb-4">Work</h3>
-            <ul className="space-y-2">
-              <li>
-                <AnimatedUnderline
-                  href="https://github.com/antoineross/hikari"
-                  className="text-primary"
-                >
-                  Hikari
-                </AnimatedUnderline>
-              </li>
-              <li>
-                <AnimatedUnderline
-                  href="https://supacrawler.com"
-                  className="text-primary"
-                >
-                  Supacrawler
-                </AnimatedUnderline>
-              </li>
-              <li>
-                <AnimatedUnderline
-                  href="https://github.com/antoineross/Autogen-UI"
-                  className="text-primary"
-                >
-                  Autogen UI
-                </AnimatedUnderline>
-              </li>
-              <li>
-                <AnimatedUnderline href="#" className="text-primary">
-                  See all →
-                </AnimatedUnderline>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li>
-                <AnimatedUnderline href="#" className="text-primary">
-                  About
-                </AnimatedUnderline>
-              </li>
-              <li>
-                <AnimatedUnderline
-                  href="/documentation"
-                  className="text-primary"
-                >
-                  Documentation
-                </AnimatedUnderline>
-              </li>
-              <li>
-                <AnimatedUnderline href="/blog" className="text-primary">
-                  Blog
-                </AnimatedUnderline>
-              </li>
-              <li>
-                <AnimatedUnderline
-                  href="mailto:hello@antoineross.com"
-                  className="text-primary"
-                >
-                  Contact us
-                </AnimatedUnderline>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold mb-4">Connect</h3>
-            <ul className="space-y-2">
-              <li>
-                <AnimatedUnderline
-                  href="https://x.com/antoineross__"
-                  className="text-primary"
-                >
-                  X
-                </AnimatedUnderline>
-              </li>
-              <li>
-                <AnimatedUnderline
-                  href="https://linkedin.com/in/antoineross"
-                  className="text-primary"
-                >
-                  LinkedIn
-                </AnimatedUnderline>
-              </li>
-              <li>
-                <AnimatedUnderline
-                  href="https://github.com/antoineross/hikari"
-                  className="text-primary"
-                >
-                  GitHub
-                </AnimatedUnderline>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold mb-4">
-              Sign up for our newsletter
-            </h3>
-            <p className="text-primary mb-4">
-              Hikari is a growing project. Subscribe to get the latest design
-              news, articles, resources, updates and inspiration.
+    <footer className="bg-background border-t">
+      {/* Newsletter Section - Mobile optimized */}
+      <div className="bg-primary/5 dark:bg-primary/10 py-8 sm:py-12">
+        <div className="container mx-auto px-4 max-w-2xl">
+          <div className="text-center mb-6">
+            <h3 className="text-lg sm:text-xl font-bold mb-2">Stay updated</h3>
+            <p className="text-sm text-muted-foreground">
+              Get the latest updates and early access
             </p>
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col xs:flex-row gap-2"
-            >
-              <div className="flex items-center w-full border border-gray-300 rounded-md focus-within:outline-none">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full text-sm relative z-20 border-none h-11"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+          </div>
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+            <div className="flex gap-2">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Button type="submit" size="default" className="px-4">
+                Subscribe
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-4 py-8 sm:py-12">
+        {/* Mobile Accordion Footer */}
+        <div className="sm:hidden space-y-2">
+          {footerSections.map((section) => (
+            <div key={section.id} className="border-b border-border/50">
+              <button
+                onClick={() => toggleSection(section.id)}
+                className="flex items-center justify-between w-full py-3 text-left"
+              >
+                <span className="font-medium text-sm">{section.title}</span>
+                <ChevronDown
+                  className={cn(
+                    'h-4 w-4 transition-transform duration-200',
+                    expandedSection === section.id && 'rotate-180'
+                  )}
                 />
-                <Button
-                  type="submit"
-                  className="h-10 w-10 min-w-[2.5rem] my-0.5 bg-black text-white rounded-md mr-0.5"
-                >
-                  <ArrowRight className="h-5 w-5" />
-                </Button>
+              </button>
+              <div
+                className={cn(
+                  'overflow-hidden transition-all duration-200',
+                  expandedSection === section.id ? 'max-h-48 pb-3' : 'max-h-0'
+                )}
+              >
+                <ul className="space-y-2 pl-4">
+                  {section.links.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </form>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Grid Footer */}
+        <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {footerSections.map((section) => (
+            <div key={section.id}>
+              <h3 className="font-semibold text-sm mb-3">{section.title}</h3>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {/* Social Links - Desktop */}
+          <div>
+            <h3 className="font-semibold text-sm mb-3">Connect</h3>
+            <div className="flex gap-3">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <Link
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    aria-label={social.label}
+                  >
+                    <Icon className="h-5 w-5" />
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
-        <div className="border-t mt-10 pt-6 flex flex-col items-center md:flex-row justify-between">
-          <div className="flex items-center space-x-2">
-            <LogIn className="h-6 w-6" />
-            <span className="text-xl font-bold">Hikari.</span>
+
+        {/* Bottom Section - Ultra compact on mobile */}
+        <div className="mt-8 pt-6 border-t border-border/50">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            {/* Logo & Copyright */}
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+              <Link href="/" className="font-bold text-lg">
+                NEXUS
+              </Link>
+              <span className="text-xs text-muted-foreground">
+                © 2024 Nexus. All rights reserved.
+              </span>
+            </div>
+
+            {/* Mobile Social Icons */}
+            <div className="flex gap-4 sm:hidden">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <Link
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    aria-label={social.label}
+                  >
+                    <Icon className="h-5 w-5" />
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Desktop Quick Links */}
+            <div className="hidden sm:flex items-center gap-4">
+              <Link
+                href="#privacy"
+                className="text-xs text-muted-foreground hover:text-primary transition-colors"
+              >
+                Privacy
+              </Link>
+              <Link
+                href="#terms"
+                className="text-xs text-muted-foreground hover:text-primary transition-colors"
+              >
+                Terms
+              </Link>
+              <Link
+                href="#cookies"
+                className="text-xs text-muted-foreground hover:text-primary transition-colors"
+              >
+                Cookies
+              </Link>
+            </div>
           </div>
-          <p className="text-gray-500 mt-4 md:mt-0">© Hikari Inc. 2024</p>
         </div>
       </div>
     </footer>
