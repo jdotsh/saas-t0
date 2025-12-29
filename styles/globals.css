@@ -4,25 +4,68 @@
 
 @layer base {
   :root {
+    /* Core backgrounds */
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
+
+    /* Card surfaces - light mode uses subtle grays */
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
+    --card-elevated: 0 0% 98%;
+    --card-featured: 158 30% 97%; /* Subtle green tint */
+
+    /* Popover & dropdown */
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
+
+    /* Brand colors - consistent across themes */
+    --brand: 158 64% 52%; /* Professional green like Supabase */
+    --brand-foreground: 0 0% 100%;
+    --brand-muted: 158 40% 65%;
+    --brand-subtle: 158 25% 80%;
+
+    /* Primary - now uses brand color */
+    --primary: 158 64% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary colors */
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
+
+    /* Muted colors */
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+
+    /* Accent colors */
+    --accent: 158 64% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive/error colors */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
+
+    /* Borders */
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --ring: 158 64% 52%;
+
+    /* Pricing specific */
+    --pricing-featured-bg: 158 30% 96%;
+    --pricing-featured-border: 158 64% 52%;
+    --pricing-badge-bg: 158 64% 52%;
+    --pricing-badge-text: 0 0% 100%;
+
+    /* Text hierarchy */
+    --text-primary: 240 10% 3.9%;
+    --text-secondary: 240 5% 35%;
+    --text-tertiary: 240 4% 55%;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+    /* Other */
     --radius: 0.5rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -32,25 +75,68 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
+    /* Core backgrounds */
+    --background: 240 10% 6%;
+    --foreground: 0 0% 95%;
+
+    /* Card surfaces - dark mode uses elevation */
+    --card: 240 10% 9%;
+    --card-foreground: 0 0% 95%;
+    --card-elevated: 240 10% 12%;
+    --card-featured: 158 25% 14%; /* Brand-tinted elevation */
+
+    /* Popover & dropdown */
+    --popover: 240 10% 9%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Brand colors - adjusted for dark mode */
+    --brand: 158 100% 42%; /* Bright green like Supabase */
+    --brand-foreground: 0 0% 100%;
+    --brand-muted: 158 60% 35%;
+    --brand-subtle: 158 30% 20%;
+
+    /* Primary - uses adjusted brand */
+    --primary: 158 100% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary colors */
     --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary-foreground: 0 0% 95%;
+
+    /* Muted colors */
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+
+    /* Accent colors */
+    --accent: 158 100% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive/error colors */
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+
+    /* Borders */
+    --border: 240 3.7% 20%;
+    --input: 240 3.7% 20%;
+    --ring: 158 100% 42%;
+
+    /* Pricing specific */
+    --pricing-featured-bg: 158 30% 12%;
+    --pricing-featured-border: 158 100% 42%;
+    --pricing-badge-bg: 158 100% 42%;
+    --pricing-badge-text: 0 0% 6%;
+
+    /* Text hierarchy */
+    --text-primary: 0 0% 95%;
+    --text-secondary: 0 0% 75%;
+    --text-tertiary: 0 0% 60%;
+
+    /* Shadows - using glow for dark mode */
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 8px -1px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 20px -3px rgb(0 0 0 / 0.5);
+
+    /* Other */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -62,6 +148,18 @@
 @layer base {
   * {
     @apply border-border;
+    /* Smooth transitions for theme switching */
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  /* Disable transitions on initial load and theme switch */
+  html.no-transitions * {
+    transition: none !important;
   }
 
   body {
@@ -77,6 +175,10 @@
     font-size: 16px; /* Base size for better readability */
     line-height: 1.6; /* Improved line spacing */
     letter-spacing: -0.011em; /* Subtle tightening for Inter */
+    /* Smooth color transitions */
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   /* Improved heading hierarchy */
@@ -179,6 +281,83 @@
   height: 10px;
   background-color: black; /* or any color you prefer */
   margin-top: 5px; /* Adjust spacing as needed */
+}
+
+/* Animation utilities */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  }
+
+  .dark .hover-lift:hover {
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Glow effect for dark mode */
+  .dark .glow-sm {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+  }
+
+  .dark .glow-md {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.2);
+  }
+
+  .dark .glow-lg {
+    box-shadow: 0 0 60px rgba(139, 92, 246, 0.25);
+  }
 }
 
 /* Critical mobile-first responsive overrides */
