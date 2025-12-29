@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { createClient } from '@supabase/supabase-js';
 import { useToast } from '@/components/ui/use-toast';
-import { CoolMode } from '@/components/magicui/cool-mode';
 import { logger } from '@/lib/logger';
 import { ArrowRight, LogIn } from 'lucide-react';
 import { env } from '@/env.mjs';
@@ -176,19 +175,12 @@ export default function FooterPrimary() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <CoolMode>
-                  <Button
-                    type="submit"
-                    className="my-1 bg-black text-white rounded-md mr-1 "
-                  >
-                    <ArrowRight className="h-5 w-5" />
-                  </Button>
-                  {/* <Button type="submit" className="w-full text-lg relative z-20 bg-gradient-to-b from-black to-gray-300/80 hover:from-gray-800 hover:to-gray-400/80 dark:from-white dark:to-slate-900/10 dark:hover:from-slate-200 dark:hover:to-slate-800/10">
-                  <span className="bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-white dark:from-white dark:to-slate-900/10">
-                    Subscribe
-                  </span>
-                </Button> */}
-                </CoolMode>
+                <Button
+                  type="submit"
+                  className="my-1 bg-black text-white rounded-md mr-1 "
+                >
+                  <ArrowRight className="h-5 w-5" />
+                </Button>
               </div>
             </form>
           </div>

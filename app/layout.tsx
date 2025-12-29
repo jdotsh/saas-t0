@@ -98,7 +98,22 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <meta
+          name="theme-color"
+          content="#ffffff"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="#000000"
+          media="(prefers-color-scheme: dark)"
+        />
+      </head>
       <body
         className={cn(
           'min-h-screen bg-background font-sans antialiased',

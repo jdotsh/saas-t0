@@ -180,3 +180,65 @@
   background-color: black; /* or any color you prefer */
   margin-top: 5px; /* Adjust spacing as needed */
 }
+
+/* Critical mobile-first responsive overrides */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 1.75rem !important; /* 28px instead of 40px */
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.4rem !important; /* 22.4px instead of 32px */
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-size: 1.1rem !important; /* 17.6px instead of 24px */
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-size: 1rem !important; /* 16px instead of 20px */
+    line-height: 1.35;
+  }
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Ensure minimum touch targets */
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Fix input font size to prevent zoom on iOS */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 375px) {
+  /* Extra small phones */
+  body {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+  }
+}

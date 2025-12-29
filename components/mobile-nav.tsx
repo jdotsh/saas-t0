@@ -69,8 +69,8 @@ export function MobileNav({ items, children, user, onClose }: MobileNavProps) {
         exit="closed"
         variants={shouldReduceMotion ? undefined : mobileNavVariants}
         className={cn(
-          'fixed inset-x-0 top-4 z-50 mx-auto w-[calc(100%-2rem)] max-w-md',
-          'grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto',
+          'fixed inset-x-0 top-16 z-30 mx-auto w-[calc(100%-2rem)] max-w-md',
+          'grid max-h-[calc(100vh-5rem)] grid-flow-row auto-rows-max overflow-y-auto overflow-x-hidden',
           'rounded-lg p-6 pb-32 shadow-xl md:hidden'
         )}
       >

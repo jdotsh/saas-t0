@@ -21,7 +21,13 @@ module.exports = {
     },
     container: {
       center: true,
-      padding: '2rem',
+      padding: {
+        DEFAULT: '1rem',  // 16px on mobile (320-640px)
+        sm: '1.5rem',     // 24px on small tablets (640px+)
+        md: '2rem',       // 32px on tablets (768px+)
+        lg: '2rem',       // 32px on desktop (1024px+)
+        xl: '2rem',       // 32px on large desktop
+      },
       screens: {
         '2xl': '1400px'
       }
