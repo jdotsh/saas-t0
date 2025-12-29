@@ -104,7 +104,7 @@ export default function CircularNavigation({
             <button
               className={cn(
                 'md:hidden flex items-center justify-center',
-                'p-2 rounded-md transition-colors z-10',
+                'p-2.5 rounded-md transition-colors z-10',
                 'hover:bg-accent active:bg-accent/80'
               )}
               onClick={() => setShowMobileMenu(!showMobileMenu)}
@@ -112,9 +112,9 @@ export default function CircularNavigation({
               aria-expanded={showMobileMenu}
             >
               {showMobileMenu ? (
-                <Icons.close className="h-6 w-6" />
+                <Icons.close className="h-7 w-7" />
               ) : (
-                <Icons.Menu className="h-6 w-6" />
+                <Icons.Menu className="h-7 w-7" />
               )}
             </button>
           </nav>

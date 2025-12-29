@@ -57,7 +57,7 @@ export function MobileNav({ items, children, user, onClose }: MobileNavProps) {
         animate="visible"
         exit="hidden"
         variants={shouldReduceMotion ? undefined : backdropVariants}
-        className="fixed inset-0 z-40 bg-background/80 backdrop-blur-md md:hidden"
+        className="fixed inset-0 z-30 bg-background/80 backdrop-blur-md md:hidden"
         onClick={onClose}
       />
 
@@ -69,7 +69,7 @@ export function MobileNav({ items, children, user, onClose }: MobileNavProps) {
         exit="closed"
         variants={shouldReduceMotion ? undefined : mobileNavVariants}
         className={cn(
-          'fixed inset-x-0 top-16 z-30 mx-auto w-[calc(100%-2rem)] max-w-md',
+          'fixed inset-x-0 top-16 z-40 mx-auto w-[calc(100%-2rem)] max-w-md',
           'grid max-h-[calc(100vh-5rem)] grid-flow-row auto-rows-max overflow-y-auto overflow-x-hidden',
           'rounded-lg p-6 pb-32 shadow-xl md:hidden'
         )}

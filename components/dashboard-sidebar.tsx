@@ -19,10 +19,10 @@ const Sidebar = ({ navConfig }: { navConfig: NavItem[] }) => {
       <TooltipProvider>
         <Link
           href="/"
-          className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-lg bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
+          className="group flex h-11 w-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-primary text-lg font-semibold text-primary-foreground md:h-9 md:w-9 lg:h-8 lg:w-8 md:text-base"
           prefetch={false}
         >
-          <Eclipse className="h-5 w-5 transition-all group-hover:scale-110" />
+          <Eclipse className="h-6 w-6 md:h-5 md:w-5 transition-all group-hover:scale-110" />
           <span className="sr-only">Hikari Inc</span>
         </Link>
         {navConfig.map((item, index) => {
@@ -34,7 +34,7 @@ const Sidebar = ({ navConfig }: { navConfig: NavItem[] }) => {
             <Tooltip key={index}>
               <TooltipTrigger asChild>
                 <div
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8 ${
+                  className={`flex h-11 w-11 items-center justify-center rounded-lg transition-colors md:h-9 md:w-9 lg:h-8 lg:w-8 ${
                     isDisabled
                       ? 'text-gray-400 bg-gray-100 cursor-not-allowed'
                       : isActive
@@ -43,14 +43,14 @@ const Sidebar = ({ navConfig }: { navConfig: NavItem[] }) => {
                   }`}
                 >
                   {isDisabled ? (
-                    <IconComponent className="h-5 w-5 opacity-50" />
+                    <IconComponent className="h-6 w-6 md:h-5 md:w-5 opacity-50" />
                   ) : (
                     <Link
                       href={item.href}
                       className="flex h-full w-full items-center justify-center"
                       prefetch={false}
                     >
-                      <IconComponent className="h-5 w-5" />
+                      <IconComponent className="h-6 w-6 md:h-5 md:w-5" />
                     </Link>
                   )}
                   <span className="sr-only">{item.label}</span>

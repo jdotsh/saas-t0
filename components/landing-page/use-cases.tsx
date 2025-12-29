@@ -32,10 +32,10 @@ export function UseCases() {
           transition={{ duration: 0.1, ease: 'easeOut' }}
           className="text-center px-3 sm:px-4"
         >
-          <h2 className="text-lg xs:text-xl sm:text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
             Built for every type of builder
           </h2>
-          <p className="mx-auto mt-2.5 xs:mt-3 sm:mt-4 max-w-2xl text-xs xs:text-sm sm:text-base lg:text-lg text-muted-foreground">
+          <p className="mx-auto mt-3 sm:mt-4 max-w-2xl text-base sm:text-lg lg:text-xl text-muted-foreground">
             Whether you're a solo founder, freelancer, or agency, Nexus adapts
             to your workflow
           </p>
@@ -81,7 +81,7 @@ export function UseCases() {
                 </h3>
 
                 {/* Problem */}
-                <p className="mb-3 sm:mb-4 text-xs sm:text-sm text-muted-foreground">
+                <p className="mb-4 sm:mb-5 text-sm sm:text-base text-muted-foreground">
                   <span className="font-semibold text-foreground">
                     The problem:
                   </span>{' '}
@@ -89,7 +89,7 @@ export function UseCases() {
                 </p>
 
                 {/* Solution */}
-                <p className="mb-4 sm:mb-6 text-xs sm:text-sm text-muted-foreground">
+                <p className="mb-5 sm:mb-6 text-sm sm:text-base text-muted-foreground">
                   <span className="font-semibold text-foreground">
                     The solution:
                   </span>{' '}

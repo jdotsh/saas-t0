@@ -86,7 +86,7 @@ export function Navbar({
           </nav>
         </SheetContent>
       </Sheet>
-      <Breadcrumb className="hidden md:flex">
+      <Breadcrumb className="hidden sm:flex">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
@@ -122,7 +122,7 @@ export function Navbar({
         <Input
           type="search"
           placeholder="Search..."
-          className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
+          className="w-full rounded-lg bg-background pl-8 sm:w-[180px] md:w-[240px] lg:w-[336px]"
         />
       </div>
       <UserAccountNav user={userDetails} />

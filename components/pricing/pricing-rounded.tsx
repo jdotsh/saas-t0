@@ -210,9 +210,9 @@ export default function PricingRounded({
                 <Card
                   key={product.id}
                   className={cn(
-                    'relative w-full rounded-2xl border p-8 transition-all duration-300 hover-lift animate-slide-up',
+                    'relative w-full rounded-2xl border p-6 sm:p-8 transition-all duration-300 hover-lift animate-slide-up',
                     isFeatured
-                      ? 'bg-gradient-to-br from-[hsl(var(--card-featured))] to-[hsl(var(--card-elevated))] border-[hsl(var(--pricing-featured-border))] md:scale-105 md:z-10 shadow-2xl dark:glow-md'
+                      ? 'bg-gradient-to-br from-[hsl(var(--card-featured))] to-[hsl(var(--card-elevated))] border-[hsl(var(--pricing-featured-border))] md:scale-[1.02] lg:scale-105 md:z-10 shadow-2xl dark:glow-md'
                       : isActive
                         ? 'bg-[hsl(var(--card-elevated))] border-primary shadow-lg'
                         : 'bg-[hsl(var(--card))] border-border hover:border-primary/50 shadow-md',
@@ -245,7 +245,7 @@ export default function PricingRounded({
 
                   <CardHeader className="p-0 pb-6">
                     <div className="flex items-start justify-between mb-2">
-                      <CardTitle className="text-2xl font-semibold text-[hsl(var(--text-primary))]">
+                      <CardTitle className="text-xl sm:text-2xl font-semibold text-[hsl(var(--text-primary))]">
                         {product.name}
                       </CardTitle>
                       {isFeatured && (

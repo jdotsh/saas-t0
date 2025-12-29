@@ -13,10 +13,10 @@ export default function Testimonials() {
       <div className="flex items-center w-full mb-6 xs:mb-8 sm:mb-10 md:mb-12">
         <div className="hidden sm:block flex-grow border-t border-gray-300"></div>
         <div className="flex-shrink px-0 sm:px-4 text-center w-full sm:w-auto">
-          <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold">
             Testimonials
           </h2>
-          <p className="text-xs xs:text-sm sm:text-base text-muted-foreground mt-1">
+          <p className="text-sm xs:text-base sm:text-lg text-muted-foreground mt-2">
             What everyone else is saying
           </p>
         </div>
@@ -30,28 +30,28 @@ export default function Testimonials() {
           >
             {group.map((testimonial, index) => (
               <Card key={index} className="h-full">
-                <CardHeader className="flex flex-row items-center bg-zinc-100 dark:bg-zinc-800 p-2.5 xs:p-3 sm:p-4 rounded-t-xl">
+                <CardHeader className="flex flex-row items-center bg-zinc-100 dark:bg-zinc-800 p-3 xs:p-4 sm:p-5 rounded-t-xl">
                   <div className="flex items-center">
-                    <Avatar className="size-8 xs:size-9 mr-2 sm:mr-3">
+                    <Avatar className="size-10 xs:size-11 sm:size-12 mr-3 sm:mr-4">
                       <AvatarImage
                         src={testimonial.avatarImg}
                         className="h-full w-full"
                       />
-                      <AvatarFallback className="h-full w-full text-xs">
+                      <AvatarFallback className="h-full w-full text-sm">
                         {testimonial.avatarFallback}
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col min-w-0">
-                      <h3 className="text-sm xs:text-base font-semibold truncate">
+                      <h3 className="text-base xs:text-lg font-semibold truncate">
                         {testimonial.name}
                       </h3>
-                      <p className="text-xs text-muted-foreground truncate">
+                      <p className="text-sm xs:text-base text-muted-foreground truncate">
                         {testimonial.title}
                       </p>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="p-2.5 xs:p-3 sm:p-4 text-xs sm:text-sm">
+                <CardContent className="p-4 xs:p-5 sm:p-6 text-sm xs:text-base">
                   <p className="leading-relaxed">{testimonial.text}</p>
                 </CardContent>
               </Card>

@@ -11,7 +11,7 @@ import Image from 'next/image';
 
 export default async function IndexPage() {
   return (
-    <div className="flex flex-col gap-6 xs:gap-8 sm:gap-10 lg:gap-12 mb-5">
+    <div className="flex flex-col gap-12 sm:gap-16 md:gap-20 lg:gap-24 mb-8">
       {/* Hero Section */}
       <Hero />
 
@@ -34,17 +34,17 @@ export default async function IndexPage() {
       <Testimonials />
 
       {/* Community Highlights */}
-      <section className="my-8 xs:my-10 sm:my-16 md:my-20 px-4 sm:px-6">
-        <div className="flex items-center w-full mb-6 sm:mb-8 md:mb-10">
+      <section className="my-12 sm:my-16 md:my-20 px-4 sm:px-6">
+        <div className="flex items-center w-full mb-8 sm:mb-10 md:mb-12">
           <div className="flex flex-col items-center justify-center w-full">
-            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-center">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-center">
               Community highlights
             </h2>
             <Link
               href="https://x.com/antoineross__"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 text-sm sm:text-base text-primary hover:text-primary/80 hover:underline transition-colors duration-150"
+              className="mt-3 text-base sm:text-lg text-primary hover:text-primary/80 hover:underline transition-colors duration-150"
             >
               Join the community
             </Link>

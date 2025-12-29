@@ -62,7 +62,7 @@ export default function FooterPrimary() {
   return (
     <footer className="py-10">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-6 md:gap-8">
           <div>
             <h3 className="text-lg font-bold mb-4">Work</h3>
             <ul className="space-y-2">
@@ -165,19 +165,22 @@ export default function FooterPrimary() {
               Hikari is a growing project. Subscribe to get the latest design
               news, articles, resources, updates and inspiration.
             </p>
-            <form onSubmit={handleSubmit} className="flex">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col xs:flex-row gap-2"
+            >
               <div className="flex items-center w-full border border-gray-300 rounded-md focus-within:outline-none">
                 <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full text-sm relative z-20 border-none"
+                  className="w-full text-sm relative z-20 border-none h-11"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <Button
                   type="submit"
-                  className="my-1 bg-black text-white rounded-md mr-1 "
+                  className="h-10 w-10 min-w-[2.5rem] my-0.5 bg-black text-white rounded-md mr-0.5"
                 >
                   <ArrowRight className="h-5 w-5" />
                 </Button>

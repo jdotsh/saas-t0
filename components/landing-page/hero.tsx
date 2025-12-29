@@ -104,7 +104,7 @@ export default function HeroSection() {
           */}
 
           {/* Hero Title - Clean & Bold */}
-          <h1 className="font-heading font-bold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight leading-[1.1] max-w-4xl px-2">
+          <h1 className="font-heading font-bold text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight leading-[1.2] sm:leading-[1.15] md:leading-[1.1] max-w-4xl px-2">
             <span className="inline-block bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
               Ship your SaaS
             </span>
@@ -130,14 +130,14 @@ export default function HeroSection() {
           <div className="flex flex-col xs:flex-row items-center justify-center gap-3 sm:gap-4 mt-4 w-full px-4 sm:px-0">
             <Link
               href="/signup"
-              className="group relative inline-flex items-center justify-center w-auto min-w-[160px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-primary hover:bg-primary/90 rounded-lg shadow-lg hover:shadow-2xl hover:shadow-primary/25 dark:hover:shadow-primary/40 transition-all duration-200 ease-snappy active:scale-95 md:hover:scale-105"
+              className="group relative inline-flex items-center justify-center w-full xs:w-auto xs:min-w-[160px] px-6 xs:px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-white bg-primary hover:bg-primary/90 rounded-lg shadow-lg hover:shadow-2xl hover:shadow-primary/25 dark:hover:shadow-primary/40 transition-all duration-200 ease-snappy active:scale-95 md:hover:scale-105"
             >
               Get Started Free
               <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
             <Link
               href="#pricing"
-              className="inline-flex items-center justify-center w-auto min-w-[140px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-foreground bg-background/50 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/40 dark:border-primary/30 dark:hover:border-primary/50 rounded-lg transition-all duration-200 ease-snappy active:scale-95 md:hover:scale-105 hover:bg-primary/5 dark:hover:bg-primary/10"
+              className="inline-flex items-center justify-center w-full xs:w-auto xs:min-w-[140px] px-6 xs:px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-foreground bg-background/50 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/40 dark:border-primary/30 dark:hover:border-primary/50 rounded-lg transition-all duration-200 ease-snappy active:scale-95 md:hover:scale-105 hover:bg-primary/5 dark:hover:bg-primary/10"
             >
               View Pricing
             </Link>

@@ -41,7 +41,7 @@ export function StatsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.1, delay: 0.03, ease: 'easeOut' }}
-          className="mt-10 xs:mt-12 sm:mt-16 lg:mt-20 grid grid-cols-2 gap-3 xs:gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8"
+          className="mt-10 xs:mt-12 sm:mt-16 lg:mt-20 grid grid-cols-1 xs:grid-cols-2 gap-6 xs:gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8"
         >
           {stats.map((stat, index) => {
             const Icon = stat.icon;
@@ -82,10 +82,10 @@ export function StatsSection() {
                   )}
                 </div>
 
-                <p className="mt-1.5 xs:mt-2 text-xs xs:text-sm font-medium text-foreground px-2">
+                <p className="mt-1.5 xs:mt-2 text-sm xs:text-base font-medium text-foreground px-2">
                   {stat.label}
                 </p>
-                <p className="mt-0.5 xs:mt-1 text-xs text-muted-foreground px-2">
+                <p className="mt-0.5 xs:mt-1 text-xs xs:text-sm text-muted-foreground px-2">
                   {stat.description}
                 </p>
               </motion.div>
