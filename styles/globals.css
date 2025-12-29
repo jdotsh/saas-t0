@@ -12,20 +12,20 @@
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --card-elevated: 0 0% 98%;
-    --card-featured: 158 30% 97%; /* Subtle green tint */
+    --card-featured: 158 50% 95%; /* More visible green tint */
 
     /* Popover & dropdown */
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
     /* Brand colors - consistent across themes */
-    --brand: 158 64% 52%; /* Professional green like Supabase */
+    --brand: 158 84% 39%; /* Darker, more vibrant green for light mode */
     --brand-foreground: 0 0% 100%;
-    --brand-muted: 158 40% 65%;
-    --brand-subtle: 158 25% 80%;
+    --brand-muted: 158 60% 45%;
+    --brand-subtle: 158 40% 70%;
 
     /* Primary - now uses brand color */
-    --primary: 158 64% 52%;
+    --primary: 158 84% 39%; /* Darker green for better contrast */
     --primary-foreground: 0 0% 100%;
 
     /* Secondary colors */
@@ -37,7 +37,7 @@
     --muted-foreground: 240 3.8% 46.1%;
 
     /* Accent colors */
-    --accent: 158 64% 52%;
+    --accent: 158 84% 39%;
     --accent-foreground: 0 0% 100%;
 
     /* Destructive/error colors */
@@ -47,12 +47,12 @@
     /* Borders */
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 158 64% 52%;
+    --ring: 158 84% 39%;
 
     /* Pricing specific */
-    --pricing-featured-bg: 158 30% 96%;
-    --pricing-featured-border: 158 64% 52%;
-    --pricing-badge-bg: 158 64% 52%;
+    --pricing-featured-bg: 158 60% 94%;
+    --pricing-featured-border: 158 84% 39%;
+    --pricing-badge-bg: 158 84% 39%;
     --pricing-badge-text: 0 0% 100%;
 
     /* Text hierarchy */
