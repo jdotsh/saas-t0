@@ -11,7 +11,7 @@ import Image from 'next/image';
 
 export default async function IndexPage() {
   return (
-    <div className="flex-col gap-10 mb-5">
+    <div className="flex flex-col gap-6 xs:gap-8 sm:gap-10 lg:gap-12 mb-5">
       {/* Hero Section */}
       <Hero />
 
@@ -34,10 +34,10 @@ export default async function IndexPage() {
       <Testimonials />
 
       {/* Community Highlights */}
-      <section className="my-12 sm:my-16 md:my-20 px-4 sm:px-6">
+      <section className="my-8 xs:my-10 sm:my-16 md:my-20 px-4 sm:px-6">
         <div className="flex items-center w-full mb-6 sm:mb-8 md:mb-10">
           <div className="flex flex-col items-center justify-center w-full">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-center">
               Community highlights
             </h2>
             <Link

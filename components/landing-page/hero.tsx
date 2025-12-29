@@ -104,7 +104,7 @@ export default function HeroSection() {
           */}
 
           {/* Hero Title - Clean & Bold */}
-          <h1 className="font-heading font-bold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.1] max-w-4xl px-2">
+          <h1 className="font-heading font-bold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight leading-[1.1] max-w-4xl px-2">
             <span className="inline-block bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
               Ship your SaaS
             </span>
@@ -119,7 +119,7 @@ export default function HeroSection() {
           </h1>
 
           {/* Subtitle - Clear Value Prop */}
-          <p className="max-w-2xl text-base xs:text-lg md:text-xl lg:text-2xl font-normal text-muted-foreground/90 leading-relaxed px-3 sm:px-4">
+          <p className="max-w-2xl text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-normal text-muted-foreground/90 leading-relaxed px-3 sm:px-4">
             Production-ready Next.js 15 starter with auth, payments, and
             database.
             <br className="hidden sm:block" />

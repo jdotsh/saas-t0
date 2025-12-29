@@ -36,19 +36,19 @@ export default function LogoCloud() {
       {/* Scrolling container with mask */}
       <div className="relative overflow-hidden">
         {/* Gradient masks on edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 xs:w-20 sm:w-32 bg-gradient-to-r from-background to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 xs:w-20 sm:w-32 bg-gradient-to-l from-background to-transparent z-10" />
 
         {/* Scrolling logos - normalized sizes, faster left-scroll animation */}
         <div
-          className="flex gap-12 md:gap-16 animate-marquee hover:[animation-play-state:paused]"
+          className="flex gap-6 xs:gap-8 sm:gap-12 md:gap-16 animate-marquee hover:[animation-play-state:paused]"
           style={{ animationDuration: '25s' }}
         >
           {/* First set of logos */}
           {logos.map(({ Svg, href, label }) => (
             <div
               key={`${label}-1`}
-              className="flex items-center justify-center h-12 w-24 md:h-14 md:w-28 flex-shrink-0"
+              className="flex items-center justify-center h-8 xs:h-10 w-16 xs:w-20 sm:w-24 md:h-14 md:w-28 flex-shrink-0"
             >
               <a
                 href={href}
@@ -77,7 +77,7 @@ export default function LogoCloud() {
           {logos.map(({ Svg, href, label }) => (
             <div
               key={`${label}-2`}
-              className="flex items-center justify-center h-12 w-24 md:h-14 md:w-28 flex-shrink-0"
+              className="flex items-center justify-center h-8 xs:h-10 w-16 xs:w-20 sm:w-24 md:h-14 md:w-28 flex-shrink-0"
             >
               <a
                 href={href}

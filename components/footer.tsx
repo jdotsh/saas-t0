@@ -12,25 +12,25 @@ import {
 export default function Footer() {
   return (
     <footer className="bg-zinc-950 dark:bg-zinc-950 text-zinc-300 py-12 sm:py-16 md:py-20 relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 justify-between">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 md:gap-8">
         <div>
-          <h2 className="text-md text-zinc-300 font-bold mb-4">
+          <h2 className="text-sm xs:text-base text-zinc-300 font-bold mb-4">
             {footerLinks.getInTouch.title}
           </h2>
-          <p className="text-xl text-zinc-300 mb-4">
+          <p className="text-base xs:text-lg sm:text-xl text-zinc-300 mb-4">
             We partner with global brands, from startups to industry leaders.{' '}
             <span className="text-zinc-50 font-bold">Let's discuss.</span>
           </p>
           <h3 className="text-sm text-zinc-300 font-bold mb-2">
             Subscribe to our Newsletter
           </h3>
-          <form className="flex">
+          <form className="flex flex-col xs:flex-row gap-2">
             <Input
               type="email"
               placeholder="name@email.com"
               className="p-2 flex-grow bg-zinc-800 text-zinc-50 border-border"
             />
-            <Button className="ml-2 bg-zinc-700 hover:bg-zinc-600">
+            <Button className="w-full xs:w-auto bg-zinc-700 hover:bg-zinc-600">
               Subscribe
             </Button>
           </form>

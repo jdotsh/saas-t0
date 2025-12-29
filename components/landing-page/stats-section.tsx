@@ -28,10 +28,10 @@ export function StatsSection() {
           transition={{ duration: 0.1, ease: 'easeOut' }}
           className="text-center"
         >
-          <h2 className="text-xl xs:text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl px-3 sm:px-4">
+          <h2 className="text-lg xs:text-xl sm:text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl px-3 sm:px-4">
             Trusted by developers worldwide
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm xs:text-base sm:text-lg text-muted-foreground px-3 sm:px-4">
+          <p className="mt-3 sm:mt-4 text-xs xs:text-sm sm:text-base text-muted-foreground px-3 sm:px-4">
             Join thousands of developers building with Nexus
           </p>
         </motion.div>
@@ -41,7 +41,7 @@ export function StatsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.1, delay: 0.03, ease: 'easeOut' }}
-          className="mt-10 xs:mt-12 sm:mt-16 lg:mt-20 grid grid-cols-2 gap-4 xs:gap-6 sm:gap-8 lg:grid-cols-4 lg:gap-12"
+          className="mt-10 xs:mt-12 sm:mt-16 lg:mt-20 grid grid-cols-2 gap-3 xs:gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8"
         >
           {stats.map((stat, index) => {
             const Icon = stat.icon;
@@ -68,15 +68,15 @@ export function StatsSection() {
 
                 <div className="flex items-baseline justify-center gap-x-1">
                   {stat.prefix && (
-                    <span className="text-2xl xs:text-3xl sm:text-4xl font-bold tracking-tight lg:text-5xl">
+                    <span className="text-xl xs:text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
                       {stat.prefix}
                     </span>
                   )}
-                  <span className="text-2xl xs:text-3xl sm:text-4xl font-bold tracking-tight lg:text-5xl">
+                  <span className="text-xl xs:text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
                     <NumberTicker value={stat.value} />
                   </span>
                   {stat.suffix && (
-                    <span className="text-2xl xs:text-3xl sm:text-4xl font-bold tracking-tight lg:text-5xl">
+                    <span className="text-xl xs:text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
                       {stat.suffix}
                     </span>
                   )}

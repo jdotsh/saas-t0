@@ -14,8 +14,8 @@ export default function FAQSection() {
   return (
     <section className="max-w-3xl mx-auto px-4 sm:px-6 py-8 xs:py-10 sm:py-12 mb-8 xs:mb-10 sm:mb-12">
       <div className="text-center mb-6 xs:mb-8">
-        <h2 className="text-xl xs:text-2xl font-bold">FAQ</h2>
-        <p className="text-sm xs:text-base text-muted-foreground">
+        <h2 className="text-lg xs:text-xl sm:text-2xl font-bold">FAQ</h2>
+        <p className="text-xs xs:text-sm sm:text-base text-muted-foreground">
           You got questions? I got answers.
         </p>
       </div>

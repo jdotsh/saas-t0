@@ -67,12 +67,12 @@ function FeatureModule({
             </div>
 
             {/* Headline */}
-            <h2 className="mb-3 sm:mb-4 text-xl xs:text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            <h2 className="mb-3 sm:mb-4 text-lg xs:text-xl sm:text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
               {headline}
             </h2>
 
             {/* Description */}
-            <p className="mb-5 xs:mb-6 sm:mb-8 text-sm xs:text-base sm:text-lg text-muted-foreground">
+            <p className="mb-5 xs:mb-6 sm:mb-8 text-xs xs:text-sm sm:text-base lg:text-lg text-muted-foreground">
               {description}
             </p>
 
@@ -113,7 +113,7 @@ function FeatureModule({
             transition={{ duration: 0.12, ease: 'easeOut', delay: 0.03 }}
             className={`relative ${reverse ? 'lg:order-1' : 'lg:order-2'}`}
           >
-            <div className="relative aspect-[16/10] xs:aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-muted/50 shadow-2xl">
+            <div className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-2xl border border-border bg-muted/50 shadow-2xl">
               <Image
                 src={imagePath}
                 alt={imageAlt}

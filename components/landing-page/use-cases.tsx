@@ -32,10 +32,10 @@ export function UseCases() {
           transition={{ duration: 0.1, ease: 'easeOut' }}
           className="text-center px-3 sm:px-4"
         >
-          <h2 className="text-xl xs:text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+          <h2 className="text-lg xs:text-xl sm:text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
             Built for every type of builder
           </h2>
-          <p className="mx-auto mt-2.5 xs:mt-3 sm:mt-4 max-w-2xl text-sm xs:text-base sm:text-lg text-muted-foreground">
+          <p className="mx-auto mt-2.5 xs:mt-3 sm:mt-4 max-w-2xl text-xs xs:text-sm sm:text-base lg:text-lg text-muted-foreground">
             Whether you're a solo founder, freelancer, or agency, Nexus adapts
             to your workflow
           </p>
@@ -76,7 +76,7 @@ export function UseCases() {
                 </div>
 
                 {/* Title */}
-                <h3 className="mb-2 sm:mb-3 text-xl sm:text-2xl font-bold tracking-tight">
+                <h3 className="mb-2 sm:mb-3 text-base xs:text-lg sm:text-xl md:text-2xl font-bold tracking-tight">
                   {useCase.title}
                 </h3>
 

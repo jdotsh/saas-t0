@@ -29,15 +29,9 @@ export default function CircularNavigation({
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <nav
           className={cn(
-            'flex items-center justify-between w-full p-4 mx-auto mt-4',
-            // Mobile: Solid background with blur
-            'bg-background/95 backdrop-blur-md border-b border-border',
-            // Desktop: Rounded pill style
-            'md:w-fit md:p-4 md:gap-20 md:bg-zinc-50 md:dark:bg-zinc-900',
-            'md:rounded-lg md:px-8 md:border-2 md:border-muted/30',
-            'md:dark:border-muted/80 md:shadow-lg md:backdrop-blur-none',
-            // Ensure visibility on all screens
-            'shadow-sm md:shadow-md'
+            'flex items-center justify-between w-full py-4',
+            // Consistent background across all sizes
+            'bg-background/95 backdrop-blur-md border-b border-border'
           )}
         >
           <Link href="/" className="flex items-center space-x-2 z-10">
@@ -103,7 +97,7 @@ export default function CircularNavigation({
                 href="/dashboard"
                 className={cn(
                   buttonVariants({ variant: 'default', size: 'sm' }),
-                  'rounded-full px-5 text-sm font-semibold'
+                  'px-5 text-sm font-semibold'
                 )}
               >
                 Dashboard
