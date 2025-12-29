@@ -33,8 +33,8 @@ export default function CircularNavigation({
             // Mobile: Solid background with blur
             'bg-background/95 backdrop-blur-md border-b border-border',
             // Desktop: Rounded pill style
-            'md:w-fit md:p-1 md:gap-20 md:bg-zinc-50 md:dark:bg-zinc-900',
-            'md:rounded-full md:px-8 md:border-2 md:border-muted/30',
+            'md:w-fit md:p-4 md:gap-20 md:bg-zinc-50 md:dark:bg-zinc-900',
+            'md:rounded-lg md:px-8 md:border-2 md:border-muted/30',
             'md:dark:border-muted/80 md:shadow-lg md:backdrop-blur-none',
             // Ensure visibility on all screens
             'shadow-sm md:shadow-md'
@@ -80,7 +80,7 @@ export default function CircularNavigation({
                   href="/signin"
                   className={cn(
                     buttonVariants({ variant: 'ghost', size: 'sm' }),
-                    'rounded-full px-5 text-sm font-medium'
+                    'px-5 text-sm font-medium'
                   )}
                 >
                   Login
@@ -89,7 +89,7 @@ export default function CircularNavigation({
                   href="/signup"
                   className={cn(
                     buttonVariants({ variant: 'default', size: 'sm' }),
-                    'rounded-full px-5 text-sm font-semibold'
+                    'px-5 text-sm font-semibold'
                   )}
                 >
                   Get Started

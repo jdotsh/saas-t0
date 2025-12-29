@@ -130,14 +130,14 @@ export default function HeroSection() {
           <div className="flex flex-col xs:flex-row items-center justify-center gap-3 sm:gap-4 mt-4 w-full px-4 sm:px-0">
             <Link
               href="/signup"
-              className="group relative inline-flex items-center justify-center w-auto min-w-[160px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg sm:rounded-xl shadow-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-100 ease-snappy active:scale-95 md:hover:scale-105"
+              className="group relative inline-flex items-center justify-center w-auto min-w-[160px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg shadow-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-100 ease-snappy active:scale-95 md:hover:scale-105"
             >
               Get Started Free
               <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform duration-100 group-hover:translate-x-1" />
             </Link>
             <Link
               href="#pricing"
-              className="inline-flex items-center justify-center w-auto min-w-[140px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-foreground bg-background/50 backdrop-blur-sm border-2 border-border/50 hover:border-border rounded-lg sm:rounded-xl transition-all duration-100 ease-snappy active:scale-95 md:hover:scale-105 hover:bg-background/80"
+              className="inline-flex items-center justify-center w-auto min-w-[140px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-foreground bg-background/50 backdrop-blur-sm border-2 border-border/50 hover:border-border rounded-lg transition-all duration-100 ease-snappy active:scale-95 md:hover:scale-105 hover:bg-background/80"
             >
               View Pricing
             </Link>
