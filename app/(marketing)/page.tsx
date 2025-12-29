@@ -44,7 +44,7 @@ export default async function IndexPage() {
               href="https://x.com/antoineross__"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 text-sm sm:text-base text-blue-500 hover:underline transition-colors duration-150"
+              className="mt-2 text-sm sm:text-base text-primary hover:text-primary/80 hover:underline transition-colors duration-150"
             >
               Join the community
             </Link>

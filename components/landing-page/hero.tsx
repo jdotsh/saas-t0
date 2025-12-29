@@ -70,13 +70,13 @@ export default function HeroSection() {
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 xs:py-16 md:py-24 lg:py-32">
         <div className="relative z-10 flex max-w-5xl flex-col items-center gap-8 md:gap-10 text-center mx-auto">
-          {/* Premium Orange Announcement Badge */}
+          {/* Premium Green Announcement Badge - Supabase Style */}
           <Link
             href={siteConfig.links.twitter}
-            className="inline-flex transition-transform hover:scale-105 duration-200 ease-snappy cursor-pointer group bg-gradient-to-br from-orange-500/10 to-orange-600/5 dark:from-white/10 dark:to-white/5 rounded-full py-2 px-4 backdrop-blur-md gap-2.5 items-center border border-orange-500/30 dark:border-white/20 hover:border-orange-500/50 dark:hover:border-white/30 shadow-lg hover:shadow-xl"
+            className="inline-flex transition-transform hover:scale-105 duration-200 ease-snappy cursor-pointer group bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10 rounded-full py-2 px-4 backdrop-blur-md gap-2.5 items-center border border-primary/30 dark:border-primary/40 hover:border-primary/50 dark:hover:border-primary/60 shadow-lg hover:shadow-xl"
           >
-            <span className="flex h-2 w-2 rounded-full bg-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.6)] group-hover:shadow-[0_0_16px_rgba(249,115,22,0.8)] group-hover:animate-pulse"></span>
-            <span className="text-sm font-semibold text-orange-700 dark:text-orange-50/90 tracking-tight group-hover:text-orange-900 dark:group-hover:text-white transition-colors duration-200">
+            <span className="flex h-2 w-2 rounded-full bg-primary shadow-[0_0_12px_rgba(63,207,142,0.6)] group-hover:shadow-[0_0_16px_rgba(63,207,142,0.8)] group-hover:animate-pulse"></span>
+            <span className="text-sm font-semibold text-primary dark:text-primary tracking-tight group-hover:text-primary/90 dark:group-hover:text-primary/90 transition-colors duration-200">
               New: Next.js 15 + Supabase Starter
             </span>
           </Link>
@@ -111,7 +111,7 @@ export default function HeroSection() {
             <br />
             <span className="inline-block bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
               in{' '}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 font-extrabold">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary font-extrabold animate-pulse-slow">
                 days
               </span>
               , not months
@@ -126,18 +126,18 @@ export default function HeroSection() {
             Everything you need to launch fast.
           </p>
 
-          {/* CTA Buttons - Natural Width, Mobile-First */}
+          {/* CTA Buttons - Supabase Style with Green */}
           <div className="flex flex-col xs:flex-row items-center justify-center gap-3 sm:gap-4 mt-4 w-full px-4 sm:px-0">
             <Link
               href="/signup"
-              className="group relative inline-flex items-center justify-center w-auto min-w-[160px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg shadow-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-100 ease-snappy active:scale-95 md:hover:scale-105"
+              className="group relative inline-flex items-center justify-center w-auto min-w-[160px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-primary hover:bg-primary/90 rounded-lg shadow-lg hover:shadow-2xl hover:shadow-primary/25 dark:hover:shadow-primary/40 transition-all duration-200 ease-snappy active:scale-95 md:hover:scale-105"
             >
               Get Started Free
-              <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform duration-100 group-hover:translate-x-1" />
+              <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
             <Link
               href="#pricing"
-              className="inline-flex items-center justify-center w-auto min-w-[140px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-foreground bg-background/50 backdrop-blur-sm border-2 border-border/50 hover:border-border rounded-lg transition-all duration-100 ease-snappy active:scale-95 md:hover:scale-105 hover:bg-background/80"
+              className="inline-flex items-center justify-center w-auto min-w-[140px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-foreground bg-background/50 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/40 dark:border-primary/30 dark:hover:border-primary/50 rounded-lg transition-all duration-200 ease-snappy active:scale-95 md:hover:scale-105 hover:bg-primary/5 dark:hover:bg-primary/10"
             >
               View Pricing
             </Link>
