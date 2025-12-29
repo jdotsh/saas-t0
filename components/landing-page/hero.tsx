@@ -68,7 +68,7 @@ export default function HeroSection() {
         />
         <Ripple />
       </div>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 xs:py-16 md:py-24 lg:py-32">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 xs:py-16 md:py-24 lg:py-32">
         <div className="relative z-10 flex max-w-5xl flex-col items-center gap-8 md:gap-10 text-center mx-auto">
           {/* Premium Green Announcement Badge - Supabase Style */}
           <Link

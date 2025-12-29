@@ -108,7 +108,7 @@ export default function FooterPrimary() {
     <footer className="bg-background border-t">
       {/* Newsletter Section - Mobile only */}
       <div className="sm:hidden bg-primary/5 dark:bg-primary/10">
-        <div className="container mx-auto px-4 py-8">
+        <div className="w-full max-w-7xl mx-auto px-4 py-8">
           <div className="text-center mb-6">
             <h3 className="text-lg sm:text-xl font-bold mb-2">Stay updated</h3>
             <p className="text-sm text-muted-foreground">
@@ -135,7 +135,7 @@ export default function FooterPrimary() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Mobile Accordion Footer */}
         <div className="sm:hidden space-y-2">
           {footerSections.map((section) => (

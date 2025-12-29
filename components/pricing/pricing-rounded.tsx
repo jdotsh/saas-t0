@@ -85,7 +85,7 @@ export default function PricingRounded({
 
   if (!displayProducts.length) {
     return (
-      <section className="container mx-auto" id="pricing">
+      <section className="w-full max-w-7xl mx-auto" id="pricing">
         <div className="max-w-6xl px-4 py-8 mx-auto sm:py-24 sm:px-6 lg:px-8">
           <div className="sm:flex sm:flex-col sm:align-center"></div>
           <p className="text-4xl font-extrabold text-foreground sm:text-center sm:text-6xl">
@@ -105,7 +105,7 @@ export default function PricingRounded({
     );
   } else {
     return (
-      <section className="container mx-auto px-4 sm:px-6" id="pricing">
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6" id="pricing">
         <div className="flex flex-col items-center justify-center w-full min-h-screen py-12 sm:py-16 md:py-20">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center px-3 sm:px-4 tracking-tight text-foreground animate-fade-in">
             Choose your plan

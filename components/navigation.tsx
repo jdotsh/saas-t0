@@ -27,7 +27,7 @@ export default function CircularNavigation({
   return (
     <>
       <div className="sticky top-0 z-40 w-full bg-background/95 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center justify-between w-full py-4">
             <Link href="/" className="flex items-center space-x-2 z-10">
               <div className="bg-primary/10 dark:bg-primary/20 p-1.5 rounded-full">
