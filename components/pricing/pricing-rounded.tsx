@@ -14,7 +14,7 @@ import { checkoutWithStripe } from '@/utils/stripe/server';
 import { getErrorRedirect } from '@/utils/helpers';
 import { User } from '@supabase/supabase-js';
 import { useRouter, usePathname } from 'next/navigation';
-import { Moon, Check, Loader2 } from 'lucide-react';
+import { Check, Loader2 } from 'lucide-react';
 import pricingPlans from '@/config/pricing';
 import { dummyPricing } from '@/config/pricing';
 
@@ -112,12 +112,12 @@ export default function PricingRounded({
     return (
       <section className="container mx-auto px-4 sm:px-6" id="pricing">
         <div className="flex flex-col items-center justify-center w-full min-h-screen py-12 sm:py-16 md:py-20">
-          <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-center px-3 sm:px-4">
-            Flat pricing, no management fees.
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center px-3 sm:px-4 tracking-tight">
+            Choose your plan
           </h1>
-          <p className="mt-2 sm:mt-3 text-center text-sm xs:text-base text-muted-foreground max-w-3xl px-3 sm:px-4">
-            Whether you're one person trying to get ahead or a big firm trying
-            to take over the world, we've got a plan for you.
+          <p className="mt-3 sm:mt-4 text-center text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl px-3 sm:px-4">
+            Start free, upgrade when you're ready. All plans include 14-day
+            trial.
           </p>
           {displayProducts.length === 0 && (
             <p className="mt-4 text-center text-xs sm:text-sm text-red-500 px-4 max-w-2xl">
@@ -136,24 +136,27 @@ export default function PricingRounded({
               .
             </p>
           )}
-          <div className="flex flex-row items-center justify-center mt-6 gap-3 sm:gap-4 w-full px-4">
+          <div className="flex items-center justify-center mt-8 gap-2 bg-muted/50 p-1 rounded-full w-fit mx-auto">
             <Button
-              className="flex-1 max-w-[140px] sm:flex-none sm:w-auto px-4 xs:px-6 sm:px-8"
-              variant={billingInterval === 'month' ? 'default' : 'outline'}
+              className="px-6 py-2 rounded-full transition-all duration-200"
+              variant={billingInterval === 'month' ? 'default' : 'ghost'}
               onClick={() => setBillingInterval('month')}
             >
               Monthly
             </Button>
             <Button
-              className="flex-1 max-w-[140px] sm:flex-none sm:w-auto px-4 xs:px-6 sm:px-8"
-              variant={billingInterval === 'year' ? 'default' : 'outline'}
+              className="px-6 py-2 rounded-full transition-all duration-200"
+              variant={billingInterval === 'year' ? 'default' : 'ghost'}
               onClick={() => setBillingInterval('year')}
             >
               Yearly
+              <span className="ml-2 text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full">
+                Save 20%
+              </span>
             </Button>
           </div>
-          <div className="grid gap-6 sm:gap-8 mt-8 xs:mt-10 md:grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
-            {displayProducts.map((product) => {
+          <div className="grid gap-6 sm:gap-8 mt-10 md:mt-12 md:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl">
+            {displayProducts.map((product, productIndex) => {
               const price = product?.prices?.find(
                 (price) => price.interval === billingInterval
               );
@@ -166,9 +169,16 @@ export default function PricingRounded({
               const isActive = subscription
                 ? product.name === subscription?.prices?.products?.name
                 : false;
-              const cardBgColor = isActive
-                ? 'border-black bg-white text-black'
-                : 'bg-white text-black';
+
+              // Determine if this is the featured/popular plan (middle card)
+              const isFeatured =
+                productIndex === 1 && displayProducts.length >= 3;
+
+              const cardBgColor = isFeatured
+                ? 'bg-gradient-to-br from-primary to-primary/80 text-white border-primary'
+                : isActive
+                  ? 'bg-background/80 backdrop-blur-xl border-primary'
+                  : 'bg-background/80 backdrop-blur-xl border-border';
 
               // Use features from the pricingPlans config
               const plan = pricingPlans.find(
@@ -179,29 +189,74 @@ export default function PricingRounded({
               return (
                 <Card
                   key={product.id}
-                  className={`w-full max-w-[300px] xs:max-w-sm mx-auto rounded-xl border-2 ${cardBgColor}`}
+                  className={`relative w-full rounded-2xl border p-8 transition-all duration-300 hover:shadow-xl ${cardBgColor} ${
+                    isFeatured
+                      ? 'md:scale-105 md:z-10 shadow-2xl'
+                      : 'hover:scale-[1.02]'
+                  }`}
                 >
-                  <CardHeader className="rounded-t-xl flex flex-col justify-center p-4 sm:p-6">
-                    <div className="flex items-center">
-                      <Moon className="h-6 w-6 sm:h-8 sm:w-8 text-gray-600 fill-zinc-500" />
-                      <CardTitle className="ml-2 text-xl sm:text-2xl font-bold">
-                        {product.name}
-                      </CardTitle>
+                  {/* Most Popular Badge */}
+                  {isFeatured && (
+                    <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-semibold text-white">
+                      MOST POPULAR
                     </div>
-                  </CardHeader>
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="text-3xl sm:text-4xl font-bold py-6 sm:py-8">
-                      {priceString}
-                    </div>
-                    <p className="mt-2 text-sm sm:text-base text-muted-foreground">
-                      {product.description}
+                  )}
+
+                  <CardHeader className="p-0 pb-6">
+                    <CardTitle
+                      className={`text-2xl font-semibold mb-2 ${isFeatured ? 'text-white' : 'text-foreground'}`}
+                    >
+                      {product.name}
+                    </CardTitle>
+                    <p
+                      className={`text-sm ${isFeatured ? 'text-white/80' : 'text-muted-foreground'}`}
+                    >
+                      {product.name === 'Free'
+                        ? 'Perfect to get started'
+                        : product.name === 'Pro'
+                          ? 'For power users'
+                          : 'For teams & organizations'}
                     </p>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="mb-8">
+                      <span
+                        className={`text-5xl font-bold ${isFeatured ? 'text-white' : 'text-foreground'}`}
+                      >
+                        {priceString.replace(/\.\d+$/, '')}
+                      </span>
+                      <span
+                        className={`ml-2 ${isFeatured ? 'text-white/80' : 'text-muted-foreground'}`}
+                      >
+                        / {billingInterval}
+                      </span>
+                    </div>
+
+                    <ul className="space-y-4 mb-8">
+                      {features.map((feature, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <Check
+                            className={`h-5 w-5 flex-shrink-0 mt-0.5 ${isFeatured ? 'text-white' : 'text-primary'}`}
+                          />
+                          <span
+                            className={`text-sm ${isFeatured ? 'text-white' : 'text-foreground'}`}
+                          >
+                            {feature.trim()}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
                     <Button
-                      variant="default"
+                      variant={isFeatured ? 'secondary' : 'default'}
                       type="button"
                       onClick={() => handleStripeCheckout(price)}
                       disabled={priceIdLoading === price.id}
-                      className="mt-4 w-full py-2 sm:py-2.5 text-sm sm:text-base"
+                      className={`w-full px-6 py-3 rounded-xl font-semibold transition-all ${
+                        isFeatured
+                          ? 'bg-white text-primary hover:bg-white/90'
+                          : 'bg-primary/10 text-primary hover:bg-primary/20'
+                      }`}
                     >
                       {priceIdLoading === price.id ? (
                         <>
@@ -209,25 +264,29 @@ export default function PricingRounded({
                           Processing...
                         </>
                       ) : subscription ? (
-                        'Manage'
+                        'Manage Subscription'
                       ) : (
-                        'Subscribe'
+                        'Get Started'
                       )}
                     </Button>
-                    <ul className="mt-4 space-y-2">
-                      {features.map((feature, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <Check className="text-blue-500 h-4 w-4 sm:h-5 sm:w-5 mt-0.5 shrink-0" />
-                          <span className="text-xs sm:text-sm">
-                            {feature.trim()}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
                   </CardContent>
                 </Card>
               );
             })}
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-16 text-center">
+            <p className="text-sm text-muted-foreground mb-4">
+              Trusted by 10,000+ professionals
+            </p>
+            <div className="flex items-center justify-center gap-4 sm:gap-8 flex-wrap text-xs sm:text-sm text-muted-foreground">
+              <span className="font-semibold">256-bit encryption</span>
+              <span>•</span>
+              <span className="font-semibold">GDPR compliant</span>
+              <span>•</span>
+              <span className="font-semibold">Cancel anytime</span>
+            </div>
           </div>
         </div>
       </section>
