@@ -136,8 +136,8 @@ export function PromoBanner({
           className
         )}
       >
-        <div className="flex min-h-[44px] items-center justify-center px-4 py-2 sm:px-6">
-          <div className="flex w-full max-w-screen-xl items-center justify-between gap-3 sm:justify-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex min-h-[44px] items-center justify-between gap-3 py-2 sm:justify-center">
             {/* Promotional Message */}
             <div className="flex flex-wrap items-center gap-2 text-sm sm:gap-2.5">
               {/* CTA Link */}
