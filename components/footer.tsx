@@ -11,26 +11,28 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-gray-300 p-8 relative">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 justify-between">
+    <footer className="bg-zinc-950 dark:bg-zinc-950 text-zinc-300 py-12 sm:py-16 md:py-20 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 justify-between">
         <div>
-          <h2 className="text-md text-gray-300 font-bold mb-4">
+          <h2 className="text-md text-zinc-300 font-bold mb-4">
             {footerLinks.getInTouch.title}
           </h2>
-          <p className="text-xl text-gray-300 mb-4">
+          <p className="text-xl text-zinc-300 mb-4">
             We partner with global brands, from startups to industry leaders.{' '}
-            <span className="text-white font-bold">Let's discuss.</span>
+            <span className="text-zinc-50 font-bold">Let's discuss.</span>
           </p>
-          <h3 className="text-sm text-gray-300 font-bold mb-2">
+          <h3 className="text-sm text-zinc-300 font-bold mb-2">
             Subscribe to our Newsletter
           </h3>
           <form className="flex">
             <Input
               type="email"
               placeholder="name@email.com"
-              className="p-2 flex-grow bg-gray-800 text-white rounded-sm border-black"
+              className="p-2 flex-grow bg-zinc-800 text-zinc-50 border-border"
             />
-            <Button className="ml-2 bg-gray-700">Subscribe</Button>
+            <Button className="ml-2 bg-zinc-700 hover:bg-zinc-600">
+              Subscribe
+            </Button>
           </form>
         </div>
         <div className="flex flex-col items-center mx-auto text-xs">
@@ -44,7 +46,7 @@ export default function Footer() {
                   <li key={index} className="mb-2">
                     <Link
                       href={link.href}
-                      className="text-white"
+                      className="text-zinc-50 hover:text-zinc-100 transition-colors"
                       prefetch={false}
                     >
                       {link.name}
@@ -62,7 +64,7 @@ export default function Footer() {
                   <li key={index} className="mb-2">
                     <Link
                       href={link.href}
-                      className="text-white"
+                      className="text-zinc-50 hover:text-zinc-100 transition-colors"
                       prefetch={false}
                     >
                       {link.name}
@@ -84,25 +86,41 @@ export default function Footer() {
             {footerLinks.location.socialLinksTitle}
           </h3>
           <div className="flex space-x-3">
-            <Link href="#" className="text-white" prefetch={false}>
+            <Link
+              href="#"
+              className="text-zinc-50 hover:text-zinc-100 transition-colors"
+              prefetch={false}
+            >
               <XIcon className="w-6 h-6" />
             </Link>
-            <Link href="#" className="text-white" prefetch={false}>
+            <Link
+              href="#"
+              className="text-zinc-50 hover:text-zinc-100 transition-colors"
+              prefetch={false}
+            >
               <FacebookIcon className="w-6 h-6" />
             </Link>
-            <Link href="#" className="text-white" prefetch={false}>
+            <Link
+              href="#"
+              className="text-zinc-50 hover:text-zinc-100 transition-colors"
+              prefetch={false}
+            >
               <InstagramIcon className="w-6 h-6" />
             </Link>
-            <Link href="#" className="text-white" prefetch={false}>
+            <Link
+              href="#"
+              className="text-zinc-50 hover:text-zinc-100 transition-colors"
+              prefetch={false}
+            >
               <LinkedinIcon className="w-6 h-6" />
             </Link>
           </div>
         </div>
       </div>
-      <div className="mt-8 text-center text-gray-300 text-xs">
+      <div className="mt-8 text-center text-zinc-300 text-xs">
         <p>
           Copyright ©2024{' '}
-          <span className="text-white font-bold">Webestica</span>. All rights
+          <span className="text-zinc-50 font-bold">Webestica</span>. All rights
           reserved.
         </p>
       </div>

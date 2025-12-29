@@ -6,7 +6,7 @@ import { Spinner } from '@radix-ui/themes';
 import { cn } from '@/utils/cn';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-all duration-150 ease-snappy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 active:scale-[0.98]',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium ring-offset-white transition-all duration-150 ease-snappy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-zinc-950 dark:focus-visible:ring-zinc-300 active:scale-[0.98]',
   {
     variants: {
       variant: {
@@ -24,16 +24,10 @@ const buttonVariants = cva(
       },
       size: {
         default: 'h-10 px-4 py-2',
-        xxs: 'h-7 rounded-sm px-1',
-        xs: 'h-8 rounded-md px-2',
-        sm: 'h-9 rounded-md px-3',
-        md: 'h-10 rounded-md px-5',
-        lg: 'h-11 rounded-md px-8',
-        xl: 'h-12 rounded-md px-10',
-        xxl: 'h-14 rounded-md px-12',
-        xxxl: 'h-16 rounded-md px-14',
-        icon: 'h-10 w-10',
-        iconsmall: 'h-5 w-5'
+        sm: 'h-9 px-3',
+        lg: 'h-11 px-6',
+        xl: 'h-12 px-8',
+        icon: 'h-10 w-10'
       }
     },
     defaultVariants: {

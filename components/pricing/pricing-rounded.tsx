@@ -138,14 +138,14 @@ export default function PricingRounded({
           )}
           <div className="flex flex-row items-center justify-center mt-6 gap-3 sm:gap-4 w-full px-4">
             <Button
-              className="rounded-4xl flex-1 max-w-[140px] sm:flex-none sm:w-auto px-4 xs:px-6 sm:px-8"
+              className="flex-1 max-w-[140px] sm:flex-none sm:w-auto px-4 xs:px-6 sm:px-8"
               variant={billingInterval === 'month' ? 'default' : 'outline'}
               onClick={() => setBillingInterval('month')}
             >
               Monthly
             </Button>
             <Button
-              className="rounded-4xl flex-1 max-w-[140px] sm:flex-none sm:w-auto px-4 xs:px-6 sm:px-8"
+              className="flex-1 max-w-[140px] sm:flex-none sm:w-auto px-4 xs:px-6 sm:px-8"
               variant={billingInterval === 'year' ? 'default' : 'outline'}
               onClick={() => setBillingInterval('year')}
             >
@@ -179,9 +179,9 @@ export default function PricingRounded({
               return (
                 <Card
                   key={product.id}
-                  className={`w-full max-w-[300px] xs:max-w-sm mx-auto rounded-3xl sm:rounded-4xl border-2 ${cardBgColor}`}
+                  className={`w-full max-w-[300px] xs:max-w-sm mx-auto rounded-xl border-2 ${cardBgColor}`}
                 >
-                  <CardHeader className="rounded-t-3xl sm:rounded-t-4xl flex flex-col justify-center p-4 sm:p-6">
+                  <CardHeader className="rounded-t-xl flex flex-col justify-center p-4 sm:p-6">
                     <div className="flex items-center">
                       <Moon className="h-6 w-6 sm:h-8 sm:w-8 text-gray-600 fill-zinc-500" />
                       <CardTitle className="ml-2 text-xl sm:text-2xl font-bold">
@@ -201,7 +201,7 @@ export default function PricingRounded({
                       type="button"
                       onClick={() => handleStripeCheckout(price)}
                       disabled={priceIdLoading === price.id}
-                      className="mt-4 w-full rounded-3xl sm:rounded-4xl py-2 sm:py-2.5 text-sm sm:text-base"
+                      className="mt-4 w-full py-2 sm:py-2.5 text-sm sm:text-base"
                     >
                       {priceIdLoading === price.id ? (
                         <>
