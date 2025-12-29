@@ -106,9 +106,9 @@ export default function FooterPrimary() {
 
   return (
     <footer className="bg-background border-t">
-      {/* Newsletter Section - Mobile optimized */}
-      <div className="bg-primary/5 dark:bg-primary/10 py-8 sm:py-12">
-        <div className="container mx-auto px-4 max-w-2xl">
+      {/* Newsletter Section - Mobile only */}
+      <div className="sm:hidden bg-primary/5 dark:bg-primary/10">
+        <div className="container mx-auto px-4 py-8">
           <div className="text-center mb-6">
             <h3 className="text-lg sm:text-xl font-bold mb-2">Stay updated</h3>
             <p className="text-sm text-muted-foreground">
@@ -135,7 +135,7 @@ export default function FooterPrimary() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-8 sm:py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Mobile Accordion Footer */}
         <div className="sm:hidden space-y-2">
           {footerSections.map((section) => (
@@ -176,7 +176,7 @@ export default function FooterPrimary() {
         </div>
 
         {/* Desktop Grid Footer */}
-        <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {footerSections.map((section) => (
             <div key={section.id}>
               <h3 className="font-semibold text-sm mb-3">{section.title}</h3>
@@ -195,10 +195,26 @@ export default function FooterPrimary() {
             </div>
           ))}
 
-          {/* Social Links - Desktop */}
-          <div>
-            <h3 className="font-semibold text-sm mb-3">Connect</h3>
-            <div className="flex gap-3">
+          {/* Newsletter - Desktop */}
+          <div className="lg:col-span-2">
+            <h3 className="font-semibold text-sm mb-3">Newsletter</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Stay updated with our latest features and releases
+            </p>
+            <form onSubmit={handleSubmit} className="flex gap-2 max-w-sm">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 h-10"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Button type="submit" size="sm" className="h-10">
+                Subscribe
+              </Button>
+            </form>
+            <div className="flex gap-3 mt-6">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
