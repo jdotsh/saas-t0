@@ -97,7 +97,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
       <head>
         <meta
           name="viewport"
@@ -116,7 +116,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
       </head>
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen bg-background font-sans antialiased overflow-x-hidden',
           fontSans.variable,
           fontHeading.variable
         )}

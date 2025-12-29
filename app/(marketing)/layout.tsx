@@ -20,7 +20,7 @@ export default async function MarketingLayout({
   const user = await getUser(supabase);
 
   return (
-    <div className="flex min-h-screen flex-col items-center w-full">
+    <div className="flex min-h-screen flex-col items-center w-full overflow-x-hidden">
       {/* Promotional Banner - Boxing Day Special */}
       <PromoBanner
         title="Boxing Day Special"
@@ -34,7 +34,7 @@ export default async function MarketingLayout({
         items={marketingConfig.mainNav}
         user={user ? true : false}
       />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 w-full overflow-x-hidden">{children}</main>
       <FooterPrimary />
     </div>
   );

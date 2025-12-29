@@ -57,8 +57,8 @@ export default function HeroSection() {
   // }, [quotes.length]);
 
   return (
-    <section className="relative w-full overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full overflow-hidden max-w-full">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <Particles
           className="absolute inset-0"
           quantity={300}

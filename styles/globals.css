@@ -146,6 +146,15 @@
 }
 
 @layer base {
+  /* Prevent horizontal scroll globally */
+  html,
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative;
+  }
+
   * {
     @apply border-border;
     /* Smooth transitions for theme switching */
