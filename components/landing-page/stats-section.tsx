@@ -24,7 +24,7 @@ export function StatsSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.1, ease: 'easeOut' }}
           className="text-center"
         >
@@ -39,7 +39,7 @@ export function StatsSection() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.1, delay: 0.03, ease: 'easeOut' }}
           className="mt-10 xs:mt-12 sm:mt-16 lg:mt-20 grid grid-cols-2 gap-4 xs:gap-6 sm:gap-8 lg:grid-cols-4 lg:gap-12"
         >
@@ -51,7 +51,7 @@ export function StatsSection() {
                 key={stat.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{
                   duration: 0.1,
                   delay: 0.02 * index,

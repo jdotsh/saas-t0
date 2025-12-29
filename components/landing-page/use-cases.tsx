@@ -28,7 +28,7 @@ export function UseCases() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.1, ease: 'easeOut' }}
           className="text-center px-3 sm:px-4"
         >
@@ -50,7 +50,7 @@ export function UseCases() {
                 key={useCase.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{
                   duration: 0.12,
                   delay: 0.02 * index,

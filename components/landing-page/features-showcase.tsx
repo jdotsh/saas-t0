@@ -55,7 +55,7 @@ function FeatureModule({
           <motion.div
             initial={{ opacity: 0, x: reverse ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.12, ease: 'easeOut' }}
             className={`flex flex-col justify-center ${
               reverse ? 'lg:order-2' : 'lg:order-1'
@@ -83,7 +83,7 @@ function FeatureModule({
                   key={idx}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
+                  viewport={{ once: true, amount: 0.15 }}
                   transition={{
                     duration: 0.1,
                     delay: 0.02 * idx,
@@ -109,7 +109,7 @@ function FeatureModule({
           <motion.div
             initial={{ opacity: 0, x: reverse ? -50 : 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.12, ease: 'easeOut', delay: 0.03 }}
             className={`relative ${reverse ? 'lg:order-1' : 'lg:order-2'}`}
           >
