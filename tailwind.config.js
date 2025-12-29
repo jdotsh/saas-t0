@@ -11,6 +11,14 @@ module.exports = {
   ],
   darkMode: ['class'],
   theme: {
+    screens: {
+      'xs': '360px',   // Small phones (iPhone 12+)
+      'sm': '640px',   // Mobile landscape / Small tablets
+      'md': '768px',   // Tablets
+      'lg': '1024px',  // Desktop
+      'xl': '1280px',  // Large desktop
+      '2xl': '1536px'  // Extra large desktop
+    },
     container: {
       center: true,
       padding: '2rem',

@@ -112,10 +112,10 @@ export default function PricingRounded({
     return (
       <section className="container mx-auto px-4 sm:px-6" id="pricing">
         <div className="flex flex-col items-center justify-center w-full min-h-screen py-12 sm:py-16 md:py-20">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center px-4">
+          <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-center px-3 sm:px-4">
             Flat pricing, no management fees.
           </h1>
-          <p className="mt-2 sm:mt-3 text-center text-sm sm:text-base text-muted-foreground max-w-3xl px-4">
+          <p className="mt-2 sm:mt-3 text-center text-sm xs:text-base text-muted-foreground max-w-3xl px-3 sm:px-4">
             Whether you're one person trying to get ahead or a big firm trying
             to take over the world, we've got a plan for you.
           </p>
@@ -136,23 +136,23 @@ export default function PricingRounded({
               .
             </p>
           )}
-          <div className="flex flex-col sm:flex-row items-center justify-center mt-6 gap-3 sm:gap-4 w-full max-w-md sm:max-w-none px-4">
+          <div className="flex flex-row items-center justify-center mt-6 gap-3 sm:gap-4 w-full px-4">
             <Button
-              className="rounded-4xl w-full sm:w-auto px-6 sm:px-8"
+              className="rounded-4xl flex-1 max-w-[140px] sm:flex-none sm:w-auto px-4 xs:px-6 sm:px-8"
               variant={billingInterval === 'month' ? 'default' : 'outline'}
               onClick={() => setBillingInterval('month')}
             >
               Monthly
             </Button>
             <Button
-              className="rounded-4xl w-full sm:w-auto px-6 sm:px-8"
+              className="rounded-4xl flex-1 max-w-[140px] sm:flex-none sm:w-auto px-4 xs:px-6 sm:px-8"
               variant={billingInterval === 'year' ? 'default' : 'outline'}
               onClick={() => setBillingInterval('year')}
             >
               Yearly
             </Button>
           </div>
-          <div className="grid gap-6 sm:gap-8 mt-8 sm:mt-10 md:grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
+          <div className="grid gap-6 sm:gap-8 mt-8 xs:mt-10 md:grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
             {displayProducts.map((product) => {
               const price = product?.prices?.find(
                 (price) => price.interval === billingInterval
@@ -179,7 +179,7 @@ export default function PricingRounded({
               return (
                 <Card
                   key={product.id}
-                  className={`w-full max-w-sm mx-auto rounded-3xl sm:rounded-4xl border-2 ${cardBgColor}`}
+                  className={`w-full max-w-[300px] xs:max-w-sm mx-auto rounded-3xl sm:rounded-4xl border-2 ${cardBgColor}`}
                 >
                   <CardHeader className="rounded-t-3xl sm:rounded-t-4xl flex flex-col justify-center p-4 sm:p-6">
                     <div className="flex items-center">

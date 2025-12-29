@@ -68,7 +68,7 @@ export default function HeroSection() {
         />
         <Ripple />
       </div>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 xs:py-16 md:py-24 lg:py-32">
         <div className="relative z-10 flex max-w-5xl flex-col items-center gap-8 md:gap-10 text-center mx-auto">
           {/* Premium Orange Announcement Badge */}
           <Link
@@ -104,7 +104,7 @@ export default function HeroSection() {
           */}
 
           {/* Hero Title - Clean & Bold */}
-          <h1 className="font-heading font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.1] max-w-4xl">
+          <h1 className="font-heading font-bold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.1] max-w-4xl px-2">
             <span className="inline-block bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
               Ship your SaaS
             </span>
@@ -119,32 +119,32 @@ export default function HeroSection() {
           </h1>
 
           {/* Subtitle - Clear Value Prop */}
-          <p className="max-w-2xl text-lg md:text-xl lg:text-2xl font-normal text-muted-foreground/90 leading-relaxed px-4">
+          <p className="max-w-2xl text-base xs:text-lg md:text-xl lg:text-2xl font-normal text-muted-foreground/90 leading-relaxed px-3 sm:px-4">
             Production-ready Next.js 15 starter with auth, payments, and
             database.
             <br className="hidden sm:block" />
             Everything you need to launch fast.
           </p>
 
-          {/* CTA Buttons - Clean & Modern - Mobile Optimized */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-4 w-full max-w-md sm:max-w-none px-4 sm:px-0">
+          {/* CTA Buttons - Natural Width, Mobile-First */}
+          <div className="flex flex-col xs:flex-row items-center justify-center gap-3 sm:gap-4 mt-4 w-full px-4 sm:px-0">
             <Link
               href="/signup"
-              className="group relative inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg sm:rounded-xl shadow-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-150 ease-snappy hover:scale-105 active:scale-95"
+              className="group relative inline-flex items-center justify-center w-auto min-w-[160px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-orange-500 to-pink-600 rounded-lg sm:rounded-xl shadow-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-100 ease-snappy active:scale-95 md:hover:scale-105"
             >
               Get Started Free
-              <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform duration-100 group-hover:translate-x-1" />
             </Link>
             <Link
               href="#pricing"
-              className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-foreground bg-background/50 backdrop-blur-sm border-2 border-border/50 hover:border-border rounded-lg sm:rounded-xl transition-all duration-150 ease-snappy hover:scale-105 hover:bg-background/80 active:scale-95"
+              className="inline-flex items-center justify-center w-auto min-w-[140px] px-4 xs:px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-foreground bg-background/50 backdrop-blur-sm border-2 border-border/50 hover:border-border rounded-lg sm:rounded-xl transition-all duration-100 ease-snappy active:scale-95 md:hover:scale-105 hover:bg-background/80"
             >
               View Pricing
             </Link>
           </div>
 
           {/* Social Proof - Minimal & Clean */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-6 w-full px-4">
+          <div className="flex flex-col xs:flex-row items-center justify-center gap-4 xs:gap-6 mt-6 w-full px-4">
             <div className="flex items-center gap-3">
               <AvatarCircles numPeople={155} avatarUrls={avatarUrls} />
               <div className="flex flex-col items-start">

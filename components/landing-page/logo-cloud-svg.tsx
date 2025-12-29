@@ -28,7 +28,7 @@ export default function LogoCloud() {
   ];
 
   return (
-    <div className="w-full py-12">
+    <div className="w-full py-8 xs:py-10 sm:py-12">
       <p className="text-xs uppercase text-muted-foreground text-center font-semibold tracking-[0.3em] mb-8">
         Trusted by the modern web3 ecosystem
       </p>

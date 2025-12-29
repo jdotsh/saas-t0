@@ -44,8 +44,8 @@ function FeatureModule({
   const bgClass = index % 2 === 0 ? 'bg-background' : 'bg-muted/30';
 
   return (
-    <section className={`w-full ${bgClass} transition-colors duration-150`}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:px-8 lg:py-32">
+    <section className={`w-full ${bgClass} transition-colors duration-100`}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 xs:py-16 sm:py-20 md:py-24 lg:px-8 lg:py-32">
         <div
           className={`grid gap-8 sm:gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 ${
             reverse ? 'lg:flex-row-reverse' : ''
@@ -56,23 +56,23 @@ function FeatureModule({
             initial={{ opacity: 0, x: reverse ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
+            transition={{ duration: 0.12, ease: 'easeOut' }}
             className={`flex flex-col justify-center ${
               reverse ? 'lg:order-2' : 'lg:order-1'
             }`}
           >
             {/* Benefit Badge */}
-            <div className="mb-3 sm:mb-4 inline-flex w-fit items-center rounded-full border border-primary/30 bg-primary/10 px-3 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-semibold text-primary">
+            <div className="mb-2.5 xs:mb-3 sm:mb-4 inline-flex w-fit items-center rounded-full border border-primary/30 bg-primary/10 px-2.5 xs:px-3 sm:px-4 py-0.5 xs:py-1 sm:py-1.5 text-xs sm:text-sm font-semibold text-primary">
               {benefit}
             </div>
 
             {/* Headline */}
-            <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            <h2 className="mb-3 sm:mb-4 text-xl xs:text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
               {headline}
             </h2>
 
             {/* Description */}
-            <p className="mb-6 sm:mb-8 text-base sm:text-lg text-muted-foreground">
+            <p className="mb-5 xs:mb-6 sm:mb-8 text-sm xs:text-base sm:text-lg text-muted-foreground">
               {description}
             </p>
 
@@ -85,8 +85,9 @@ function FeatureModule({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{
-                    duration: 0.15,
-                    delay: 0.03 * idx
+                    duration: 0.1,
+                    delay: 0.02 * idx,
+                    ease: 'easeOut'
                   }}
                   className="flex items-start gap-2 sm:gap-3"
                 >
@@ -109,10 +110,10 @@ function FeatureModule({
             initial={{ opacity: 0, x: reverse ? -50 : 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.2, ease: 'easeOut', delay: 0.05 }}
+            transition={{ duration: 0.12, ease: 'easeOut', delay: 0.03 }}
             className={`relative ${reverse ? 'lg:order-1' : 'lg:order-2'}`}
           >
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-muted/50 shadow-2xl">
+            <div className="relative aspect-[16/10] xs:aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-muted/50 shadow-2xl">
               <Image
                 src={imagePath}
                 alt={imageAlt}

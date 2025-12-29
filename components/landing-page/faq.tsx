@@ -12,27 +12,27 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="max-w-3xl mx-auto p-6 mb-12">
-      <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold">FAQ</h2>
-        <p className="text-muted-foreground">
+    <section className="max-w-3xl mx-auto px-4 sm:px-6 py-8 xs:py-10 sm:py-12 mb-8 xs:mb-10 sm:mb-12">
+      <div className="text-center mb-6 xs:mb-8">
+        <h2 className="text-xl xs:text-2xl font-bold">FAQ</h2>
+        <p className="text-sm xs:text-base text-muted-foreground">
           You got questions? I got answers.
         </p>
       </div>
-      <div className="space-y-4">
+      <div className="space-y-3 xs:space-y-4">
         {faqItems.map((item, index) => (
           <div key={index} className="border rounded-lg overflow-hidden">
             <div
-              className={`flex items-center justify-between p-4 cursor-pointer ${activeItem === index ? 'bg-muted' : ''}`}
+              className={`flex items-center justify-between p-3 xs:p-4 cursor-pointer transition-colors duration-100 ${activeItem === index ? 'bg-muted' : ''}`}
               onClick={() => toggleItem(index)}
             >
-              <span>{item.question}</span>
+              <span className="text-sm xs:text-base">{item.question}</span>
               <ArrowDownLeft
-                className={`h-5 w-5 text-muted-foreground transition-transform duration-300 ease-in-out ${activeItem === index ? 'rotate-45' : ''}`}
+                className={`h-4 xs:h-5 w-4 xs:w-5 text-muted-foreground transition-transform duration-150 ease-snappy ${activeItem === index ? 'rotate-45' : ''}`}
               />
             </div>
             <div
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+              className={`overflow-hidden transition-all duration-150 ease-snappy ${
                 activeItem === index ? 'max-h-96' : 'max-h-0'
               }`}
             >

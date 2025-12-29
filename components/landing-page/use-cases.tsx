@@ -24,24 +24,24 @@ import { Check } from 'lucide-react';
 export function UseCases() {
   return (
     <section className="w-full bg-background">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:px-8 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 xs:py-16 sm:py-20 md:py-24 lg:px-8 lg:py-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.2 }}
-          className="text-center px-4"
+          transition={{ duration: 0.1, ease: 'easeOut' }}
+          className="text-center px-3 sm:px-4"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+          <h2 className="text-xl xs:text-2xl sm:text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
             Built for every type of builder
           </h2>
-          <p className="mx-auto mt-3 sm:mt-4 max-w-2xl text-base sm:text-lg text-muted-foreground">
+          <p className="mx-auto mt-2.5 xs:mt-3 sm:mt-4 max-w-2xl text-sm xs:text-base sm:text-lg text-muted-foreground">
             Whether you're a solo founder, freelancer, or agency, Nexus adapts
             to your workflow
           </p>
         </motion.div>
 
-        <div className="mt-12 sm:mt-16 lg:mt-20 grid gap-6 sm:gap-8 lg:grid-cols-3 lg:gap-8">
+        <div className="mt-10 xs:mt-12 sm:mt-16 lg:mt-20 grid gap-5 xs:gap-6 sm:gap-8 lg:grid-cols-3 lg:gap-8">
           {useCases.map((useCase, index) => {
             const Icon = useCase.icon;
 
@@ -52,14 +52,15 @@ export function UseCases() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{
-                  duration: 0.2,
-                  delay: 0.03 * index
+                  duration: 0.12,
+                  delay: 0.02 * index,
+                  ease: 'easeOut'
                 }}
                 whileHover={{
                   y: -8,
-                  transition: { duration: 0.15, ease: 'easeOut' }
+                  transition: { duration: 0.12, ease: 'easeOut' }
                 }}
-                className="group relative flex flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm transition-shadow duration-150 hover:shadow-lg"
+                className="group relative flex flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-border bg-card p-5 xs:p-6 sm:p-8 shadow-sm transition-shadow duration-100 md:hover:shadow-lg"
               >
                 {/* Icon */}
                 <div className="mb-4 sm:mb-6 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-lg sm:rounded-xl bg-primary/10 transition-colors duration-150 group-hover:bg-primary/20">
@@ -115,7 +116,7 @@ export function UseCases() {
                   href={useCase.ctaHref}
                   className={cn(
                     buttonVariants({ variant: 'default' }),
-                    'w-full text-sm sm:text-base py-2 sm:py-2.5 transition-transform duration-150 group-hover:translate-x-0.5'
+                    'w-full text-sm sm:text-base py-2 sm:py-2.5 transition-transform duration-100 active:scale-95 md:group-hover:translate-x-0.5'
                   )}
                 >
                   {useCase.ctaText}
