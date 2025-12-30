@@ -70,7 +70,7 @@ export default function SignIn() {
           variant: 'destructive'
         });
       }
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: 'Error',
         description: 'Something went wrong. Please try again.',

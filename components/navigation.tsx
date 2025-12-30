@@ -118,7 +118,7 @@ export default function CircularNavigation({
         {showMobileMenu && items && (
           <MobileNav
             items={items}
-            user={user}
+            user={!!user}
             onClose={() => setShowMobileMenu(false)}
           >
             {children}
