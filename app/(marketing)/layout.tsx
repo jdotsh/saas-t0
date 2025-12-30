@@ -5,7 +5,7 @@ import { PromoBanner } from '@/components/ui/promo-banner';
 import React from 'react';
 
 import { getUser } from '@/utils/supabase/queries';
-import { createClient } from '@/utils/supabase/client';
+import { createClient } from '@/utils/supabase/server';
 
 export const dynamic = 'force-dynamic';
 

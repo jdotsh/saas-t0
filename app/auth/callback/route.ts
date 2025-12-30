@@ -25,11 +25,6 @@ export async function GET(request: NextRequest) {
   }
 
   // URL to redirect to after sign in process completes
-  return NextResponse.redirect(
-    getStatusRedirect(
-      `${requestUrl.origin}/dashboard/account`,
-      'Success!',
-      'You are now signed in.'
-    )
-  );
+  // Direct redirect to dashboard after successful authentication
+  return NextResponse.redirect(`${requestUrl.origin}/dashboard`);
 }
