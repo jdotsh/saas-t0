@@ -10,11 +10,13 @@ import { Icons } from '@/components/icons';
 import { buttonVariants } from '@/components/ui/button';
 import { ModeToggle } from '@/components/mode-toggle';
 import { SunIcon } from '@heroicons/react/24/solid';
+import { UserNav } from '@/components/user-nav';
+import { User } from '@supabase/supabase-js';
 
 interface CircularNavProps {
   items?: MainNavItem[];
   children?: React.ReactNode;
-  user?: boolean;
+  user?: User | null;
 }
 
 export default function CircularNavigation({
@@ -86,18 +88,8 @@ export default function CircularNavigation({
                 </>
               )}
 
-              {/* For logged-in users: Dashboard */}
-              {user && (
-                <Link
-                  href="/dashboard"
-                  className={cn(
-                    buttonVariants({ variant: 'default', size: 'sm' }),
-                    'px-5 text-sm font-semibold'
-                  )}
-                >
-                  Dashboard
-                </Link>
-              )}
+              {/* For logged-in users: User dropdown */}
+              {user && <UserNav user={user} />}
             </div>
 
             {/* Mobile Menu Button */}

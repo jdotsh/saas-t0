@@ -30,10 +30,7 @@ export default async function MarketingLayout({
         ctaHref="#pricing"
       />
 
-      <CircularNavigation
-        items={marketingConfig.mainNav}
-        user={user ? true : false}
-      />
+      <CircularNavigation items={marketingConfig.mainNav} user={user} />
       <main className="flex-1 w-full overflow-x-hidden">{children}</main>
       <FooterPrimary />
     </div>
